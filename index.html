@@ -3,13 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>Tannenkuss111 – Ferienpark Hahnenklee</title>
   <meta name="description" content="Tannenkuss111 – Gemütliche Ferienwohnung im Ferienpark Hahnenklee im Harz. Ankommen, wohlfühlen, durchatmen.">
 
   <!-- Favicon -->
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
   <!-- (Optional) Logo vorladen für schnellere Darstellung -->
-  <link rel="preload" as="image" href="assets/tkus111.jpg">
+  <link rel="preload" as="image" href="assets/tkus111.jpg" imagesrcset="assets/tkus111.jpg" />
 
   <!-- Schreibschrift (für Tagline, ähnlich Logo) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
@@ -17,7 +19,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
   <!-- Globales Stylesheet (dein bisheriges) -->
-  <link rel="stylesheet" href="styles.css?v=2026-03-06-18">
+  <link rel="stylesheet" href="styles.css?v=2026-03-06-19" />
 
   <!-- Seiten-spezifisches Mini-CSS -->
   <style>
@@ -29,11 +31,11 @@
       --grain:      rgba(0,0,0,.035); /* feines Rauschen */
 
       /* Abstände (Buttons -> Tagline -> Gästemappe) */
-      --cta-gap: 34px;        /* Abstand Header -> Buttons */
-      --tagline-gap: 0px;     /* Tagline liegt im Header, daher 0 außerhalb */
-      --tagline-under-logo-gap: 16px; /* Abstand Tagline direkt unterm Logo */
+      --cta-gap: 34px;                 /* Abstand Header -> Buttons */
+      --tagline-under-logo-gap: 16px;  /* Abstand Tagline direkt unterm Logo */
+      --tagline-extra-offset: 72px;    /* NEU: Tagline zusätzlich weiter nach unten (~2 cm) */
 
-      /* LOGO/HEADER – vollständige Einpassung (kein Crop) */
+      /* LOGO/HEADER – vollständige Einpassung (kein Zuschnitt) */
       --hero-image: url('assets/tkus111.jpg');
 
       /* Logo um ~40% kleiner als ganz am Anfang + genug Reserve nach unten */
@@ -45,7 +47,7 @@
       --hero-light: 0.78;
 
       /* Farbe der Tagline im Header – Ton aus der Tapete */
-      --tapete-text: #cfc7b9; /* kannst du via var(--paper-2) ersetzen, wenn es harmoniert */
+      --tapete-text: #cfc7b9; /* Alternativ: var(--paper-2) */
     }
 
     /* ===== Globale Tapeten-/Papierstruktur (GANZE Seite) ===== */
@@ -72,7 +74,7 @@
     .site-header.hero{
       position: relative;
       /* Höhe = Logo-Höhe + Top-Offset + Luft (für Tagline) */
-      min-height: calc(var(--hero-logo-height) + var(--hero-top-offset) + 140px);
+      min-height: calc(var(--hero-logo-height) + var(--hero-top-offset) + 140px + var(--tagline-extra-offset));
       padding: 0 0 1.4rem;
       isolation: isolate;
       overflow: hidden;
@@ -100,13 +102,13 @@
       z-index:-1;
     }
 
-    /* Container im Header: sorgt dafür, dass die Tagline genau unter dem Logo sitzt */
+    /* Container im Header: setzt die Tagline exakt unter das Logo (ohne Logo zu verschieben) */
     .hero-inner{
       width: min(100%, 1000px);
       margin: 0 auto;
       padding: 0 clamp(1rem, 1.8vw, 1.6rem);
-      /* Platz nach oben = Logo-Höhe + Top-Offset, damit die Tagline darunter sitzt */
-      padding-top: calc(var(--hero-top-offset) + var(--hero-logo-height));
+      /* Platz nach oben = Logo-Höhe + Top-Offset + zusätzlicher Offset nur für die Tagline */
+      padding-top: calc(var(--hero-top-offset) + var(--hero-logo-height) + var(--tagline-extra-offset));
       text-align: center;
     }
 
@@ -158,6 +160,7 @@
         --hero-logo-width: calc(100vw - 2rem); /* Logo passt sich schmalen Screens an */
         --hero-logo-height: 260px;             /* flacher auf kleinen Geräten */
         --hero-top-offset: 18px;
+        --tagline-extra-offset: 56px;          /* Mobil etwas weniger Abstand */
       }
       .tagline{ font-size: clamp(1.8rem, 2.2vw + 1rem, 2.6rem); }
     }
@@ -229,7 +232,7 @@
         <div>© <span id="year"></span> Tannenkuss111</div>
         <nav class="legal" aria-label="Rechtliches" style="margin-top:.25rem;">
           <a href="impressum.html">Impressum</a>
-          <span aria-hidden="true">·</span>
+          <span aria-hidden="true"> · </span>
           <a href="datenschutz.html">Datenschutz</a>
         </nav>
       </div>
