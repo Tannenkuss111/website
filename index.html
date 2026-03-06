@@ -20,30 +20,34 @@
   <meta name="theme-color" content="#234E3C">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=2026-03-06-4">
+  <link rel="stylesheet" href="styles.css?v=2026-03-06-5">
 
-  <!-- Mini-CSS: Hero-Hintergrund (Logo) größer & weiter unten -->
+  <!-- Mini-CSS: Hero-Hintergrund + tiefer gesetzter Inhalt -->
   <style>
+    /* Abstand nach unten für den gesamten Inhalt im Hero
+       ~5 cm ≈ 180–200 px; hier Standard 190 px */
     .site-header.hero {
+      /* Variablen = Easy-Tuning ohne CSS-Datei anzufassen */
+      --hero-image: url('assets/tkus111.jpg'); /* Hintergrund / Logo-Bild */
+      --hero-y: 72%;        /* vertikale Logo-Position (höherer % = weiter unten) */
+      --hero-scale: 1.12;   /* Zoom auf das Bild */
+      --hero-offset: 190px; /* >>> Abstand, wie weit Text/Buttons nach unten sollen <<< */
       position: relative;
       color: #fff;
       background: linear-gradient(180deg, rgba(25,62,48,.72), rgba(35,78,60,.86));
       isolation: isolate;
-      /* Mehr Höhe, damit das Logo gut sichtbar ist */
-      padding: 3.2rem 0 2.6rem;
-      min-height: clamp(320px, 52vh, 560px);
+      min-height: clamp(360px, 54vh, 600px);
+      padding: 0 0 2.6rem; /* unterer Innenabstand */
+      overflow: hidden;
     }
-    /* Feinjustage per Variablen: */
-    /* --hero-image: Pfad; --hero-y: vertikale Position; --hero-scale: Zoomfaktor */
     .site-header.hero::before {
       content: "";
       position: absolute; inset: 0;
-      background-image: var(--hero-image, url('assets/tkus111.jpg'));
+      background-image: var(--hero-image);
       background-repeat: no-repeat;
       background-size: cover;
-      /* weiter nach unten: center 72% (höherer Prozentwert = weiter runter) */
-      background-position: center var(--hero-y, 72%);
-      transform: scale(var(--hero-scale, 1.10));
+      background-position: center var(--hero-y);
+      transform: scale(var(--hero-scale));
       filter: brightness(.78);
       z-index: -2;
       transform-origin: center;
@@ -54,8 +58,12 @@
       background: linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.38) 58%, rgba(0,0,0,0) 100%);
       z-index: -1;
     }
-    .tagline {
+    /* Der Trick: ein unsichtbarer Spacer drückt alles weiter nach unten */
+    .hero .inner {
+      padding-top: var(--hero-offset);
       text-align: center;
+    }
+    .tagline {
       margin: .6rem 0 1.2rem;
       font-size: clamp(1.5rem, 2.4vw + 1rem, 2.6rem);
       font-weight: 700;
@@ -70,10 +78,8 @@
 <body>
 
   <!-- HEADER / HERO -->
-  <!-- Du kannst die Position/Größe im Notfall ohne CSS ändern:
-       data: --hero-y (z.B. 70%..85%), --hero-scale (z.B. 1.05..1.25) -->
-  <header class="site-header hero" style="--hero-image:url('assets/tkus111.jpg'); --hero-y:72%; --hero-scale:1.12;">
-    <div class="container">
+  <header class="site-header hero">
+    <div class="container inner">
       <h1 class="tagline">Ankommen, wohlfühlen, durchatmen.</h1>
 
       <!-- Call-to-Actions -->
@@ -139,7 +145,6 @@
           <strong>Tannenkuss111</strong><br>
           Am Hahnenkleer Berg 7<br>
           38644 Goslar<br>
-          <!-- Telefonlink: klick = Anruf -->
           Tel.: <a href="tel:+491784749439">+49&nbsp;178&nbsp;4749439</a>
         </address>
       </div>
