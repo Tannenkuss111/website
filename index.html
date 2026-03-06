@@ -8,9 +8,9 @@
   <meta name="description" content="Tannenkuss111 – Gemütliche Ferienwohnung im Ferienpark Hahnenklee im Harz. Ankommen, wohlfühlen, durchatmen.">
 
   <!-- Favicon -->
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
-  <!-- Social Preview (optional, bleibt vorerst neutral) -->
+  <!-- Social (optional) -->
   <meta property="og:title" content="Tannenkuss111 – Ferienpark Hahnenklee">
   <meta property="og:description" content="Ankommen, wohlfühlen, durchatmen – deine Auszeit im Harz.">
   <meta property="og:type" content="website">
@@ -19,121 +19,120 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#234E3C">
 
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=2026-03-06-9" />
+  <!-- Globales Stylesheet -->
+  <link rel="stylesheet" href="styles.css?v=2026-03-06-10">
 
-  <!-- Seiten-spezifisches Mini-CSS: Hero kleiner + Buttons-Leiste -->
+  <!-- Seiten-spezifisches Mini-CSS: Vollfarb-Header + Buttons-Abstand -->
   <style>
-    /* ======= HERO (Logo als Hintergrund) – SCHMALER & WENIGER ZOOM ======= */
-    .site-header.hero{
-      /* Feintuning-Variablen: */
-      --hero-image: url('assets/tkus111.jpg'); /* Hintergrund/Logo */
-      --hero-y: 70%;        /* sichtbarer Bildausschnitt (höherer % = weiter unten) */
-      --hero-scale: 0.92;   /* WENIGER Zoom ⇒ Logo wirkt kleiner */
-      --hero-offset: 240px; /* wie weit die Headline im Hero nach unten rückt */
+    :root{
+      /* optische Parameter – hier kannst du schnell justieren */
+      --header-bg-1: #193E30;   /* dunkles Grün aus dem Logo */
+      --header-bg-2: #234E3C;   /* Tannen-Grün */
+      --logo-max: 980px;        /* Logo soll so breit sein wie die Karten-Breite */
+      --side-pad: 1.25rem;      /* Seiteninnenabstand wie .container */
+      --cta-gap-bottom: 19px;   /* ≈ 0,5 cm Abstand bis zur Gästemappe */
+    }
 
-      position: relative;
+    /* ► Vollfarb-Header (ohne Foto) */
+    .site-hero {
+      background: linear-gradient(180deg, var(--header-bg-1), var(--header-bg-2));
       color: #fff;
-      background: linear-gradient(180deg, rgba(25,62,48,.72), rgba(35,78,60,.86));
-      isolation: isolate;
-
-      /* HERO insgesamt niedriger halten */
-      min-height: clamp(320px, 46vh, 520px);
-      padding: 0 0 2.2rem;
-      overflow: hidden;
+      padding: 1.6rem 0 1.1rem;
+      border-bottom: 1px solid rgba(255,255,255,.08);
     }
-    .site-header.hero::before{
-      content:"";
-      position:absolute; inset:0;
-      background-image: var(--hero-image);
-      background-repeat:no-repeat;
-      background-size: cover;
-      background-position: center var(--hero-y);
-      transform: scale(var(--hero-scale));
-      filter: brightness(.80);
-      z-index:-2;
-      transform-origin:center;
-    }
-    .site-header.hero::after{
-      content:"";
-      position:absolute; inset:0;
-      background: linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.35) 55%, rgba(0,0,0,0) 100%);
-      z-index:-1;
-    }
-    .hero .inner{
-      padding-top: var(--hero-offset);
-      text-align:center;
-    }
-    .tagline{
-      margin:.4rem 0 1.0rem;
-      font-size: clamp(1.4rem, 2.1vw + 1rem, 2.4rem);
-      font-weight: 800;
-      text-shadow: 0 2px 12px rgba(0,0,0,.35);
-    }
-
-    /* ======= CTA-BAR (Buttons) unter dem Hero – Abstand ~0,5 cm ======= */
-    .cta-bar{
-      position: relative;
-      margin-top: -18px;   /* leicht in die Welle hineinziehen */
-      margin-bottom: 19px; /* ≈ 0,5 cm Abstand bis zur Gästemappe */
-      z-index: 3;
+    .hero-inner {
       width: min(100%, 1000px);
-      margin-left: auto; margin-right: auto;
+      margin: 0 auto;
+      padding: clamp(1rem, 1.8vw, 1.6rem);
+      text-align: center;
+    }
+    /* Logo exakt auf Kartenbreite, bündig zu den Fenstern */
+    .hero-logo {
+      width: calc(min(100%, var(--logo-max)) - 2 * var(--side-pad));
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 6px auto 10px;
+      filter: drop-shadow(0 8px 18px rgba(0,0,0,.18));
+    }
+    .tagline {
+      margin: 6px 0 8px;
+      font-size: clamp(1.2rem, 1.4vw + 1rem, 1.8rem);
+      font-weight: 800;
+      letter-spacing: .2px;
+      text-shadow: 0 1px 8px rgba(0,0,0,.25);
+    }
+
+    /* ► CTA-Bar (Buttons) direkt unter dem Header, dann ~0,5 cm bis Gästemappe */
+    .cta-bar {
+      width: min(100%, 1000px);
+      margin: 0 auto;
       padding: 0 clamp(1rem, 1.8vw, 1.6rem);
+      margin-bottom: var(--cta-gap-bottom);
     }
-    .cta-bar .card{
-      display:flex;
-      gap:.8rem;
-      justify-content:center;
-      align-items:center;
-      padding:.7rem 1rem;
-      border-radius:14px;
-    }
-
-    /* Buttons – grün (Anfahrt) und gold (Airbnb) */
-    .btn-green{
-      background:#234E3C; color:#fff !important;
-      border-radius:999px; padding:.6rem 1.1rem; font-weight:600;
-      text-decoration:none; border:1px solid #1a3c2e;
-      box-shadow:0 3px 12px rgba(0,0,0,.18);
-      transition:background .2s ease, transform .15s ease;
-    }
-    .btn-green:hover{ background:#1d3f30; transform:translateY(-2px); }
-
-    .btn-airbnb{
-      background:#C59B45; color:#102014 !important;
-      border-radius:999px; padding:.6rem 1.1rem; font-weight:600; text-decoration:none;
-      border:1px solid #b18a3f; box-shadow:0 3px 12px rgba(0,0,0,.18);
-      transition:background .2s ease, transform .15s ease;
-    }
-    .btn-airbnb:hover{ background:#b68c3c; transform:translateY(-2px); }
-
-    @media(max-width:560px){
-      .cta-bar .card{ flex-wrap:wrap; }
+    .cta-bar .card {
+      display: flex;
+      gap: .8rem;
+      justify-content: center;
+      align-items: center;
+      padding: .7rem 1rem;
+      border-radius: 14px;
     }
 
-    /* Lesetext */
-    .richtext p{ margin:.6rem 0; }
-    .richtext ul, .richtext ol{ margin:.4rem 0 .8rem 1.25rem; }
+    /* Buttons: grün (Anfahrt) + gold (Airbnb) */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      padding: .6rem 1.1rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      border: 1px solid transparent;
+      box-shadow: 0 3px 12px rgba(0,0,0,.18);
+      transition: transform .15s ease, background .2s ease, color .2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
+
+    .btn-airbnb {
+      background: #C59B45; color: #102014;
+      border-color: #b18a3f;
+    }
+    .btn-airbnb:hover { background: #b68c3c; }
+
+    .btn-green {
+      background: #234E3C; color: #fff;
+      border-color: #1a3c2e;
+    }
+    .btn-green:hover { background: #1d3f30; }
+
+    @media (max-width: 560px) {
+      .cta-bar .card { flex-wrap: wrap; }
+      .hero-logo { width: calc(100% - 2 * 1rem); }
+    }
+    /* Lesetext im Hauptbereich */
+    .richtext p { margin: .6rem 0; }
+    .richtext ul, .richtext ol { margin: .4rem 0 .8rem 1.25rem; }
   </style>
 </head>
 <body>
 
-  <!-- ===== HERO (Logo als Hintergrund, geschrumpft) ===== -->
-  <header class="site-header hero">
-    <div class="container inner">
+  <!-- ===== Vollfarb-Header (Logo als Bild) ===== -->
+  <header class="site-hero">
+    <div class="hero-inner">
+      <img src="assets/tkus111.jpg" alt="Tannenkuss111 – Ferienpark Hahnenklee" class="hero-logo">
       <h1 class="tagline">Ankommen, wohlfühlen, durchatmen.</h1>
     </div>
-    <div class="header-wave" aria-hidden="true"></div>
   </header>
 
-  <!-- ===== CTA-Leiste direkt unter dem Hero (grüne Anfahrt-Buttons) ===== -->
+  <!-- ===== CTA-Bar: Buttons in Grün, knapp über der Gästemappe ===== -->
   <div class="cta-bar">
     <div class="card">
       <!-- TODO: Deine echte Airbnb-URL einsetzen -->
-      <a class="btn-airbnb" href="https://www.airbnb.de/rooms/XXXXX" target="_blank" rel="noopener">Jetzt auf Airbnb ansehen</a>
-      <a class="btn-green" href="https://www.google.com/maps/dir/?api=1&destination=Am+Hahnenkleer+Berg+7%2C+38644+Goslar&travelmode=driving" target="_blank" rel="noopener">Anfahrt (Google)</a>
-      <a class="btn-green" href="https://maps.apple.com/?daddr=Am%20Hahnenkleer%20Berg%207%2C%2038644%20Goslar" target="_blank" rel="noopener">Anfahrt (Apple)</a>
+      <a class="btn btn-airbnb" href="https://www.airbnb.de/rooms/XXXXX" target="_blank" rel="noopener">Jetzt auf Airbnb ansehen</a>
+      <a class="btn btn-green" href="https://www.google.com/maps/dir/?api=1&destination=Am+Hahnenkleer+Berg+7%2C+38644+Goslar&travelmode=driving" target="_blank" rel="noopener">Anfahrt (Google)</a>
+      <a class="btn btn-green" href="https://maps.apple.com/?daddr=Am%20Hahnenkleer%20Berg%207%2C%2038644%20Goslar" target="_blank" rel="noopener">Anfahrt (Apple)</a>
     </div>
   </div>
 
