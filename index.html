@@ -11,139 +11,120 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=2026-03-06-7">
+  <link rel="stylesheet" href="styles.css?v=2026-03-06-8">
 
-  <!-- Mini-CSS für Hero & CTA-Bar -->
+  <!-- Seiten-spezifisches Mini-CSS für Logo-Größe + Abstände -->
   <style>
-    /* ========== HERO (Logo-Hintergrund im Header) ========== */
-    .site-header.hero{
-      --hero-image: url('assets/tkus111.jpg');
-      --hero-y: 78%;         /* tieferer sichtbarer Bereich */
-      --hero-scale: 1.18;    /* etwas größerer Zoom aufs Logo */
-      --hero-offset: 420px;  /* >>> Abstand nach unten (Logo+Text) ca. 5cm mehr <<< */
+    /* ------------- Layout-Parameter (leicht anpassbar) ------------- */
+    :root{
+      /* Ziel: Logo exakt so breit wie die Karten/Fenster (Container-Inhalt) */
+      --logo-max-width: min(100%, 980px); /* gleiche Breite wie .container-Inhalt */
+      --logo-side-padding: 1.25rem;       /* wie .container padding, damit Kante deckungsgleich ist */
+      --cta-gap-bottom: 19px;             /* ~0,5 cm Abstand (je nach DPI ≈ 18–20 px) */
+    }
 
-      position: relative;
+    /* ------------- HERO mit echtem Logo-Bild ------------- */
+    .site-hero {
+      background: linear-gradient(180deg, var(--brand-green-dark, #193E30), var(--brand-green, #234E3C));
       color: #fff;
-      background: linear-gradient(180deg, rgba(25,62,48,.75), rgba(35,78,60,.88));
-      isolation: isolate;
-      min-height: clamp(450px, 62vh, 720px);
-      padding: 0 0 2.8rem;
-      overflow: hidden;
+      padding: 1.6rem 0 1.2rem; /* kompakter, da Logo gleich darunter folgt */
+    }
+    .hero-inner {
+      width: min(100%, 1000px);
+      margin: 0 auto;
+      padding: clamp(1rem, 1.8vw, 1.6rem);
+      text-align: center;
+    }
+    /* Logo-Breite = Containerbreite, links/rechts bündig zu Karten */
+    .hero-logo-wrap{
+      display: grid;
+      place-items: center;
+      /* Das „5 cm weiter runter“ aus den letzten Schritten ist jetzt nicht mehr nötig,
+         weil wir kein Hintergrundbild schieben. Falls du dennoch vertikal mehr Luft willst:
+         margin-top hier erhöhen (z.B. 40px). */
+      margin: 6px 0 10px;
+    }
+    .hero-logo{
+      /* exakt Containerbreite abzüglich der selben Seiten-Paddings wie die Karten */
+      width: calc(var(--logo-max-width) - 2 * var(--logo-side-padding));
+      max-width: 100%;
+      height: auto;
+      display: block;
+      /* kleine optische Entzerrung; entfernen, falls unerwünscht */
+      filter: drop-shadow(0 8px 22px rgba(0,0,0,.18));
     }
 
-    .site-header.hero::before{
-      content:"";
-      position:absolute; inset:0;
-      background-image: var(--hero-image);
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center var(--hero-y);
-      transform: scale(var(--hero-scale));
-      filter: brightness(.80);
-      z-index:-2;
-      transform-origin: center;
-    }
-    .site-header.hero::after{
-      content:"";
-      position:absolute; inset:0;
-      background: linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.38) 55%, rgba(0,0,0,0) 100%);
-      z-index:-1;
-    }
-    .hero .inner{
-      padding-top: var(--hero-offset);
-      text-align:center;
-    }
-    .tagline{
-      margin:.6rem 0 1.3rem;
-      font-size: clamp(1.7rem, 2.8vw + 1rem, 3rem);
+    .tagline {
+      margin: 10px 0 0.6rem;
+      font-size: clamp(1.25rem, 1.6vw + 1rem, 1.9rem);
       font-weight: 800;
-      letter-spacing:.2px;
-      text-shadow: 0 2px 14px rgba(0,0,0,.40);
+      text-shadow: 0 1px 10px rgba(0,0,0,.30);
     }
 
-    /* ========== CTA-BAR (Buttons unter dem Hero) ========== */
+    /* ------------- CTA-Leiste (Buttons) direkt über der Gästemappe ------------- */
     .cta-bar{
-      position: relative;
-      margin-top: -25px; /* leicht in die Welle hinein */
-      margin-bottom: 18px;
-      z-index: 3;
+      width: min(100%, 1000px);
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 1.8vw, 1.6rem);
+      margin-bottom: var(--cta-gap-bottom); /* ~0,5 cm bis zur Gästemappe */
     }
     .cta-bar .card{
       display:flex;
       gap:.8rem;
       justify-content:center;
       align-items:center;
-      padding: .85rem 1rem;
-      border-radius: 16px;
+      padding:.7rem 1rem;
+      border-radius: 14px;
     }
-
-    /* Buttons – Grün, passend zum Logo (#234E3C) */
     .btn-green{
-      background: #234E3C;
-      color: #fff !important;
-      border-radius: 999px;
-      padding: .65rem 1.2rem;
-      font-weight: 600;
-      text-decoration: none;
-      border: 1px solid #1a3c2e;
-      box-shadow: 0 3px 12px rgba(0,0,0,.18);
-      transition: background .2s ease, transform .15s ease;
-    }
-    .btn-green:hover{
-      background:#1d3f30;
-      transform: translateY(-2px);
-    }
-
-    .btn-airbnb{
-      background:#C59B45;
+      background:#234E3C;
+      color:#fff !important;
       border-radius:999px;
-      padding:.65rem 1.2rem;
+      padding:.6rem 1.1rem;
       font-weight:600;
-      color:#102014 !important;
       text-decoration:none;
-      border:1px solid #b18a3f;
+      border:1px solid #1a3c2e;
       box-shadow:0 3px 12px rgba(0,0,0,.18);
       transition:background .2s ease, transform .15s ease;
     }
-    .btn-airbnb:hover{
-      background:#b68c3c;
-      transform:translateY(-2px);
+    .btn-green:hover{ background:#1d3f30; transform:translateY(-2px); }
+    .btn-airbnb{
+      background:#C59B45; color:#102014 !important; border-radius:999px;
+      padding:.6rem 1.1rem; font-weight:600; text-decoration:none;
+      border:1px solid #b18a3f; box-shadow:0 3px 12px rgba(0,0,0,.18);
+      transition:background .2s ease, transform .15s ease;
     }
+    .btn-airbnb:hover{ background:#b68c3c; transform:translateY(-2px); }
 
-    @media(max-width:560px){
-      .cta-bar .card{
-        flex-wrap:wrap;
-        border-radius:14px;
-      }
+    @media (max-width:560px){
+      .cta-bar .card{ flex-wrap:wrap; }
+      .hero-logo{ width: calc(100% - 2 * 1rem); }
     }
-
-    .richtext p{ margin:.6rem 0; }
-    .richtext ul{ margin:.4rem 0 .8rem 1.25rem; }
   </style>
-
 </head>
 <body>
 
-  <!-- ========== HERO ========== -->
-  <header class="site-header hero">
-    <div class="container inner">
+  <!-- ===== HERO mit echtem Logo-Bild (Breite = Fenster/Kartenbreite) ===== -->
+  <header class="site-hero">
+    <div class="hero-inner">
+      <div class="hero-logo-wrap">
+        <img src="assets/tkus111.jpg" alt="Tannenkuss111 Logo" class="hero-logo" />
+      </div>
       <h1 class="tagline">Ankommen, wohlfühlen, durchatmen.</h1>
     </div>
-    <div class="header-wave" aria-hidden="true"></div>
   </header>
 
-  <!-- ========== CTA-BAR UNTER DEM HERO ========== -->
-  <div class="container cta-bar">
+  <!-- ===== CTA-BAR: Buttons in Grün, direkt über der Gästemappe (~0,5cm Abstand) ===== -->
+  <div class="cta-bar">
     <div class="card">
-      <!-- TODO: Airbnb-URL ersetzen -->
-      <a href="https://www.airbnb.de/rooms/XXXXX" class="btn-airbnb">Jetzt auf Airbnb ansehen</a>
-      <a href="https://www.google.com/maps/dir/?api=1&destination=Am+Hahnenkleer+Berg+7%2C+38644+Goslar&travelmode=driving" class="btn-green">Anfahrt (Google)</a>
-      <a href="https://maps.apple.com/?daddr=Am%20Hahnenkleer%20Berg%207%2C%2038644%20Goslar" class="btn-green">Anfahrt (Apple)</a>
+      <!-- TODO: Deine echte Airbnb-URL einsetzen -->
+      <a class="btn-airbnb" href="https://www.airbnb.de/rooms/XXXXX" target="_blank" rel="noopener">Jetzt auf Airbnb ansehen</a>
+      <a class="btn-green" href="https://www.google.com/maps/dir/?api=1&destination=Am+Hahnenkleer+Berg+7%2C+38644+Goslar&travelmode=driving" target="_blank" rel="noopener">Anfahrt (Google)</a>
+      <a class="btn-green" href="https://maps.apple.com/?daddr=Am%20Hahnenkleer%20Berg%207%2C%2038644%20Goslar" target="_blank" rel="noopener">Anfahrt (Apple)</a>
     </div>
   </div>
 
-  <!-- ========== MAIN CONTENT ==========
-       Große Fläche für Gästemappe & Hinweise -->
+  <!-- ===== MAIN ===== -->
   <main class="container main-flow">
     <section class="card" id="gaestemappe">
       <h2>Gästemappe & Hinweise</h2>
@@ -154,10 +135,11 @@
         </p>
 
         <p><em>Hier ist Platz für deine längeren Texte</em> (Anreise, Hausordnung, Mülltrennung,
-          Bedienhinweise, Empfehlungen, Notfallnummern, Check‑out etc.).
+          Bedienhinweise, Empfehlungen, Notfallnummern, Check‑out etc.). Schreibe einfach alles hinein,
+          was Gäste wissen sollen – wie in einer klassischen Gästemappe.
         </p>
 
-        <h3>Ankommen & Parken</h3>
+        <h3>Ankommen &amp; Parken</h3>
         <p>Kurzer Hinweis zur Zufahrt, Parkmöglichkeiten und Wegeführung im Ferienpark.</p>
 
         <h3>Hausordnung (Auszug)</h3>
@@ -173,7 +155,7 @@
     </section>
   </main>
 
-  <!-- ========== FOOTER ========== -->
+  <!-- ===== FOOTER ===== -->
   <footer class="site-footer">
     <div class="container fgrid" style="gap:1rem; align-items:flex-start;">
       <div>
@@ -188,7 +170,7 @@
       </div>
       <div style="margin-left:auto; text-align:right;">
         <div>© <span id="year"></span> Tannenkuss111</div>
-        <nav class="legal" style="margin-top:.25rem;">
+        <nav class="legal" aria-label="Rechtliches" style="margin-top:.25rem;">
           <a href="impressum.html">Impressum</a>
           <span aria-hidden="true">·</span>
           <a href="datenschutz.html">Datenschutz</a>
@@ -198,8 +180,9 @@
   </footer>
 
   <script>
+    // Jahreszahl automatisch
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
-
 </body>
 </html>
+``
