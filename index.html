@@ -8,8 +8,7 @@
   <meta name="description" content="Tannenkuss111 – Gemütliche Ferienwohnung im Ferienpark Hahnenklee im Harz. Ankommen, wohlfühlen, durchatmen.">
 
   <!-- Favicon -->
-  assets/favicon.svg
-  assets/favicon.svg
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
   <!-- Social Preview -->
   <meta property="og:title" content="Tannenkuss111 – Ferienpark Hahnenklee">
@@ -20,23 +19,23 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#234E3C">
 
-  <!-- Logo als Preload (optional für schnellere Anzeige) -->
-  assets/tkus111.jpg
-
-  styles.css?v=2026-03-06-2
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css?v=2026-03-06-2">
 </head>
 <body>
 
-  <!-- HERO / HEADER -->
+  <!-- HEADER / HERO -->
   <header class="site-header">
     <div class="container">
+      <!-- Logo -->
       <div class="brand" aria-label="Logo Tannenkuss111">
-        assets/tkus111.jpg
+        <img src="assets/tkus111.jpg" alt="Tannenkuss111 – Ferienpark Hahnenklee Logo" loading="eager" decoding="async">
       </div>
 
       <!-- Badges -->
-      <div class="badges" role="status" aria-label="Plattformen & Hinweis">
-        https://www.airbnb.de/rooms/XXXXX
+      <div class="badges" role="status" aria-label="Plattformen & Hinweise">
+        <!-- „Jetzt buchen“-Badge führt direkt zum Airbnb-Eintrag -->
+        <a class="badge badge-book" href="https://www.airbnb.de/rooms/XXXXX" target="_blank" rel="noopener noreferrer" title="Jetzt buchen auf Airbnb">
           ⭐ Jetzt buchen
         </a>
         <span class="badge badge-airbnb" title="Auf Airbnb gelistet">Airbnb</span>
@@ -46,18 +45,18 @@
 
       <!-- Call-to-Actions -->
       <div class="cta-row">
-        <!-- Airbnb -->
-        https://www.airbnb.de/rooms/XXXXX
+        <!-- TODO: Airbnb-URL einsetzen -->
+        <a class="btn btn-airbnb" href="https://www.airbnb.de/rooms/XXXXX" target="_blank" rel="noopener noreferrer">
           Jetzt auf Airbnb ansehen
         </a>
 
         <!-- Anfahrt: Google Maps -->
-        https://www.google.com/maps/dir/?api=1&destination=Am+Hahnenkleer+Berg+7%2C+38644+Goslar&travelmode=driving
+        <a class="btn btn-outline" href="https://www.google.com/maps/dir/?api=1&destination=Am+Hahnenkleer+Berg+7%2C+38644+Goslar&travelmode=driving" target="_blank" rel="noopener noreferrer">
           Anfahrt (Google)
         </a>
 
         <!-- Anfahrt: Apple Karten -->
-        https://maps.apple.com/?daddr=Am%20Hahnenkleer%20Berg%207%2C%2038644%20Goslar
+        <a class="btn btn-outline" href="https://maps.apple.com/?daddr=Am%20Hahnenkleer%20Berg%207%2C%2038644%20Goslar" target="_blank" rel="noopener noreferrer">
           Anfahrt (Apple)
         </a>
       </div>
@@ -100,9 +99,9 @@
     <div class="container fgrid">
       <div>© <span id="year"></span> Tannenkuss111</div>
       <nav class="legal" aria-label="Rechtliches">
-        impressum.htmlImpressum</a>
+        <a href="impressum.html">Impressum</a>
         <span aria-hidden="true">·</span>
-        datenschutz.htmlDatenschutz</a>
+        <a href="datenschutz.html">Datenschutz</a>
       </nav>
     </div>
   </footer>
@@ -113,3 +112,4 @@
   </script>
 </body>
 </html>
+``
