@@ -8,19 +8,23 @@
   <meta name="description" content="Tannenkuss111 – Gemütliche Ferienwohnung im Ferienpark Hahnenklee im Harz. Ankommen, wohlfühlen, durchatmen.">
 
   <!-- Favicon -->
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <!-- (Optional) Logo-Bild vorladen -->
+  <link rel="preload" as="image" href="assets/tkus111.jpg" />
 
-  <!-- Optional: Logo vorladen für schnellere Darstellung -->
-  <link rel="preload" as="image" href="assets/tkus111.jpg">
+  <!-- Schreibschrift (ähnlich dem Logo) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
-  <!-- Globales Stylesheet (dein bisheriges) -->
-  <link rel="stylesheet" href="styles.css?v=2026-03-06-14">
+  <!-- Dein globales Stylesheet -->
+  <link rel="stylesheet" href="styles.css?v=2026-03-06-15" />
 
   <!-- Seiten-spezifisches Mini-CSS:
        - Tapeten-/Papierstruktur global
-       - Header mit Logo als Hintergrund: oben mittig, vollständig sichtbar (contain)
-       - CTA-Bar (Buttons)
-       - Tagline zwischen Buttons und Gästemappe -->
+       - Header mit Logo als Hintergrund: oben mittig, NICHT abgeschnitten
+       - Buttons und Inhalte deutlich weiter unten
+       - Tagline in Schreibschrift zwischen Buttons und Gästemappe -->
   <style>
     :root{
       /* Warmes Papier-Farbschema (passt zum Logo) */
@@ -29,16 +33,17 @@
       --paper-2:    #eae4d8;   /* Wolkung 2 */
       --grain:      rgba(0,0,0,.035); /* feines Rauschen */
 
-      /* Abstände */
-      --cta-gap: 18px;       /* ~0,5 cm Abstand Buttons -> Tagline */
-      --tagline-gap: 18px;   /* ~0,5 cm Abstand Tagline -> Gästemappe */
+      /* Abstände (Buttons -> Tagline -> Gästemappe) */
+      --cta-gap: 26px;         /* etwas mehr Abstand → Logo bleibt frei sichtbar */
+      --tagline-gap: 22px;
 
-      /* LOGO/HEADER – CONTAIN + feste Logo-Höhe/Breite + Abstand oben */
+      /* LOGO/HEADER – CONTAIN + feste Logo-Maße + Abstand oben
+         Diese 3 Werte regeln, wie viel vom Logo sichtbar ist und wie viel Platz der Header hat */
       --hero-image: url('assets/tkus111.jpg');
-      --hero-logo-width: clamp(560px, 70vw, 1120px); /* Logo-Breite responsiv */
-      --hero-logo-height: 200px;                     /* sichtbare Logo-Höhe */
-      --hero-top-offset: 22px;                       /* Abstand Logo zum oberen Rand */
-      --hero-light: 0.78;                            /* Licht/Weiß-Layer-Intensität */
+      --hero-logo-width: clamp(640px, 78vw, 1280px); /* Logo-Breite responsiv (größer = höheres Logo) */
+      --hero-logo-height: 300px;                     /* sichtbare Logo-Höhe (Header orientiert sich daran) */
+      --hero-top-offset: 26px;                       /* Abstand Logo zum oberen Rand */
+      --hero-light: 0.78;                            /* Weiß-Layer-Intensität für Lesbarkeit */
     }
 
     /* ===== Globale Tapeten-/Papierstruktur (GANZE Seite) ===== */
@@ -61,40 +66,39 @@
       color: #1f2a24;
     }
 
-    /* ===== HERO: Logo als Hintergrund, oben mittig – NICHT abgeschnitten ===== */
+    /* ===== HEADER: Logo als Hintergrund, oben mittig – NICHT abgeschnitten ===== */
     .site-header.hero{
       position: relative;
-      padding: 0 0 1.6rem;
-      /* Höhe = Logo-Höhe + Top-Offset + etwas Luft */
-      min-height: calc(var(--hero-logo-height) + var(--hero-top-offset) + 44px);
+      /* Höhe = Logo-Höhe + Top-Offset + Luft → Buttons/Text sind automatisch weiter unten */
+      min-height: calc(var(--hero-logo-height) + var(--hero-top-offset) + 80px);
+      padding: 0 0 1.2rem;
       isolation: isolate;
       overflow: hidden;
     }
-    /* Logo-Ebene – CONTAIN + oben zentriert */
     .site-header.hero::before{
       content:"";
       position:absolute; inset:0;
       background-image: var(--hero-image);
       background-repeat: no-repeat;
-      /* Schlüssel: Logo komplett zeigen (ähnlich „contain“) */
+      /* Schlüssel: Logo vollständig zeigen (ähnlich „contain“) */
       background-size: var(--hero-logo-width) auto;
       background-position: center var(--hero-top-offset);
       filter: brightness(.96) contrast(.98);
       z-index:-2;
     }
-    /* Weiß-/Licht-Layer für Lesbarkeit über dem Tapetenlook */
+    /* Leichter Weiß-/Licht-Layer für bessere Lesbarkeit des oberen Bereichs */
     .site-header.hero::after{
       content:"";
       position:absolute; inset:0;
       background: linear-gradient(180deg,
-        rgba(255,255,255, calc(var(--hero-light) + .10)) 0%,
-        rgba(255,255,255, var(--hero-light)) 28%,
-        rgba(255,255,255, calc(var(--hero-light) - .25)) 55%,
+        rgba(255,255,255, calc(var(--hero-light) + .08)) 0%,
+        rgba(255,255,255, var(--hero-light)) 26%,
+        rgba(255,255,255, calc(var(--hero-light) - .26)) 54%,
         rgba(255,255,255, 0) 100%);
       z-index:-1;
     }
 
-    /* ===== CTA-Bar (Buttons) direkt unter dem Hero ===== */
+    /* ===== CTA-Bar (Buttons) – weiter unten, damit Logo frei sichtbar bleibt ===== */
     .cta-bar{
       width: min(100%, 1000px);
       margin: 0 auto var(--cta-gap) auto;
@@ -102,14 +106,14 @@
     }
     .cta-bar .card{
       display:flex; gap:.8rem; justify-content:center; align-items:center;
-      padding:.7rem 1rem; border-radius:14px;
+      padding:.75rem 1rem; border-radius:14px;
       background: #ffffff;
       border: 1px solid #e6e6e0;
       box-shadow: 0 6px 24px rgba(0,0,0,.05);
     }
     .btn{
       display:inline-flex; align-items:center; gap:.45rem;
-      padding:.6rem 1.1rem; border-radius:999px; text-decoration:none; font-weight:600;
+      padding:.62rem 1.15rem; border-radius:999px; text-decoration:none; font-weight:600;
       border:1px solid transparent; box-shadow:0 3px 12px rgba(0,0,0,.12);
       transition:transform .15s ease, background .2s ease, color .2s ease;
       white-space: nowrap;
@@ -121,7 +125,7 @@
     .btn-green{ background:#234E3C; color:#fff; border-color:#1a3c2e; }
     .btn-green:hover{ background:#1d3f30; }
 
-    /* ===== Tagline zwischen Buttons und Gästemappe ===== */
+    /* ===== Tagline in Schreibschrift zwischen Buttons und Gästemappe ===== */
     .tagline-area{
       width: min(100%, 1000px);
       margin: 0 auto var(--tagline-gap) auto;
@@ -130,30 +134,35 @@
     }
     .tagline{
       margin: 0;
-      font-size: clamp(1.35rem, 1.6vw + 1rem, 1.95rem);
-      font-weight: 800;
+      font-family: "Great Vibes", "Segoe Script", "Brush Script MT", cursive;
+      font-size: clamp(1.9rem, 2.2vw + 1.2rem, 3rem);
+      font-weight: 400; /* Script-Fonts wirken mit normalem Gewicht am besten */
+      line-height: 1.2;
       letter-spacing: .2px;
       color: #1f2a24;
       text-shadow: 0 1px 0 rgba(255,255,255,.7);
     }
 
-    @media (max-width:560px){
-      .cta-bar .card{ flex-wrap: wrap; }
-      /* auf sehr schmalen Geräten Logo etwas kleiner einpassen */
-      :root{ --hero-logo-width: calc(100vw - 2rem); }
+    @media (max-width: 640px){
+      /* auf sehr schmalen Geräten Logo insgesamt schmaler und Header etwas niedriger */
+      :root{
+        --hero-logo-width: calc(100vw - 2rem);
+        --hero-logo-height: 220px;
+        --hero-top-offset: 18px;
+      }
     }
 
-    /* Lesetext im Hauptteil (nur falls dein styles.css das nicht abdeckt) */
+    /* Lesetext im Hauptteil (falls nicht schon im globalen CSS) */
     .richtext p{ margin:.6rem 0; }
     .richtext ul, .richtext ol{ margin:.4rem 0 .8rem 1.25rem; }
   </style>
 </head>
 <body>
 
-  <!-- ===== HEADER (Tapeten-Look + Original-Logo oben mittig, komplett sichtbar) ===== -->
+  <!-- ===== HEADER: Tapeten-Look + Original-Logo oben mittig, komplett sichtbar ===== -->
   <header class="site-header hero"></header>
 
-  <!-- ===== CTA-Bar: 3 Buttons ===== -->
+  <!-- ===== CTA-Bar: 3 Buttons (weiter unten) ===== -->
   <div class="cta-bar" aria-label="Schnellzugriff">
     <div class="card">
       <!-- TODO: Deine echte Airbnb-URL einsetzen -->
@@ -163,7 +172,7 @@
     </div>
   </div>
 
-  <!-- ===== Tagline im freien Bereich zwischen Buttons und Gästemappe ===== -->
+  <!-- ===== Tagline in Schreibschrift (zwischen Buttons und Gästemappe) ===== -->
   <div class="tagline-area">
     <h1 class="tagline">Ankommen, wohlfühlen, durchatmen.</h1>
   </div>
