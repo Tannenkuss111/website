@@ -9,34 +9,36 @@
 
   <!-- Favicon -->
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <!-- (Optional) Vorladen des Hintergrundbildes -->
+
+  <!-- Optional: Logo vorladen für schnellere Darstellung -->
   <link rel="preload" as="image" href="assets/tkus111.jpg">
 
-  <!-- Globales Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=2026-03-06-13">
+  <!-- Globales Stylesheet (dein bisheriges) -->
+  <link rel="stylesheet" href="styles.css?v=2026-03-06-14">
 
   <!-- Seiten-spezifisches Mini-CSS:
-       - Tapeten-/Papierstruktur auf der gesamten Seite
-       - Hero mit deinem Original-Logo als Hintergrund (8 cm nach unten geschoben)
+       - Tapeten-/Papierstruktur global
+       - Header mit Logo als Hintergrund: oben mittig, vollständig sichtbar (contain)
        - CTA-Bar (Buttons)
-       - Tagline-Bereich zwischen Buttons und Gästemappe -->
+       - Tagline zwischen Buttons und Gästemappe -->
   <style>
     :root{
       /* Warmes Papier-Farbschema (passt zum Logo) */
-      --paper-bg:   #f5f1e9;  /* Basis (cremig/warm) */
-      --paper-1:    #efe9de;  /* Wolkung 1 */
-      --paper-2:    #eae4d8;  /* Wolkung 2 */
+      --paper-bg:   #f5f1e9;   /* Basis (cremig/warm) */
+      --paper-1:    #efe9de;   /* Wolkung 1 */
+      --paper-2:    #eae4d8;   /* Wolkung 2 */
       --grain:      rgba(0,0,0,.035); /* feines Rauschen */
 
       /* Abstände */
-      --cta-gap: 18px;        /* ~0,5 cm Abstand Buttons -> Tagline */
-      --tagline-gap: 18px;    /* ~0,5 cm Abstand Tagline -> Gästemappe */
+      --cta-gap: 18px;       /* ~0,5 cm Abstand Buttons -> Tagline */
+      --tagline-gap: 18px;   /* ~0,5 cm Abstand Tagline -> Gästemappe */
 
-      /* Logo-Feintuning im Hero */
+      /* LOGO/HEADER – CONTAIN + feste Logo-Höhe/Breite + Abstand oben */
       --hero-image: url('assets/tkus111.jpg');
-      --hero-y:     70%;   /* Basis-Ausschnitt */
-      --hero-scale: 0.92;  /* < 1.0 = kleinerer Gesamteindruck */
-      --hero-shift: 304px; /* >>> 8 cm nach unten (≈ 302–304 px) <<< */
+      --hero-logo-width: clamp(560px, 70vw, 1120px); /* Logo-Breite responsiv */
+      --hero-logo-height: 200px;                     /* sichtbare Logo-Höhe */
+      --hero-top-offset: 22px;                       /* Abstand Logo zum oberen Rand */
+      --hero-light: 0.78;                            /* Licht/Weiß-Layer-Intensität */
     }
 
     /* ===== Globale Tapeten-/Papierstruktur (GANZE Seite) ===== */
@@ -59,46 +61,43 @@
       color: #1f2a24;
     }
 
-    /* ===== HERO: Original-Logo als Hintergrund, 8 cm tiefer ===== */
+    /* ===== HERO: Logo als Hintergrund, oben mittig – NICHT abgeschnitten ===== */
     .site-header.hero{
       position: relative;
-      /* gleiche „Tapete“ wie Body – wirkt aus einem Guss */
-      padding: 0 0 1.8rem;
-      min-height: clamp(320px, 46vh, 540px);
+      padding: 0 0 1.6rem;
+      /* Höhe = Logo-Höhe + Top-Offset + etwas Luft */
+      min-height: calc(var(--hero-logo-height) + var(--hero-top-offset) + 44px);
       isolation: isolate;
       overflow: hidden;
     }
-    /* Hintergrundebene mit Logo */
+    /* Logo-Ebene – CONTAIN + oben zentriert */
     .site-header.hero::before{
       content:"";
       position:absolute; inset:0;
       background-image: var(--hero-image);
-      background-repeat:no-repeat;
-      background-size: cover;
-      background-position: center var(--hero-y);
-      /* Wir schieben das Bild zusätzlich *sichtbar* nach unten und skalieren leicht */
-      transform: translateY(var(--hero-shift)) scale(var(--hero-scale));
-      transform-origin: center;
-      filter: brightness(.88) contrast(.98);
+      background-repeat: no-repeat;
+      /* Schlüssel: Logo komplett zeigen (ähnlich „contain“) */
+      background-size: var(--hero-logo-width) auto;
+      background-position: center var(--hero-top-offset);
+      filter: brightness(.96) contrast(.98);
       z-index:-2;
     }
-    /* Weißes „Papierlicht“ für Lesbarkeit */
+    /* Weiß-/Licht-Layer für Lesbarkeit über dem Tapetenlook */
     .site-header.hero::after{
       content:"";
       position:absolute; inset:0;
       background: linear-gradient(180deg,
-        rgba(255,255,255,.80) 0%,
-        rgba(255,255,255,.62) 28%,
-        rgba(255,255,255,.34) 55%,
-        rgba(255,255,255,0) 100%);
+        rgba(255,255,255, calc(var(--hero-light) + .10)) 0%,
+        rgba(255,255,255, var(--hero-light)) 28%,
+        rgba(255,255,255, calc(var(--hero-light) - .25)) 55%,
+        rgba(255,255,255, 0) 100%);
       z-index:-1;
     }
-    /* Im Hero selbst kein Text mehr – nur Bild und Licht. */
 
     /* ===== CTA-Bar (Buttons) direkt unter dem Hero ===== */
     .cta-bar{
       width: min(100%, 1000px);
-      margin: 0 auto var(--cta-gap) auto; /* Abstand zu Tagline */
+      margin: 0 auto var(--cta-gap) auto;
       padding: 0 clamp(1rem, 1.8vw, 1.6rem);
     }
     .cta-bar .card{
@@ -108,8 +107,6 @@
       border: 1px solid #e6e6e0;
       box-shadow: 0 6px 24px rgba(0,0,0,.05);
     }
-
-    /* Buttons – grün (Anfahrt) und gold (Airbnb) */
     .btn{
       display:inline-flex; align-items:center; gap:.45rem;
       padding:.6rem 1.1rem; border-radius:999px; text-decoration:none; font-weight:600;
@@ -124,10 +121,10 @@
     .btn-green{ background:#234E3C; color:#fff; border-color:#1a3c2e; }
     .btn-green:hover{ background:#1d3f30; }
 
-    /* ===== Tagline-Bereich ZWISCHEN Buttons und Gästemappe ===== */
+    /* ===== Tagline zwischen Buttons und Gästemappe ===== */
     .tagline-area{
       width: min(100%, 1000px);
-      margin: 0 auto var(--tagline-gap) auto; /* Abstand zur Gästemappe */
+      margin: 0 auto var(--tagline-gap) auto;
       padding: 0 clamp(1rem, 1.8vw, 1.6rem);
       text-align: center;
     }
@@ -142,29 +139,31 @@
 
     @media (max-width:560px){
       .cta-bar .card{ flex-wrap: wrap; }
+      /* auf sehr schmalen Geräten Logo etwas kleiner einpassen */
+      :root{ --hero-logo-width: calc(100vw - 2rem); }
     }
 
-    /* Lesetext im Hauptteil (falls dein styles.css das nicht schon regelt) */
+    /* Lesetext im Hauptteil (nur falls dein styles.css das nicht abdeckt) */
     .richtext p{ margin:.6rem 0; }
     .richtext ul, .richtext ol{ margin:.4rem 0 .8rem 1.25rem; }
   </style>
 </head>
 <body>
 
-  <!-- ===== HERO: Tapetenstruktur + dein Original-Logo als Hintergrund (8 cm tiefer) ===== -->
+  <!-- ===== HEADER (Tapeten-Look + Original-Logo oben mittig, komplett sichtbar) ===== -->
   <header class="site-header hero"></header>
 
   <!-- ===== CTA-Bar: 3 Buttons ===== -->
-  <div class="cta-bar">
+  <div class="cta-bar" aria-label="Schnellzugriff">
     <div class="card">
       <!-- TODO: Deine echte Airbnb-URL einsetzen -->
-      <a class="btn btn-airbnb" href="https://www.airbnb.de/rooms/XXXXX" rel="noopener" target="_blank">Jetzt auf Airbnb ansehen</a>
+      <a class="btn btn-airbnb" href="https://www.airbnb.de/rooms/XXXXX" target="_blank" rel="noopener">Jetzt auf Airbnb ansehen</a>
       <a class="btn btn-green" href="https://www.google.com/maps/dir/?api=1&destination=Am+Hahnenkleer+Berg+7%2C+38644+Goslar&travelmode=driving" target="_blank" rel="noopener">Anfahrt (Google)</a>
       <a class="btn btn-green" href="https://maps.apple.com/?daddr=Am%20Hahnenkleer%20Berg%207%2C%2038644%20Goslar" target="_blank" rel="noopener">Anfahrt (Apple)</a>
     </div>
   </div>
 
-  <!-- ===== Tagline-Bereich zwischen Buttons und Gästemappe ===== -->
+  <!-- ===== Tagline im freien Bereich zwischen Buttons und Gästemappe ===== -->
   <div class="tagline-area">
     <h1 class="tagline">Ankommen, wohlfühlen, durchatmen.</h1>
   </div>
