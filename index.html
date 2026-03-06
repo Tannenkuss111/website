@@ -20,53 +20,65 @@
   <meta name="theme-color" content="#234E3C">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=2026-03-06-3">
+  <link rel="stylesheet" href="styles.css?v=2026-03-06-4">
 
-  <!-- Mini-CSS nur für das große Header-Hintergrundbild -->
+  <!-- Mini-CSS: Hero-Hintergrund (Logo) größer & weiter unten -->
   <style>
     .site-header.hero {
       position: relative;
       color: #fff;
-      background: linear-gradient(180deg, rgba(25,62,48,.75), rgba(35,78,60,.85));
+      background: linear-gradient(180deg, rgba(25,62,48,.72), rgba(35,78,60,.86));
       isolation: isolate;
+      /* Mehr Höhe, damit das Logo gut sichtbar ist */
+      padding: 3.2rem 0 2.6rem;
+      min-height: clamp(320px, 52vh, 560px);
     }
+    /* Feinjustage per Variablen: */
+    /* --hero-image: Pfad; --hero-y: vertikale Position; --hero-scale: Zoomfaktor */
     .site-header.hero::before {
       content: "";
       position: absolute; inset: 0;
-      background: center / cover no-repeat var(--hero-image, url('assets/tkus111.jpg'));
-      filter: brightness(.7);
+      background-image: var(--hero-image, url('assets/tkus111.jpg'));
+      background-repeat: no-repeat;
+      background-size: cover;
+      /* weiter nach unten: center 72% (höherer Prozentwert = weiter runter) */
+      background-position: center var(--hero-y, 72%);
+      transform: scale(var(--hero-scale, 1.10));
+      filter: brightness(.78);
       z-index: -2;
+      transform-origin: center;
     }
     .site-header.hero::after {
       content: "";
       position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.35) 60%, rgba(0,0,0,0) 100%);
+      background: linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.38) 58%, rgba(0,0,0,0) 100%);
       z-index: -1;
     }
-    /* Logo vorne weiterhin sichtbar (falls du es zusätzlich anzeigen willst) */
-    .brand img { filter: drop-shadow(0 12px 24px rgba(0,0,0,.25)); }
-    /* Große Textfläche im Inhalt */
+    .tagline {
+      text-align: center;
+      margin: .6rem 0 1.2rem;
+      font-size: clamp(1.5rem, 2.4vw + 1rem, 2.6rem);
+      font-weight: 700;
+      letter-spacing: .2px;
+      text-shadow: 0 2px 12px rgba(0,0,0,.35);
+    }
+    /* große Textfläche */
     .richtext p { margin: .6rem 0; }
     .richtext ul, .richtext ol { margin: .4rem 0 .8rem 1.25rem; }
   </style>
 </head>
 <body>
 
-  <!-- HEADER / HERO (mit großem Hintergrundbild) -->
-  <header class="site-header hero" style="--hero-image:url('assets/tkus111.jpg')">
+  <!-- HEADER / HERO -->
+  <!-- Du kannst die Position/Größe im Notfall ohne CSS ändern:
+       data: --hero-y (z.B. 70%..85%), --hero-scale (z.B. 1.05..1.25) -->
+  <header class="site-header hero" style="--hero-image:url('assets/tkus111.jpg'); --hero-y:72%; --hero-scale:1.12;">
     <div class="container">
-      <!-- Optional: Wenn du das Logo zusätzlich vor dem Hintergrund zeigen willst, ENTKOMMENTIEREN:
-      <div class="brand" aria-label="Logo Tannenkuss111">
-        <img src="assets/tkus111.jpg" alt="Tannenkuss111 – Ferienpark Hahnenklee" loading="eager" decoding="async">
-      </div>
-      -->
-      <h1 class="tagline" style="text-align:center; margin: .5rem 0 1.1rem; font-size: clamp(1.4rem, 2.2vw + 1rem, 2.4rem);">
-        Ankommen, wohlfühlen, durchatmen.
-      </h1>
+      <h1 class="tagline">Ankommen, wohlfühlen, durchatmen.</h1>
 
-      <!-- Call-to-Actions (nur Buttons, keine Badges mehr) -->
+      <!-- Call-to-Actions -->
       <div class="cta-row">
-        <!-- TODO: Deine echte Airbnb-URL einsetzen -->
+        <!-- TODO: Airbnb-URL einsetzen -->
         <a class="btn btn-airbnb" href="https://www.airbnb.de/rooms/XXXXX" target="_blank" rel="noopener">
           Jetzt auf Airbnb ansehen
         </a>
@@ -95,38 +107,29 @@
           Willkommen im <strong>Tannenkuss111</strong> im Ferienpark Hahnenklee. Hier findest du alle
           wichtigen Informationen für einen angenehmen Aufenthalt – kompakt auf einer Seite.
         </p>
-        <p>
-          <em>Hier ist Platz für deine längeren Texte:</em> z.&nbsp;B. Hausordnung, Anreisehinweise,
-          Mülltrennung, Bedienung kleiner Geräte, Wellness‑Tipps im Ort, Essensempfehlungen,
-          Notfallnummern, Check‑out‑Hinweise etc. Schreib einfach alles hinein, was deine Gäste wissen
-          sollten – so wie in einer klassischen Gästemappe.
+
+        <p><em>Hier ist Platz für deine längeren Texte</em> (Anreise, Hausordnung, Mülltrennung,
+          Bedienhinweise, Empfehlungen, Notfallnummern, Check‑out etc.). Schreibe einfach alles hinein,
+          was Gäste wissen sollen – wie in einer klassischen Gästemappe.
         </p>
-        <!-- Beispielstruktur – du kannst alles nach Belieben überschreiben/ergänzen -->
-        <h3>Ankommen & Parken</h3>
+
+        <h3>Ankommen &amp; Parken</h3>
         <p>Kurzer Hinweis zur Zufahrt, Parkmöglichkeiten und Wegeführung im Ferienpark.</p>
 
         <h3>Hausordnung (Auszug)</h3>
         <ul>
           <li>Bitte respektiere die Ruhezeiten im Haus.</li>
           <li>Rauchen nur im Außenbereich.</li>
-          <li>Haustiere sind willkommen, achte bitte auf Sauberkeit im Treppenhaus.</li>
+          <li>Haustiere sind willkommen – bitte Rücksicht auf Nachbarn nehmen.</li>
         </ul>
 
-        <h3>Empfehlungen</h3>
-        <p>
-          Liebesbankweg, Bocksberg‑Seilbahn, Spaziergänge rund um die Teiche, Ausflüge nach Goslar &amp; Clausthal‑Zellerfeld.
-        </p>
-
         <h3>Abreise</h3>
-        <p>
-          Fenster schließen, Heizung prüfen, Müll entsorgen, Schlüssel wie abgesprochen zurückgeben.
-          Vielen Dank!
-        </p>
+        <p>Fenster schließen, Heizung prüfen, Müll entsorgen, Schlüssel wie besprochen zurückgeben.</p>
       </div>
     </section>
   </main>
 
-  <!-- FOOTER mit Adresse GANZ unten -->
+  <!-- FOOTER mit Adresse + klickbarer Telefonlink -->
   <footer class="site-footer">
     <div class="container fgrid" style="gap:1rem; align-items:flex-start;">
       <div>
@@ -135,7 +138,9 @@
           Ferienpark Hahnenklee<br>
           <strong>Tannenkuss111</strong><br>
           Am Hahnenkleer Berg 7<br>
-          38644 Goslar
+          38644 Goslar<br>
+          <!-- Telefonlink: klick = Anruf -->
+          Tel.: <a href="tel:+491784749439">+49&nbsp;178&nbsp;4749439</a>
         </address>
       </div>
       <div style="margin-left:auto; text-align:right;">
