@@ -8,46 +8,47 @@
   <meta name="description" content="Tannenkuss111 – Gemütliche Ferienwohnung im Ferienpark Hahnenklee im Harz. Ankommen, wohlfühlen, durchatmen.">
 
   <!-- Favicon -->
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 
-  <!-- Optional: Logo-Bild vorladen -->
-  <link rel="preload" as="image" href="assets/tkus111.jpg" imagesrcset="assets/tkus111.jpg 1x">
+  <!-- Optional: Logo vorladen (schnellere Darstellung des Headers) -->
+  <link rel="preload" href="assets/tkus111.jpg" as="image" imagesrcset="assets/tkus111.jpg 1x" />
 
-  <!-- Schreibschrift (ähnlich dem Logo) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <!-- Schreibschrift (für die Tagline) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
 
   <!-- Dein globales Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=2026-03-06-16" />
+  <link rel="stylesheet" href="styles.css?v=2026-03-06-17" />
 
-  <!-- Seiten-spezifisches Mini-CSS:
-       - Tapeten-/Papierstruktur global
-       - Header mit Logo als Hintergrund: oben mittig, vollständig sichtbar (kein Crop)
-       - Logo ~40% kleiner (60% der früheren Größe)
-       - Buttons deutlich unterhalb
-       - Tagline in Schreibschrift zwischen Buttons und Gästemappe -->
+  <!-- Seiten-spezifisches Mini-CSS -->
   <style>
     :root{
-      /* Warmes Papier-Farbschema (passt zum Logo) */
+      /* Warmes Papier-/Tapeten-Farbschema (passt zum Logo) */
       --paper-bg:   #f5f1e9;   /* Basis (cremig/warm) */
       --paper-1:    #efe9de;   /* Wolkung 1 */
       --paper-2:    #eae4d8;   /* Wolkung 2 */
       --grain:      rgba(0,0,0,.035); /* feines Rauschen */
 
-      /* Abstände (Buttons -> Tagline -> Gästemappe) */
-      --cta-gap: 30px;        /* Buttons weiter weg vom Header */
-      --tagline-gap: 26px;    /* Tagline weiter weg von Gästemappe */
+      /* Abstände (Buttons -> Tagline -> Gästemappe) – weiter nach unten */
+      --cta-gap: 38px;       /* vorher 30–34px */
+      --tagline-gap: 30px;   /* vorher 26–28px */
 
-      /* LOGO/HEADER – CONTAIN + feste Logo-Maße + Abstand oben
-         >>> Logo ~40% kleiner: Breite/Höhe auf ~60% reduziert <<< */
+      /* LOGO/HEADER – „contain“-Einpassung, kein Zuschnitt */
       --hero-image: url('assets/tkus111.jpg');
-      /* Beispiel vorher ~clamp(680px, 80vw, 1320px) -> jetzt 60%: */
+
+      /* Logo ~40% kleiner als ursprünglich (60% der früheren Größe) */
+      /* Wenn du es wieder etwas größer willst: mittleren Wert (vw) 52–56, max 860–920 erhöhen */
       --hero-logo-width: clamp(408px, 48vw, 792px);
-      /* Beispiel vorher ~360px -> jetzt 60%: */
-      --hero-logo-height: 216px;
-      --hero-top-offset: 20px;   /* Abstand Logo vom oberen Rand */
-      --hero-light: 0.78;        /* Weiß-Layer-Intensität oben */
+
+      /* + ca. 2 cm mehr Höhe, damit unten nichts fehlt */
+      --hero-logo-height: 340px;  /* zuvor ~216–292px, jetzt mehr Reserve */
+
+      /* Abstand des Logos vom oberen Seitenrand */
+      --hero-top-offset: 26px;
+
+      /* Weiß-/Licht-Layer-Intensität über dem Header-Bereich */
+      --hero-light: 0.78;
     }
 
     /* ===== Globale Tapeten-/Papierstruktur (GANZE Seite) ===== */
@@ -73,8 +74,7 @@
     /* ===== HEADER: Logo oben mittig – vollständig sichtbar (kein Crop) ===== */
     .site-header.hero{
       position: relative;
-      /* Höhe = Logo-Höhe + Top-Offset + Luft
-         -> erhöht, damit unten NICHTS abgeschnitten wird */
+      /* Höhe = Logo-Höhe + Top-Offset + Luft */
       min-height: calc(var(--hero-logo-height) + var(--hero-top-offset) + 120px);
       padding: 0 0 1.4rem;
       isolation: isolate;
@@ -85,9 +85,9 @@
       position:absolute; inset:0;
       background-image: var(--hero-image);
       background-repeat: no-repeat;
-      /* WICHTIG: Logo vollständig zeigen (kein cover/crop) */
-      background-size: var(--hero-logo-width) auto;  /* „contain“-ähnlich */
-      background-position: 50% var(--hero-top-offset); /* mittig + Abstand von oben */
+      /* WICHTIG: Logo vollständig zeigen – ähnlich „contain“ */
+      background-size: var(--hero-logo-width) auto;
+      background-position: 50% var(--hero-top-offset);
       filter: brightness(.96) contrast(.98);
       z-index:-2;
     }
@@ -151,8 +151,8 @@
       :root{
         /* auf schmalen Screens Logo automatisch schmaler/flacher */
         --hero-logo-width: calc(100vw - 2rem);
-        --hero-logo-height: 200px;
-        --hero-top-offset: 14px;
+        --hero-logo-height: 260px;
+        --hero-top-offset: 18px;
       }
       .tagline{ font-size: clamp(1.8rem, 2.2vw + 1rem, 2.6rem); }
     }
