@@ -8,9 +8,10 @@
   <meta name="description" content="Tannenkuss111 – Gemütliche Ferienwohnung im Ferienpark Hahnenklee im Harz. Ankommen, wohlfühlen, durchatmen.">
 
   <!-- Favicon -->
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-  <!-- (Optional) Logo-Bild vorladen -->
-  <link rel="preload" as="image" href="assets/tkus111.jpg" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <!-- Optional: Logo-Bild vorladen -->
+  <link rel="preload" as="image" href="assets/tkus111.jpg" imagesrcset="assets/tkus111.jpg 1x">
 
   <!-- Schreibschrift (ähnlich dem Logo) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
@@ -18,152 +19,155 @@
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
   <!-- Dein globales Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=2026-03-06-15" />
+  <link rel="stylesheet" href="styles.css?v=2026-03-06-16" />
 
   <!-- Seiten-spezifisches Mini-CSS:
        - Tapeten-/Papierstruktur global
-       - Header mit Logo als Hintergrund: oben mittig, NICHT abgeschnitten
-       - Buttons und Inhalte deutlich weiter unten
+       - Header mit Logo als Hintergrund: oben mittig, vollständig sichtbar (kein Crop)
+       - Logo ~40% kleiner (60% der früheren Größe)
+       - Buttons deutlich unterhalb
        - Tagline in Schreibschrift zwischen Buttons und Gästemappe -->
   <style>
-  :root{
-    /* Warmes Papier-Farbschema (Tapetenlook) */
-    --paper-bg:   #f5f1e9;
-    --paper-1:    #efe9de;
-    --paper-2:    #eae4d8;
-    --grain:      rgba(0,0,0,.035);
-
-    /* Abstände (Buttons -> Tagline -> Gästemappe) – weiter nach unten */
-    --cta-gap: 30px;        /* Buttons weiter weg vom Header */
-    --tagline-gap: 26px;    /* Tagline weiter weg von Gästemappe */
-
-    /* LOGO/HEADER – CONTAIN + feste Logo-Maße + Abstand oben
-       WICHTIG: Logo-Höhe erhöht, damit NICHTS unten abgeschnitten wird */
-    --hero-image: url('assets/tkus111.jpg');
-    --hero-logo-width: clamp(680px, 80vw, 1320px);  /* ggf. größer einpassen */
-    --hero-logo-height: 360px;                      /* <<< mehr Höhe reservieren */
-    --hero-top-offset: 18px;                        /* Abstand Logo von ganz oben */
-    --hero-light: 0.78;                             /* Weiß-Layer-Intensität */
-  }
-
-  /* ===== Globale Tapeten-/Papierstruktur ===== */
-  html, body{ height: 100%; }
-  body{
-    background:
-      radial-gradient(1px 1px at 20% 25%, var(--grain) 20%, transparent 21%) repeat,
-      radial-gradient(1px 1px at 70% 60%, var(--grain) 20%, transparent 21%) repeat,
-      repeating-linear-gradient(145deg, transparent 0 9px, var(--paper-2) 9px 10px),
-      radial-gradient(1200px 600px at 15% -10%, var(--paper-1) 0 35%, transparent 36%),
-      radial-gradient(1000px 500px at 110% 0%, var(--paper-2) 0 40%, transparent 41%),
-      var(--paper-bg);
-    background-size:
-      180px 180px,
-      220px 220px,
-      100% 100%,
-      100% 100%,
-      100% 100%,
-      auto;
-    color: #1f2a24;
-  }
-
-  /* ===== HEADER: Logo oben mittig – vollständig sichtbar ===== */
-  .site-header.hero{
-    position: relative;
-    /* Höhe = Logo-Höhe + Top-Offset + Luft
-       -> Erhöht, damit unten NICHTS abgeschnitten wird */
-    min-height: calc(var(--hero-logo-height) + var(--hero-top-offset) + 120px);
-    padding: 0 0 1.4rem;
-    isolation: isolate;
-    overflow: hidden;
-  }
-  .site-header.hero::before{
-    content:"";
-    position:absolute; inset:0;
-    background-image: var(--hero-image);
-    background-repeat: no-repeat;
-    /* WICHTIG: Logo vollständig zeigen (kein cover/crop) */
-    background-size: var(--hero-logo-width) auto;  /* „contain“-ähnlich */
-    background-position: 50% var(--hero-top-offset); /* mittig + Abstand von oben */
-    filter: brightness(.96) contrast(.98);
-    z-index:-2;
-  }
-  .site-header.hero::after{
-    content:"";
-    position:absolute; inset:0;
-    background: linear-gradient(180deg,
-      rgba(255,255,255, calc(var(--hero-light) + .08)) 0%,
-      rgba(255,255,255, var(--hero-light)) 26%,
-      rgba(255,255,255, calc(var(--hero-light) - .26)) 54%,
-      rgba(255,255,255, 0) 100%);
-    z-index:-1;
-  }
-
-  /* ===== CTA-Bar (Buttons) – weiter unten, damit das Logo frei bleibt ===== */
-  .cta-bar{
-    width: min(100%, 1000px);
-    margin: 0 auto var(--cta-gap) auto;
-    padding: 0 clamp(1rem, 1.8vw, 1.6rem);
-  }
-  .cta-bar .card{
-    display:flex; gap:.8rem; justify-content:center; align-items:center;
-    padding:.75rem 1rem; border-radius:14px;
-    background: #ffffff;
-    border: 1px solid #e6e6e0;
-    box-shadow: 0 6px 24px rgba(0,0,0,.05);
-  }
-  .btn{
-    display:inline-flex; align-items:center; gap:.45rem;
-    padding:.62rem 1.15rem; border-radius:999px; text-decoration:none; font-weight:600;
-    border:1px solid transparent; box-shadow:0 3px 12px rgba(0,0,0,.12);
-    transition:transform .15s ease, background .2s ease, color .2s ease;
-    white-space: nowrap;
-  }
-  .btn:hover{ transform: translateY(-2px); }
-  .btn:active{ transform: translateY(0); }
-  .btn-airbnb{ background:#C59B45; color:#102014; border-color:#b18a3f; }
-  .btn-airbnb:hover{ background:#b68c3c; }
-  .btn-green{ background:#234E3C; color:#fff; border-color:#1a3c2e; }
-  .btn-green:hover{ background:#1d3f30; }
-
-  /* ===== Tagline (Schreibschrift) zwischen Buttons und Gästemappe ===== */
-  .tagline-area{
-    width: min(100%, 1000px);
-    margin: 0 auto var(--tagline-gap) auto;
-    padding: 0 clamp(1rem, 1.8vw, 1.6rem);
-    text-align: center;
-  }
-  .tagline{
-    margin: 0;
-    font-family: "Great Vibes", "Segoe Script", "Brush Script MT", cursive;
-    font-size: clamp(2.1rem, 2.6vw + 1.2rem, 3.2rem);
-    font-weight: 400;
-    line-height: 1.2;
-    letter-spacing: .2px;
-    color: #1f2a24;
-    text-shadow: 0 1px 0 rgba(255,255,255,.7);
-  }
-
-  @media (max-width: 640px){
     :root{
-      --hero-logo-width: calc(100vw - 2rem); /* auf schmalen Screens automatisch schmaler */
-      --hero-logo-height: 260px;             /* etwas flacher auf kleinen Geräten */
-      --hero-top-offset: 14px;
-    }
-    .tagline{ font-size: clamp(1.8rem, 2.4vw + 1.1rem, 2.6rem); }
-  }
+      /* Warmes Papier-Farbschema (passt zum Logo) */
+      --paper-bg:   #f5f1e9;   /* Basis (cremig/warm) */
+      --paper-1:    #efe9de;   /* Wolkung 1 */
+      --paper-2:    #eae4d8;   /* Wolkung 2 */
+      --grain:      rgba(0,0,0,.035); /* feines Rauschen */
 
-  /* Lesetext (falls nicht im globalen CSS) */
-  .richtext p{ margin:.6rem 0; }
-  .richtext ul, .richtext ol{ margin:.4rem 0 .8rem 1.25rem; }
-</style>
-``
+      /* Abstände (Buttons -> Tagline -> Gästemappe) */
+      --cta-gap: 30px;        /* Buttons weiter weg vom Header */
+      --tagline-gap: 26px;    /* Tagline weiter weg von Gästemappe */
+
+      /* LOGO/HEADER – CONTAIN + feste Logo-Maße + Abstand oben
+         >>> Logo ~40% kleiner: Breite/Höhe auf ~60% reduziert <<< */
+      --hero-image: url('assets/tkus111.jpg');
+      /* Beispiel vorher ~clamp(680px, 80vw, 1320px) -> jetzt 60%: */
+      --hero-logo-width: clamp(408px, 48vw, 792px);
+      /* Beispiel vorher ~360px -> jetzt 60%: */
+      --hero-logo-height: 216px;
+      --hero-top-offset: 20px;   /* Abstand Logo vom oberen Rand */
+      --hero-light: 0.78;        /* Weiß-Layer-Intensität oben */
+    }
+
+    /* ===== Globale Tapeten-/Papierstruktur (GANZE Seite) ===== */
+    html, body{ height: 100%; }
+    body{
+      background:
+        radial-gradient(1px 1px at 20% 25%, var(--grain) 20%, transparent 21%) repeat,
+        radial-gradient(1px 1px at 70% 60%, var(--grain) 20%, transparent 21%) repeat,
+        repeating-linear-gradient(145deg, transparent 0 9px, var(--paper-2) 9px 10px),
+        radial-gradient(1200px 600px at 15% -10%, var(--paper-1) 0 35%, transparent 36%),
+        radial-gradient(1000px 500px at 110% 0%, var(--paper-2) 0 40%, transparent 41%),
+        var(--paper-bg);
+      background-size:
+        180px 180px,
+        220px 220px,
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        auto;
+      color: #1f2a24;
+    }
+
+    /* ===== HEADER: Logo oben mittig – vollständig sichtbar (kein Crop) ===== */
+    .site-header.hero{
+      position: relative;
+      /* Höhe = Logo-Höhe + Top-Offset + Luft
+         -> erhöht, damit unten NICHTS abgeschnitten wird */
+      min-height: calc(var(--hero-logo-height) + var(--hero-top-offset) + 120px);
+      padding: 0 0 1.4rem;
+      isolation: isolate;
+      overflow: hidden;
+    }
+    .site-header.hero::before{
+      content:"";
+      position:absolute; inset:0;
+      background-image: var(--hero-image);
+      background-repeat: no-repeat;
+      /* WICHTIG: Logo vollständig zeigen (kein cover/crop) */
+      background-size: var(--hero-logo-width) auto;  /* „contain“-ähnlich */
+      background-position: 50% var(--hero-top-offset); /* mittig + Abstand von oben */
+      filter: brightness(.96) contrast(.98);
+      z-index:-2;
+    }
+    .site-header.hero::after{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(180deg,
+        rgba(255,255,255, calc(var(--hero-light) + .08)) 0%,
+        rgba(255,255,255, var(--hero-light)) 26%,
+        rgba(255,255,255, calc(var(--hero-light) - .26)) 54%,
+        rgba(255,255,255, 0) 100%);
+      z-index:-1;
+    }
+
+    /* ===== CTA-Bar (Buttons) – deutlich unter dem Header ===== */
+    .cta-bar{
+      width: min(100%, 1000px);
+      margin: 0 auto var(--cta-gap) auto;
+      padding: 0 clamp(1rem, 1.8vw, 1.6rem);
+    }
+    .cta-bar .card{
+      display:flex; gap:.8rem; justify-content:center; align-items:center;
+      padding:.75rem 1rem; border-radius:14px;
+      background: #ffffff;
+      border: 1px solid #e6e6e0;
+      box-shadow: 0 6px 24px rgba(0,0,0,.05);
+    }
+    .btn{
+      display:inline-flex; align-items:center; gap:.45rem;
+      padding:.62rem 1.15rem; border-radius:999px; text-decoration:none; font-weight:600;
+      border:1px solid transparent; box-shadow:0 3px 12px rgba(0,0,0,.12);
+      transition:transform .15s ease, background .2s ease, color .2s ease;
+      white-space: nowrap;
+    }
+    .btn:hover{ transform: translateY(-2px); }
+    .btn:active{ transform: translateY(0); }
+    .btn-airbnb{ background:#C59B45; color:#102014; border-color:#b18a3f; }
+    .btn-airbnb:hover{ background:#b68c3c; }
+    .btn-green{ background:#234E3C; color:#fff; border-color:#1a3c2e; }
+    .btn-green:hover{ background:#1d3f30; }
+
+    /* ===== Tagline in Schreibschrift zwischen Buttons und Gästemappe ===== */
+    .tagline-area{
+      width: min(100%, 1000px);
+      margin: 0 auto var(--tagline-gap) auto;
+      padding: 0 clamp(1rem, 1.8vw, 1.6rem);
+      text-align: center;
+    }
+    .tagline{
+      margin: 0;
+      font-family: "Great Vibes", "Segoe Script", "Brush Script MT", cursive;
+      font-size: clamp(2.1rem, 2.6vw + 1.1rem, 3.2rem);
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: .2px;
+      color: #1f2a24;
+      text-shadow: 0 1px 0 rgba(255,255,255,.7);
+    }
+
+    @media (max-width: 640px){
+      :root{
+        /* auf schmalen Screens Logo automatisch schmaler/flacher */
+        --hero-logo-width: calc(100vw - 2rem);
+        --hero-logo-height: 200px;
+        --hero-top-offset: 14px;
+      }
+      .tagline{ font-size: clamp(1.8rem, 2.2vw + 1rem, 2.6rem); }
+    }
+
+    /* Lesetext (falls nicht im globalen CSS) */
+    .richtext p{ margin:.6rem 0; }
+    .richtext ul, .richtext ol{ margin:.4rem 0 .8rem 1.25rem; }
+  </style>
 </head>
 <body>
 
   <!-- ===== HEADER: Tapeten-Look + Original-Logo oben mittig, komplett sichtbar ===== -->
   <header class="site-header hero"></header>
 
-  <!-- ===== CTA-Bar: 3 Buttons (weiter unten) ===== -->
+  <!-- ===== CTA-Bar: 3 Buttons (deutlich unter dem Header) ===== -->
   <div class="cta-bar" aria-label="Schnellzugriff">
     <div class="card">
       <!-- TODO: Deine echte Airbnb-URL einsetzen -->
@@ -239,4 +243,3 @@
 </body>
 </html>
 ``
-
