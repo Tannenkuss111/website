@@ -3,7 +3,7 @@
    Dezente Holz-/Rindenoptik, ruhige Farben, klare Typo
 ============================== */
 :root{
-  --bg-ink:#27261f; --muted:#5a584d;
+  --ink:#27261f; --muted:#5a584d;
   --beige-0:#f6f2ea; --beige-1:#faf6ee;
   --line:#e6ded0;
 
@@ -19,32 +19,28 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  margin:0; color:var(--bg-ink);
+  margin:0; color:var(--ink);
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
   line-height:1.6;
 
-  /* 1) optional echte Textur (helle Baumrinde) */
+  /* Heller „Holz/Rinden“-Look nur mit CSS (Fallback) */
   background:
-    radial-gradient(1000px 600px at 10% -10%, #fff6, transparent 50%),
-    radial-gradient(900px 600px at 110% 8%, #fff3, transparent 55%),
+    radial-gradient(1200px 700px at 12% -10%, #ffffff40, transparent 55%),
+    radial-gradient(900px 580px at 110% 12%, #ffffff30 0, transparent 60%),
     var(--beige-0);
   background-attachment: fixed;
 }
 body::before{
-  content:"";
-  position:fixed; inset:0; z-index:-1;
+  content:""; position:fixed; inset:0; z-index:-1;
   background:
-    /* Fallback: helle, „rindenartige“ Struktur nur mit CSS */
-    linear-gradient(180deg, #fff0 0 20%, #00000008 21%, #fff0 22% 34%, #00000007 35%, #fff0 36% 48%, #00000006 49%, #fff0 50% 100%),
-    repeating-linear-gradient(90deg, #00000008 0 1px, #0000 1px 5px),
+    linear-gradient(180deg, #0000 0 20%, #0000000e 21%, #0000 22% 34%, #0000000b 35%, #0000 36% 48%, #0000000a 49%, #0000 50% 100%),
+    repeating-linear-gradient(90deg, #00000010 0 1px, #0000 1px 5px),
     var(--beige-1);
-  filter: contrast(1.05) brightness(1.02) saturate(0.9);
+  filter: contrast(1.03) brightness(1.03) saturate(0.9);
 }
 
-/* Wenn du eine echte Texturdatei verwenden willst: */
-body.has-bark{
-  background: var(--beige-0);
-}
+/* Echte Textur: body.has-bark + assets/bark-light.jpg */
+body.has-bark{ background: var(--beige-0) }
 body.has-bark::before{
   background: url("assets/bark-light.jpg") center/cover no-repeat fixed;
   opacity:.18; /* sehr hell/diskret */
@@ -98,7 +94,7 @@ body.has-bark::before{
   margin:0 0 .75rem;
   font-size:clamp(1.35rem, 2.6vw, 2.05rem);
   font-weight:800; letter-spacing:.2px;
-  color: color-mix(in oklch, var(--bg-ink) 88%, black);
+  color: color-mix(in oklch, var(--ink) 88%, black);
 }
 
 /* Karten-Grid */
@@ -108,10 +104,9 @@ body.has-bark::before{
   border-radius: var(--radius-lg); padding: 18px 20px; box-shadow: var(--shadow-sm);
   overflow:hidden;
 }
-/* feine Linien-Deko statt bunter Balken */
 .tip-card h3{
   margin:2px 0 12px; font-size:1.02rem; font-weight:800; letter-spacing:.2px;
-  color: color-mix(in oklch, var(--bg-ink) 82%, black);
+  color: color-mix(in oklch, var(--ink) 82%, black);
   position:relative; padding-bottom:8px;
 }
 .tip-card h3::after{
