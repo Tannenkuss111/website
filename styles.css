@@ -117,7 +117,7 @@ html::before{
 /* Claim in leichter Schreibschrift (systemnah, ohne externe Fonts) */
 .hero-sub{
   margin:6px 0 6px;
-  font-size:clamp(1.8rem,3.8vw,2.8rem);
+  font-size:clamp(2.0rem,4vw,3.2rem);
   color:var(--muted);
   letter-spacing:.2px;
   font-family: "Segoe Script", "Snell Roundhand", "Brush Script MT", "Apple Chancery", cursive;
@@ -206,4 +206,5 @@ html::before{
   .btn, .tip-card, .logo{transition:none !important}
 }
 ``
+
 
