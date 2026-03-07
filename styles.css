@@ -1,118 +1,68 @@
-/* =============================
-   Tannenkuss111 – modern, warm, logo-inspiriert
-   - Hintergrund dunkler/ruhiger (warmbeige)
-   - Dünne Gold-Top-Border
-   - Hero → Tipps Abstand kompakt
-   - 12 eingeprägte Tannen, dezent "überall" verteilt
-============================== */
 :root{
-  /* Farbwelt ans Logo angelehnt */
-  --ink:#23221d;          /* Text */
-  --muted:#5e5b51;       /* Sekundärtext */
-
-  --cream:#f1ebdc;       /* Grundfläche (warm, etwas dunkler) */
-  --paper:#fff7ea;       /* Cards / Kontrast, leicht warm */
-  --line:#deceb7;        /* feine Linien */
-
-  --gold:#c8a14b;        /* Akzent 1 */
-  --gold-700:#ab8531;
-  --green:#2e7d5f;       /* Akzent 2 */
-  --green-700:#23644c;
-
+  --ink:#23221d; --muted:#5e5b51;
+  --cream:#f1ebdc; --paper:#fff7ea; --line:#deceb7;
+  --gold:#c8a14b; --gold-700:#ab8531;
+  --green:#2e7d5f; --green-700:#23644c;
   --ring: color-mix(in oklch, var(--green) 62%, white);
   --shadow-sm:0 6px 18px rgba(0,0,0,.06);
   --shadow-md:0 18px 40px rgba(0,0,0,.10);
   --radius-lg:18px;
-
-  /* Logo-inspirierte Tanne als SVG (mit geringer Deckkraft), für den Hintergrund */
   --tree-svg: url("data:image/svg+xml;utf8,\
 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' opacity='0.10'>\
 <path d='M32 4l15 19h-9l11 13h-9l9 11H15l9-11h-9l11-13h-9L32 4z' fill='%232e7d5f'/>\
 <rect x='28' y='46' width='8' height='14' rx='1.5' fill='%232e7d5f'/>\
 </svg>");
 }
-
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
   margin:0; color:var(--ink);
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji','Segoe UI Emoji';
   line-height:1.6;
-
-  /* Moderner, ruhiger Hintergrund: sanfter Warm-Gradient */
   background:
     radial-gradient(1100px 580px at 12% -8%, #ffffffb0, transparent 55%),
     radial-gradient(900px 520px at 110% 10%, #ffffff22 0, transparent 60%),
     linear-gradient(180deg, #f6f0e2, var(--cream));
 }
-
-/* Dünne Gold-Top-Border (Akzent) */
 body::after{
   content:""; position:fixed; left:0; top:0; right:0; height:3px; z-index:9999;
   background: linear-gradient(90deg, color-mix(in oklch, var(--gold) 92%, #fff), var(--gold-700));
   box-shadow: 0 1px 0 rgba(0,0,0,.05);
   pointer-events:none;
 }
-
-/* Eingeprägte Tannen + feines Papierkorn
-   - 12 Tannen in variierenden Größen, scheinbar zufällig verteilt
-   - sehr dezent, über die volle Seite (fixiert)
-*/
+/* 12 Tannen + Grain */
 html::before{
   content:""; position:fixed; inset:0; z-index:-2; pointer-events:none;
-
-  /* 12x Tannen (no-repeat), danach Grain */
   background-image:
     var(--tree-svg), var(--tree-svg), var(--tree-svg), var(--tree-svg),
     var(--tree-svg), var(--tree-svg), var(--tree-svg), var(--tree-svg),
     var(--tree-svg), var(--tree-svg), var(--tree-svg), var(--tree-svg),
-    /* Grain: zwei leichte, gekreuzte Linienraster */
     repeating-linear-gradient(90deg, #00000007 0 1px, #0000 1px 6px),
     repeating-linear-gradient(0deg,  #00000005 0 1px, #0000 1px 5px);
-
   background-repeat:
     no-repeat, no-repeat, no-repeat, no-repeat,
     no-repeat, no-repeat, no-repeat, no-repeat,
     no-repeat, no-repeat, no-repeat, no-repeat,
     repeat, repeat;
-
-  /* Größen der 12 Tannen (px): */
   background-size:
     28px, 24px, 22px, 30px,
     26px, 20px, 24px, 18px,
     22px, 26px, 20px, 24px,
     auto, auto;
-
-  /* Positionen – über die Fläche verteilt (wirkt random) */
   background-position:
-    7% 12%,
-    22% 26%,
-    38% 18%,
-    71% 15%,
-    89% 24%,
-    12% 58%,
-    31% 66%,
-    55% 52%,
-    79% 63%,
-    9% 84%,
-    47% 86%,
-    92% 76%,
-    0 0,
-    0 0;
-
-  /* „Eingeprägt“: vorsichtiges Multiplizieren + geringe Gesamtwirkung */
-  mix-blend-mode:multiply;
-  opacity:.12;
+    7% 12%, 22% 26%, 38% 18%, 71% 15%,
+    89% 24%, 12% 58%, 31% 66%, 55% 52%,
+    79% 63%, 9% 84%, 47% 86%, 92% 76%,
+    0 0, 0 0;
+  mix-blend-mode:multiply; opacity:.08;
 }
 
-/* Container */
+/* Layout */
 .container{width:min(1100px,92%); margin-inline:auto}
-
-/* Skip-Link */
 .skip-link{position:absolute; inset:auto auto auto -9999px; background:#fff; padding:.6rem 1rem; border-radius:.75rem; box-shadow:var(--shadow-sm)}
 .skip-link:focus{left:14px; top:14px; outline:3px solid var(--ring); z-index:1000}
 
-/* Zarte Zierlinie unter der Topbar (bleibt) */
+/* Topbar Dots */
 .topbar{position:sticky; top:0; z-index:50; backdrop-filter:saturate(1.05) blur(6px)}
 .brand-dots{height:4px; width:100%;
   background:
@@ -122,27 +72,13 @@ html::before{
   opacity:.22;
 }
 
-/* HERO – kompakter Abstand nach unten (Buttons → Tipps) */
-.hero{
-  position:relative;
-  padding-top: clamp(28px, 6vw, 70px);
-  padding-bottom: clamp(12px, 2.4vw, 18px); /* kompakt */
-}
+/* HERO – kompakter Abstand */
+.hero{position:relative; padding-top: clamp(28px, 6vw, 70px); padding-bottom: clamp(12px, 2.4vw, 18px)}
 .hero-inner{display:flex; flex-direction:column; align-items:center; gap:10px}
-.hero .logo{display:block; width:min(540px,86vw); max-height:250px; object-fit:contain; filter: drop-shadow(0 12px 34px rgba(0,0,0,.10))}
+.logo{display:block; width:min(540px,86vw); max-height:250px; object-fit:contain; filter: drop-shadow(0 12px 34px rgba(0,0,0,.10))}
 .hero-sub{margin:6px 0 6px; font-size:clamp(1.05rem,2.1vw,1.4rem); color:var(--muted); letter-spacing:.2px}
-
-/* CTA Buttons (kompakt & edel) */
-.cta-buttons{display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-bottom: 8px;}
-.btn{
-  --bg:#fff; --fg:var(--green); --bd:var(--green);
-  display:inline-flex; align-items:center; justify-content:center;
-  padding:.52rem .68rem; border-radius:999px; border:2px solid var(--bd);
-  text-decoration:none; color:var(--fg); background:var(--bg);
-  font-weight:700; letter-spacing:.2px; box-shadow:var(--shadow-sm);
-  transition: transform .14s ease, background .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease;
-  font-size:.82rem;
-}
+.cta-buttons{display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-bottom:8px}
+.btn{--bg:#fff; --fg:var(--green); --bd:var(--green); display:inline-flex; align-items:center; justify-content:center; padding:.52rem .68rem; border-radius:999px; border:2px solid var(--bd); text-decoration:none; color:var(--fg); background:var(--bg); font-weight:700; letter-spacing:.2px; box-shadow:var(--shadow-sm); transition: transform .14s ease, background .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease; font-size:.82rem}
 .btn:hover{transform:translateY(-1px); box-shadow:var(--shadow-md)}
 .btn:active{transform:translateY(0)}
 .btn:focus-visible{outline:3px solid var(--ring)}
@@ -151,49 +87,26 @@ html::before{
 .btn-outline{--bg:#fff; --fg: var(--green); --bd: var(--green)}
 .btn-outline:hover{--bg: color-mix(in oklch, var(--green) 8%, white)}
 
-/* Sektionen – oben kompakt */
+/* Sektionen */
 .section-pad{padding-top: clamp(8px, 1.5vw, 12px); padding-bottom: 48px}
-.section-title{
-  margin:0 0 .6rem;
-  font-size:clamp(1.35rem, 2.6vw, 2.05rem);
-  font-weight:850; letter-spacing:.2px;
-  color: color-mix(in oklch, var(--ink) 88%, black);
-}
+.section-title{margin:0 0 .6rem; font-size:clamp(1.35rem, 2.6vw, 2.05rem); font-weight:850; letter-spacing:.2px; color: color-mix(in oklch, var(--ink) 88%, black)}
+.section-title-center{text-align:center}
 
-/* Karten-Grid */
+/* Cards */
 .tip-groups{display:grid; gap:18px; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr))}
-.tip-card{
-  position:relative; background:var(--paper); border:1px solid var(--line);
-  border-radius: var(--radius-lg); padding: 16px 18px; box-shadow: var(--shadow-sm);
-  transition: transform .18s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
-}
+.tip-card{position:relative; background:var(--paper); border:1px solid var(--line); border-radius: var(--radius-lg); padding: 16px 18px; box-shadow: var(--shadow-sm); transition: transform .18s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease}
 .tip-card:hover{transform:translateY(-2px); box-shadow:var(--shadow-md); border-color: color-mix(in oklch, var(--gold) 28%, var(--line))}
-.tip-card h3{
-  margin:0 0 8px; font-size:1.03rem; font-weight:800; letter-spacing:.2px;
-  color: color-mix(in oklch, var(--ink) 82%, black);
-  position:relative; padding-bottom:8px;
-}
-.tip-card h3::after{
-  content:""; position:absolute; left:0; right:0; bottom:0; height:1px;
-  background: linear-gradient(90deg, #0000, var(--line), #0000);
-}
+.tip-card h3{margin:0 0 8px; font-size:1.03rem; font-weight:800; letter-spacing:.2px; color: color-mix(in oklch, var(--ink) 82%, black); position:relative; padding-bottom:8px}
+.tip-card h3::after{content:""; position:absolute; left:0; right:0; bottom:0; height:1px; background: linear-gradient(90deg, #0000, var(--line), #0000)}
 
-/* Linklisten – saubere Umbrüche */
+/* Links */
 .linklist{list-style:none; padding:0; margin:0; display:grid; gap:.48rem}
 .linklist li{line-height:1.45}
-.linklist a{
-  color: var(--green);
-  text-decoration: none;
-  border-bottom: 1px solid color-mix(in oklch, var(--green) 35%, transparent);
-  padding-bottom: 1px;
-  transition: color .18s ease, border-color .18s ease, background .18s ease;
-  word-break: break-word;
-  overflow-wrap: anywhere;
-}
+.linklist a{color: var(--green); text-decoration: none; border-bottom: 1px solid color-mix(in oklch, var(--green) 35%, transparent); padding-bottom: 1px; transition: color .18s ease, border-color .18s ease, background .18s ease; word-break: break-word; overflow-wrap: anywhere}
 .linklist a:hover{color: var(--green-700); border-bottom-color: var(--green-700)}
 .meta{color:var(--muted); font-size:.92em}
 
-/* Adresse (klein & edel) */
+/* Adresse */
 .address-inner{display:flex; flex-direction:column; align-items:center; text-align:center; gap:4px}
 .address-title{font-size:.98rem; font-weight:820; letter-spacing:.3px; color:var(--muted)}
 .address-lines{font-size:.92rem; color:var(--muted)}
@@ -224,4 +137,3 @@ html::before{
   .btn, .tip-card, .logo{transition:none !important}
 }
 ``
-
