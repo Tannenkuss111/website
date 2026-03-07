@@ -10,8 +10,6 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="alternate icon" href="assets/favicon.ico" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
-
-  <!-- Preload -->
   <link rel="preload" href="assets/tkus111.jpg" as="image" />
   <link rel="stylesheet" href="styles.css" />
 
@@ -41,11 +39,11 @@
         <img class="logo" src="assets/tkus111.jpg" alt="Tannenkuss111 – Ferienpark Hahnenklee" decoding="async" />
         <p class="hero-sub">Ankommen, wohlfühlen, durchatmen.</p>
 
-        <!-- Reihenfolge: Google → Airbnb → Apple -->
+        <!-- Reihenfolge: Google → Apple → Airbnb -->
         <div class="cta-buttons" role="group" aria-label="Schnellzugriff">
-          <a id="googleLink" class="btn btn-outline" href="#" target="_blank" rel="noopener">Anfahrt&nbsp;(Google)</a>
-          <a id="airbnbLink" class="btn btn-primary" href="#" target="_blank" rel="noopener">Jetzt auf Airbnb ansehen</a>
-          <a id="appleLink" class="btn btn-outline" href="#" target="_blank" rel="noopener">Anfahrt&nbsp;(Apple)</a>
+          <a id="googleLink" class="btn btn-map" href="#" target="_blank" rel="noopener" aria-label="Anfahrt mit Google Maps öffnen">Anfahrt&nbsp;(Google)</a>
+          <a id="appleLink" class="btn btn-map" href="#" target="_blank" rel="noopener" aria-label="Anfahrt mit Apple Maps öffnen">Anfahrt&nbsp;(Apple)</a>
+          <a id="airbnbLink" class="btn btn-primary" href="#" target="_blank" rel="noopener" aria-label="Tannenkuss111 auf Airbnb öffnen">Jetzt auf Airbnb ansehen</a>
         </div>
       </div>
     </section>
@@ -139,10 +137,8 @@
               <li><strong>Polizei:</strong> <a href="tel:110">110</a></li>
               <li><strong>Ärztlicher Bereitschaftsdienst:</strong> <a href="tel:116117">116&nbsp;117</a></li>
               <li><strong>Karten sperren (EC/Kreditkarte):</strong> <a href="tel:116116">116&nbsp;116</a></li>
-              <li><strong>Taxi – Übersicht:</strong>
-                <a href="https://www.google.com/maps/search/Taxi+Hahnenklee" target="_blank" rel="noopener">Hahnenklee</a> ·
-                <a href="https://www.google.com/maps/search/Taxi+Goslar" target="_blank" rel="noopener">Goslar</a>
-              </li>
+              <li><strong>Taxi – Übersicht:</strong> <a href="https://www.google.com/maps/search/Taxi+Hahnenklee" target="_blank" rel="noopener">Hahnenklee</a> ·
+                <a href="https://www.google.com/maps/search/Taxi+Goslar" target="_blank" rel="noopener">Goslar</a></li>
             </ul>
           </article>
         </div>
@@ -174,33 +170,26 @@
     // Jahr im Footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Links aus TK_CONFIG setzen (Directions-Links für Apple & Google)
+    // Links aus TK_CONFIG setzen (Directions-Links für Apple & Google + Airbnb)
     (function(){
       const cfg = window.TK_CONFIG || {};
-
-      // Airbnb
-      const airbnb = document.getElementById('airbnbLink');
-      if (airbnb && cfg.airbnbUrl && cfg.airbnbUrl.startsWith('http')) {
-        airbnb.href = cfg.airbnbUrl;
-      }
 
       // Ziel (Adresse oder Koordinaten) aufbereiten
       const hasLatLng = cfg.latlng && /-?\d+\.?\d*,\s*-?\d+\.?\d*/.test(cfg.latlng);
       const destRaw = hasLatLng ? cfg.latlng.replace(/\s+/g,'') : (cfg.destinationAddress || '').trim();
       const destEncoded = encodeURIComponent(destRaw || 'Tannenkuss111 Ferienpark Hahnenklee');
 
-      // Apple: DIREKT Routenplaner
-      const apple = document.getElementById('appleLink');
-      if (apple) {
-        // daddr= (Ziel); saddr= bleibt leer → aktuelle Position
-        apple.href = `https://maps.apple.com/?daddr=${destEncoded}`;
-      }
-
       // Google: DIRECTIONS
       const g = document.getElementById('googleLink');
-      if (g) {
-        g.href = `https://www.google.com/maps/dir/?api=1&destination=${destEncoded}`;
-      }
+      if (g) g.href = `https://www.google.com/maps/dir/?api=1&destination=${destEncoded}`;
+
+      // Apple: DIREKT Routenplaner
+      const apple = document.getElementById('appleLink');
+      if (apple) apple.href = `https://maps.apple.com/?daddr=${destEncoded}`;
+
+      // Airbnb
+      const ab = document.getElementById('airbnbLink');
+      if (ab && cfg.airbnbUrl && cfg.airbnbUrl.startsWith('http')) ab.href = cfg.airbnbUrl;
     })();
 
     // Reveal-Animation
