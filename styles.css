@@ -4,6 +4,7 @@
    - Hintergrund etwas dunkler/ruhiger
    - Dünne Gold-Top-Border
    - Abstand Hero → Tipps reduziert
++ dezente Tannen-Ornamente im Hintergrund
 ============================== */
 :root{
   /* Farbwelt ans Logo angelehnt */
@@ -179,3 +180,4 @@ body::before{
   .btn, .tip-card, .logo{transition:none !important}
 }
 ``
+
