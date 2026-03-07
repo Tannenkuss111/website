@@ -10,18 +10,10 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <link rel="preload" href="assets/tkus111.jpg" as="image" />
   <link rel="stylesheet" href="styles.css" />
-  <!--
-    🔧 KONFIG: Bitte nur diese drei Zeilen anpassen
-    1) Airbnb-URL
-    2) Zieladresse (genau wie im Impressum eintragen)
-    3) Optional: Koordinaten statt Adresse (siehe Kommentar unten)
-  -->
   <script>
     window.TK_CONFIG = {
       airbnbUrl: 'https://www.airbnb.de/rooms/DEINE-ZIMMER-ID',
-      // ► Adresse aus dem Impressum hier eintragen (z. B. "Parkstraße 1, 38644 Hahnenklee")
-      destinationAddress: '<<HIER-EXAKTE-ADRESSE-AUS-IMPRESSUM>>',
-      // Optional: Wenn du lieber Koordinaten nutzen willst, trage sie hier ein ("lat,lng"), z.B. "51.8579,10.3407".
+      destinationAddress: 'Am Hahnenkleer Berg 7 (Haus 111), 38644 Goslar',
       latlng: ''
     };
   </script>
@@ -40,6 +32,7 @@
     <section class="hero reveal" aria-label="Tannenkuss111 Übersicht">
       <div class="container hero-inner">
         <img class="logo" src="assets/tkus111.jpg" alt="Logo Tannenkuss111 – Ferienpark Hahnenklee" decoding="async" />
+        <p class="hero-sub">Ankommen, wohlfühlen, durchatmen.</p>
         <div class="cta-buttons" role="group" aria-label="Schnellzugriff">
           <a id="airbnbLink" class="btn btn-primary" href="#" target="_blank" rel="noopener" aria-label="Tannenkuss111 auf Airbnb öffnen">Jetzt auf Airbnb ansehen</a>
           <a id="appleLink" class="btn btn-outline" href="#" target="_blank" rel="noopener" aria-label="Anfahrt mit Apple Maps öffnen">Anfahrt&nbsp;(Apple)</a>
@@ -52,7 +45,6 @@
     <section class="tips section-pad reveal" aria-labelledby="tips-heading">
       <div class="container">
         <h2 id="tips-heading" class="section-title">Tipps rund um Hahnenklee</h2>
-
         <div class="tip-groups">
           <article class="tip-card">
             <h3>🍽️ Restaurants</h3>
@@ -63,7 +55,6 @@
               <li><a href="https://www.tripadvisor.de/Restaurant_Review-g1051808-d26346999-Reviews-Restaurant_Korfu-Hahnenklee_Bockswiese_Goslar_Lower_Saxony.html" target="_blank" rel="noopener">Restaurant Korfu (griechisch)</a></li>
             </ul>
           </article>
-
           <article class="tip-card">
             <h3>🥾 Wanderwege</h3>
             <ul>
@@ -71,14 +62,12 @@
               <li><a href="https://touren.harzinfo.de/de/tour/themenweg/liebesbankweg/6727172/" target="_blank" rel="noopener">Liebesbankweg (Harzinfo Tour)</a></li>
             </ul>
           </article>
-
           <article class="tip-card">
             <h3>⛰️ Bocksberg</h3>
             <ul>
               <li><a href="https://www.erlebnisbocksberg.de/" target="_blank" rel="noopener">ErlebnisBocksBerg – Seilbahn & Attraktionen</a></li>
             </ul>
           </article>
-
           <article class="tip-card">
             <h3>🚵 Bike & Downhill</h3>
             <ul>
@@ -87,6 +76,14 @@
             </ul>
           </article>
         </div>
+      </div>
+    </section>
+
+    <!-- Adresse -->
+    <section class="address section-pad reveal" aria-label="Adresse Tannenkuss111">
+      <div class="container">
+        <h2 class="section-title" style="margin-bottom:.25rem">Tannenkuss111 – Ferienpark Hahnenklee</h2>
+        <p class="address-lines">Andre Neubauer<br/>Am Hahnenkleer Berg 7 (Haus 111)<br/>38644 Goslar</p>
       </div>
     </section>
   </main>
@@ -103,30 +100,22 @@
   </footer>
 
   <script>
-    // Jahr im Footer
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Airbnb + Maps Links aus der TK_CONFIG setzen (einmal eintragen, überall korrekt)
     (function(){
       const cfg = window.TK_CONFIG || {};
       const airbnb = document.getElementById('airbnbLink');
       if (cfg.airbnbUrl && cfg.airbnbUrl.startsWith('http')) airbnb.href = cfg.airbnbUrl;
-
-      // Adresse priorisieren, sonst Koordinaten
       function buildLinks(addr, latlng){
         let appleHref, googleHref;
         if (latlng && /-?\d+\.?\d*,\s*-?\d+\.?\d*/.test(latlng)){
           const trimmed = latlng.replace(/\s+/g,'');
-          // Apple Maps akzeptiert q oder ll; wir nutzen q mit Koordinaten
           appleHref = `https://maps.apple.com/?q=${encodeURIComponent(trimmed)}`;
-          // Google Maps: Directions-URL mit destination=lat,lng
           googleHref = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(trimmed)}`;
-        } else if (addr && addr.replace(/<|>|\\u00ab|\\u00bb/g,'').trim().length > 3) {
+        } else if (addr && addr.replace(/<|>|\u00ab|\u00bb/g,'').trim().length > 3) {
           const enc = encodeURIComponent(addr.trim());
           appleHref = `https://maps.apple.com/?address=${enc}`;
           googleHref = `https://www.google.com/maps/dir/?api=1&destination=${enc}`;
         } else {
-          // Fallback: Ortschaftssuche, damit die Buttons nicht tot sind
           const q = encodeURIComponent('Tannenkuss111 Ferienpark Hahnenklee');
           appleHref = `https://maps.apple.com/?q=${q}`;
           googleHref = `https://www.google.com/maps/search/?api=1&query=${q}`;
@@ -137,7 +126,6 @@
       buildLinks(cfg.destinationAddress, cfg.latlng);
     })();
 
-    // Sanfte Reveal-Animationen
     (function(){
       const els = document.querySelectorAll('.reveal');
       if (!('IntersectionObserver' in window)) { els.forEach(el => el.classList.add('revealed')); return; }
