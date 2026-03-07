@@ -1,262 +1,160 @@
-<!doctype html>
-<html lang="de">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- ===== HAHNENKLEE – INFOS (AKKORDEON + GRID + BILDER + MAP-LINKS) ===== -->
+<section class="card" id="hahnenklee">
+  <h2>Tipps rund um Hahnenklee</h2>
 
-  <title>Tannenkuss111 – Ferienpark Hahnenklee</title>
-  <meta name="description" content="Tannenkuss111 – Gemütliche Ferienwohnung im Ferienpark Hahnenklee im Harz. Ankommen, wohlfühlen, durchatmen.">
+  <!-- 🍽 Restaurants -->
+  <details class="info-box">
+    <summary>
+      <!-- Icon: Messer & Gabel -->
+      <svg class="ico" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="#234E3C" d="M7 2a1 1 0 0 1 1 1v6a2 2 0 0 0 2 2v10a1 1 0 1 1-2 0V11a2 2 0 0 0-2-2V3a1 1 0 0 1 1-1Zm5.5 0a.5.5 0 0 1 .5.5V9a3 3 0 0 0 3 3h.5v9a1 1 0 1 0 2 0V2.5a.5.5 0 0 0-1 0V6h-1V2.5a.5.5 0 0 0-1 0V6h-1V2.5a.5.5 0 0 0-1 0V2Z"/>
+      </svg>
+      Restaurants in Hahnenklee
+    </summary>
 
-  <!-- Favicon -->
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <div class="info-grid">
+      <!-- Karte 1 -->
+      <article class="poi">
+        <figure>
+          <img src="assets/places/rest-olli.jpg" alt="Steakhaus Bei Olli – Hahnenklee" loading="lazy">
+        </figure>
+        <div class="poi-body">
+          <h4>Steakhaus Bei Olli</h4>
+          <p>Rustikal, große Portionen – beliebt nach dem Wandern.</p>
+          <div class="meta"><span>Am Bocksberg&nbsp;1</span></div>
+          <div class="actions">
+            <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Steakhaus+Bei+Olli+Hahnenklee" target="_blank" rel="noopener">🗺️ Karte</a>
+            <a class="phonelink" href="tel:053255455">📞 05325&nbsp;5455</a>
+          </div>
+        </div>
+      </article>
 
-  <!-- (Optional) Logo vorladen für schnellere Darstellung -->
-  <link rel="preload" as="image" href="assets/tkus111.jpg" imagesrcset="assets/tkus111.jpg 1x" />
+      <!-- Karte 2 -->
+      <article class="poi">
+        <figure>
+          <img src="assets/places/rest-kranich.jpg" alt="Restaurant Zum Kranich – Hahnenklee" loading="lazy">
+        </figure>
+        <div class="poi-body">
+          <h4>Restaurant Zum Kranich</h4>
+          <p>Regionale Küche & Harzer Klassiker.</p>
+          <div class="meta"><span>Parkstraße&nbsp;2</span></div>
+          <div class="actions">
+            <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Restaurant+Zum+Kranich+Hahnenklee" target="_blank" rel="noopener">🗺️ Karte</a>
+          </div>
+        </div>
+      </article>
 
-  <!-- Schreibschrift (für Tagline) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-
-  <!-- Globales Stylesheet (dein bisheriges) -->
-  <link rel="stylesheet" href="styles.css?v=2026-03-06-21" />
-
-  <!-- Seiten-spezifisches Mini-CSS -->
-  <style>
-    :root{
-      /* Tapeten-/Papierfarbtöne (warm, passend zum Logo) */
-      --paper-bg:   #f5f1e9;   /* Basis (cremig/warm) */
-      --paper-1:    #efe9de;   /* Wolkung 1 */
-      --paper-2:    #eae4d8;   /* Wolkung 2 */
-      --grain:      rgba(0,0,0,.035); /* feines Rauschen */
-
-      /* Abstände (Header -> Buttons) */
-      --cta-gap: 26px;                 /* kompakter Abstand Header → Buttons */
-
-      /* Tagline direkt unterm Logo – minimal Luft */
-      --tagline-under-logo-gap: 6px;
-      --tagline-extra-offset: 48px;    /* verschiebt NUR die Tagline nach unten */
-
-      /* Logo/Header (Logo bleibt an Ort & Stelle – kein Crop) */
-      --hero-image: url('assets/tkus111.jpg');
-      --hero-logo-width: clamp(408px, 48vw, 792px); /* ~40% kleiner als ganz am Anfang */
-      --hero-logo-height: 340px;                    /* reservierte Höhe für das Logo */
-      --hero-top-offset: 26px;                      /* Abstand Logo vom oberen Seitenrand */
-
-      /* Licht-/Weiß-Layer im Header für Lesbarkeit */
-      --hero-light: 0.78;
-
-      /* Farbe der Tagline im Header – Ton aus der Tapete */
-      --tapete-text: #cfc7b9; /* alternativ: var(--paper-2) */
-    }
-
-    /* ===== Globale Tapeten-/Papierstruktur (GANZE Seite) ===== */
-    html, body{ height: 100%; }
-    body{
-      background:
-        radial-gradient(1px 1px at 20% 25%, var(--grain) 20%, transparent 21%) repeat,
-        radial-gradient(1px 1px at 70% 60%, var(--grain) 20%, transparent 21%) repeat,
-        repeating-linear-gradient(145deg, transparent 0 9px, var(--paper-2) 9px 10px),
-        radial-gradient(1200px 600px at 15% -10%, var(--paper-1) 0 35%, transparent 36%),
-        radial-gradient(1000px 500px at 110% 0%, var(--paper-2) 0 40%, transparent 41%),
-        var(--paper-bg);
-      background-size:
-        180px 180px,
-        220px 220px,
-        100% 100%,
-        100% 100%,
-        100% 100%,
-        auto;
-      color: #1f2a24;
-    }
-
-    /* ===== HEADER: Logo oben mittig – vollständig sichtbar (kein Zuschnitt) ===== */
-    .site-header.hero{
-      position: relative;
-      /* Höhe = Logo-Höhe + Top-Offset + Luft (für Tagline) */
-      min-height: calc(var(--hero-logo-height) + var(--hero-top-offset) + 140px + var(--tagline-extra-offset));
-      padding: 0 0 1.2rem;
-      isolation: isolate;
-      overflow: hidden;
-    }
-    .site-header.hero::before{
-      content:"";
-      position:absolute; inset:0;
-      background-image: var(--hero-image);
-      background-repeat: no-repeat;
-      background-size: var(--hero-logo-width) auto;    /* proportional – wie "contain" */
-      background-position: 50% var(--hero-top-offset); /* mittig + Abstand von oben */
-      filter: brightness(.96) contrast(.98);
-      z-index:-2;
-    }
-    .site-header.hero::after{
-      content:"";
-      position:absolute; inset:0;
-      background: linear-gradient(180deg,
-        rgba(255,255,255, calc(var(--hero-light) + .08)) 0%,
-        rgba(255,255,255, var(--hero-light)) 26%,
-        rgba(255,255,255, calc(var(--hero-light) - .26)) 54%,
-        rgba(255,255,255, 0) 100%);
-      z-index:-1;
-    }
-
-    /* Container im Header: setzt die Tagline exakt unter das Logo (ohne Logo zu verschieben) */
-    .hero-inner{
-      width: min(100%, 1000px);
-      margin: 0 auto;
-      padding: 0 clamp(1rem, 1.8vw, 1.6rem);
-      /* Platz nach oben = Logo-Höhe + Top-Offset + zusätzlicher Offset nur für die Tagline */
-      padding-top: calc(var(--hero-top-offset) + var(--hero-logo-height) + var(--tagline-extra-offset));
-      text-align: center;
-    }
-
-    /* Tagline im Header (Schreibschrift in Tapetenfarbe) */
-    .tagline{
-      margin: var(--tagline-under-logo-gap) 0 0 0;
-      font-family: "Great Vibes", "Segoe Script", "Brush Script MT", cursive;
-      font-weight: 400;
-      line-height: 1.2;
-      letter-spacing: .2px;
-      font-size: clamp(2.0rem, 2.4vw + 1.1rem, 3.0rem);
-      color: var(--tapete-text);
-      text-shadow: 0 1px 0 rgba(255,255,255,.65);
-    }
-
-    /* ===== CTA‑Bar (Buttons) – unter dem Header ===== */
-    .cta-bar{
-      width: min(100%, 1000px);
-      margin: 0 auto var(--cta-gap) auto;
-      padding: 0 clamp(1rem, 1.8vw, 1.6rem);
-    }
-    .cta-bar .card{
-      display:flex; gap:.55rem; justify-content:center; align-items:center;
-      padding:.55rem .75rem; border-radius:14px;
-      background:#fff; border:1px solid #e6e6e0;
-      box-shadow:0 6px 24px rgba(0,0,0,.05);
-      flex-wrap: wrap; /* falls schmaler Bildschirm → Umbruch zulassen */
-    }
-
-    /* Buttons – bereits schmaler (~50% kleiner als vorher) */
-    .btn{
-      display:inline-flex; align-items:center; gap:.30rem;
-      padding:.36rem .60rem;
-      border-radius:999px; text-decoration:none; font-weight:600;
-      font-size:.875rem;
-      border:1px solid transparent; box-shadow:0 2px 8px rgba(0,0,0,.12);
-      transition:transform .15s ease, background .2s ease, color .2s ease;
-      white-space: nowrap;
-    }
-    .btn:hover{ transform: translateY(-1px); }
-    .btn:active{ transform: translateY(0); }
-
-    .btn-airbnb{ background:#C59B45; color:#102014; border-color:#b18a3f; }
-    .btn-airbnb:hover{ background:#b68c3c; }
-    .btn-green{ background:#234E3C; color:#fff; border-color:#1a3c2e; }
-    .btn-green:hover{ background:#1d3f30; }
-
-    /* ========= MOBILE-FEINTUNING (iPhone / ≤ 430px) ========= */
-    @media (max-width: 430px) {
-      :root{
-        /* Header kompakter: weniger „grün“ sichtbar */
-        --hero-logo-width: calc(100vw - 2.2rem); /* etwas schmaler */
-        --hero-logo-height: 220px;               /* flacher */
-        --hero-top-offset: 14px;                 /* näher an den oberen Rand */
-
-        /* Tagline dichter ans Logo, aber nicht darüber */
-        --tagline-under-logo-gap: 4px;
-        --tagline-extra-offset: 26px;
-
-        /* Header → Buttons kompakter Abstand */
-        --cta-gap: 18px;
-      }
-      .site-header.hero{
-        min-height: calc(var(--hero-logo-height) + var(--hero-top-offset) + 110px + var(--tagline-extra-offset));
-        padding-bottom: .8rem;
-      }
-      .tagline{
-        font-size: clamp(1.6rem, 4.2vw + .8rem, 2.2rem);
-      }
-      .cta-bar .card{
-        gap: .4rem;
-        padding: .45rem .6rem;
-        border-radius: 12px;
-      }
-      .btn{
-        font-size: .82rem;
-        padding: .30rem .50rem;
-        gap: .25rem;
-        border-radius: 999px;
-        max-width: 44vw; /* pro Button ~ halbe Breite, damit nichts übersteht */
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- ===== HEADER: Tapeten-Look + Original-Logo oben mittig, komplett sichtbar + Tagline darunter ===== -->
-  <header class="site-header hero">
-    <div class="hero-inner">
-      <h1 class="tagline">Ankommen, wohlfühlen, durchatmen.</h1>
+      <!-- Karte 3 -->
+      <article class="poi">
+        <figure>
+          <img src="assets/places/rest-glueckauf.jpg" alt="Glück Auf – Harzer Spezialitäten" loading="lazy">
+        </figure>
+        <div class="poi-body">
+          <h4>Glück Auf</h4>
+          <p>Harzer Spezialitäten & Hausmannskost.</p>
+          <div class="meta"><span>Lautenthaler&nbsp;Str.&nbsp;18</span></div>
+          <div class="actions">
+            <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Gl%C3%BCck+Auf+Hahnenklee" target="_blank" rel="noopener">🗺️ Karte</a>
+          </div>
+        </div>
+      </article>
     </div>
-  </header>
+  </details>
 
-  <!-- ===== CTA-Bar: 3 Buttons ===== -->
-<div class="cta-bar" aria-label="Schnellzugriff">
-  <div class="card">
-    <a class="btn btn-green" href="https://maps.apple.com/?daddr=Am%20Hahnenkleer%20Berg%207%2C%2038644%20Goslar" target="_blank" rel="noopener">Anfahrt (Apple)</a>
-    <a class="btn btn-green" href="https://www.google.com/maps/dir/?api=1&destination=Am+Hahnenkleer+Berg+7%2C+38644+Goslar&travelmode=driving" target="_blank" rel="noopener">Anfahrt (Google)</a>
-    <!-- TODO: Deine echte Airbnb-URL einsetzen -->
-    <a class="btn btn-airbnb" href="https://www.airbnb.de/rooms/XXXXX" target="_blank" rel="noopener">Jetzt auf Airbnb ansehen</a>
-  </div>
-</div>
+  <!-- 🥾 Wanderwege -->
+  <details class="info-box">
+    <summary>
+      <!-- Icon: Wanderschuh -->
+      <svg class="ico" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="#234E3C" d="M2 15c0 2 1.5 3 4 3h12a4 4 0 0 0 4-4v-1h-7l-2-3-4 2-3-4H2v7Z"/>
+      </svg>
+      Wanderwege & Ausflüge
+    </summary>
 
+    <div class="info-grid">
+      <article class="poi">
+        <figure>
+          <img src="assets/places/liebesbankweg.jpg" alt="Liebesbankweg – Hahnenklee" loading="lazy">
+        </figure>
+        <div class="poi-body">
+          <h4>Liebesbankweg</h4>
+          <p>7 km Rundweg, viele Fotospots – ideal für Familien.</p>
+          <div class="actions">
+            <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Liebesbankweg+Hahnenklee" target="_blank" rel="noopener">🗺️ Karte</a>
+          </div>
+        </div>
+      </article>
 
-  <!-- ===== MAIN ===== -->
-  <main class="container main-flow">
-    <section class="card" id="gaestemappe">
-      <h2>Gästemappe & Hinweise</h2>
-      <div class="richtext">
-        <p>
-          Willkommen im <strong>Tannenkuss111</strong> im Ferienpark Hahnenklee. Hier findest du alle
-          wichtigen Informationen für einen angenehmen Aufenthalt – kompakt auf einer Seite.
-        </p>
-        <p>
-          <em>Hier ist Platz für deine längeren Texte</em> (Anreise, Hausordnung, Mülltrennung,
-          Bedienhinweise, Empfehlungen, Notfallnummern, Check‑out etc.).
-        </p>
-      </div>
-    </section>
-  </main>
+      <article class="poi">
+        <figure>
+          <img src="assets/places/bocksberg.jpg" alt="Bocksberg – Seilbahn, Rodelbahn, Bikepark" loading="lazy">
+        </figure>
+        <div class="poi-body">
+          <h4>Bocksberg</h4>
+          <p>Gondel, Sommerrodelbahn, Bike‑Park, Wintersport.</p>
+          <div class="actions">
+            <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Bocksberg+Seilbahn+Hahnenklee" target="_blank" rel="noopener">🗺️ Karte</a>
+          </div>
+        </div>
+      </article>
 
-  <!-- ===== FOOTER ===== -->
-  <footer class="site-footer">
-    <div class="container fgrid" style="gap:1rem; align-items:flex-start;">
-      <div>
-        <div><strong>Adresse</strong></div>
-        <address style="margin:.25rem 0 0">
-          Ferienpark Hahnenklee<br>
-          <strong>Tannenkuss111</strong><br>
-          Am Hahnenkleer Berg 7<br>
-          38644 Goslar<br>
-          Tel.: <a href="tel:+491784749439">+49&nbsp;178&nbsp;4749439</a>
-        </address>
-      </div>
-      <div style="margin-left:auto; text-align:right;">
-        <div>© <span id="year"></span> Tannenkuss111</div>
-        <nav class="legal" aria-label="Rechtliches" style="margin-top:.25rem;">
-          <a href="impressum.html">Impressum</a>
-          <span aria-hidden="true"> · </span>
-          <a href="datenschutz.html">Datenschutz</a>
-        </nav>
-      </div>
+      <article class="poi">
+        <figure>
+          <img src="assets/places/wasserfall.jpg" alt="Spiegelthaler Wasserfall – Ausflugsziel" loading="lazy">
+        </figure>
+        <div class="poi-body">
+          <h4>Spiegelthaler Wasserfall</h4>
+          <p>Schöner Natur‑Spot, gute Fotomotive.</p>
+          <div class="actions">
+            <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Spiegelthaler+Wasserfall" target="_blank" rel="noopener">🗺️ Karte</a>
+          </div>
+        </div>
+      </article>
     </div>
-  </footer>
+  </details>
 
-  <script>
-    // Jahreszahl automatisch
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+  <!-- ☎️ Wichtige Kontakte -->
+  <details class="info-box">
+    <summary>
+      <!-- Icon: Telefon -->
+      <svg class="ico" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="#234E3C" d="M6.6 10.2c1.2 2.3 2.9 4.1 5.2 5.2l1.7-1.7a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.5.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.6 21 3 13.4 3 4a1 1 0 0 1 1-1h4.3a1 1 0 0 1 1 1c0 1.2.2 2.4.57 3.5a1 1 0 0 1-.25 1L6.6 10.2Z"/>
+      </svg>
+      Wichtige Ansprechpartner
+    </summary>
+
+    <div class="info-grid">
+      <article class="poi compact">
+        <div class="poi-body">
+          <h4>Notruf</h4>
+          <p>Polizei / Feuerwehr / Rettung</p>
+          <div class="actions">
+            <a class="phonelink" href="tel:112">📞 112</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="poi compact">
+        <div class="poi-body">
+          <h4>Ärztlicher Bereitschaftsdienst</h4>
+          <p>Deutschlandweit</p>
+          <div class="actions">
+            <a class="phonelink" href="tel:116117">📞 116117</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="poi compact">
+        <div class="poi-body">
+          <h4>Tourist‑Information Hahnenklee</h4>
+        <p>Ausflüge, Veranstaltungen, Infos</p>
+          <div class="actions">
+            <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Tourist+Information+Hahnenklee" target="_blank" rel="noopener">🗺️ Karte</a>
+            <a class="phonelink" href="tel:053255104">📞 05325&nbsp;5104</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </details>
+</section>
 ``
-
