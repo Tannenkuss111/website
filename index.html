@@ -5,14 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tannenkuss111 – Ferienpark Hahnenklee</title>
   <meta name="description" content="Ferienwohnung Tannenkuss111 im Ferienpark Hahnenklee – Jetzt auf Airbnb ansehen, Anfahrt planen und Tipps entdecken." />
-  <!-- Favicons/Styles -->
+
+  <!-- Favicons -->
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="alternate icon" href="assets/favicon.ico" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+
+  <!-- Preload Hero Logo -->
   <link rel="preload" href="assets/tkus111.jpg" as="image" />
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- Einmal eintragen: Airbnb-URL + Adresse (oder lat,lng) -->
+  <!-- Konfiguration: Airbnb & Adresse (oder lat,lng) -->
   <script>
     window.TK_CONFIG = {
       airbnbUrl: 'https://www.airbnb.de/rooms/DEINE-ZIMMER-ID',
@@ -36,77 +39,97 @@
       <div class="container hero-inner">
         <img class="logo" src="assets/tkus111.jpg" alt="Logo Tannenkuss111 – Ferienpark Hahnenklee" decoding="async" />
         <p class="hero-sub">Ankommen, wohlfühlen, durchatmen.</p>
+
         <div class="cta-buttons" role="group" aria-label="Schnellzugriff">
-          <a id="airbnbLink" class="btn btn-primary" href="#" target="_blank" rel="noopener">Jetzt auf Airbnb ansehen</a>
-          <a id="appleLink" class="btn btn-outline" href="#" target="_blank" rel="noopener">Anfahrt (Apple)</a>
-          <a id="googleLink" class="btn btn-outline" href="#" target="_blank" rel="noopener">Anfahrt (Google)</a>
+          <a id="airbnbLink" class="btn btn-primary" href="#" target="_blank" rel="noopener" aria-label="Tannenkuss111 auf Airbnb öffnen">Jetzt auf Airbnb ansehen</a>
+          <a id="appleLink" class="btn btn-outline" href="#" target="_blank" rel="noopener" aria-label="Anfahrt mit Apple Maps öffnen">Anfahrt&nbsp;(Apple)</a>
+          <a id="googleLink" class="btn btn-outline" href="#" target="_blank" rel="noopener" aria-label="Anfahrt mit Google Maps öffnen">Anfahrt&nbsp;(Google)</a>
         </div>
       </div>
+
+      <!-- Farbige Akzentlinie -->
+      <div class="accent-swoosh" aria-hidden="true"></div>
     </section>
 
     <!-- TIPPS -->
     <section class="tips section-pad reveal" aria-labelledby="tips-heading">
       <div class="container">
-        <h2 id="tips-heading" class="section-title">Tipps rund um Hahnenklee</h2>
+        <h2 id="tips-heading" class="section-title">
+          <span class="title-chip">🌲 Tipps &amp; To‑Dos</span>
+        </h2>
 
         <div class="tip-groups">
           <!-- Restaurants -->
           <article class="tip-card">
-            <h3>🍽️ Restaurants</h3>
+            <h3><span class="chip chip-rose">🍝 Restaurants</span></h3>
             <ul>
-              <li><a href="https://www.1894bistrobar.de/" target="_blank" rel="noopener">1894 Bistro & Bar</a></li> <!-- s-Restaurant_Korfu-Hahnenklee_Bockswiese_Goslar_Lower_Saxony.html) -->
+              <li><a href="https://www.mizu-goslar.de/" target="_blank" rel="noopener">Asia&nbsp;Fusion (Mizu – Asian Kitchen, Goslar)</a></li>
+              <li><a href="http://ratsstuben-restaurant.de/" target="_blank" rel="noopener">Restaurant&nbsp;Ratsstuben</a></li>
+              <li><a href="https://www.tripadvisor.de/Restaurant_Review-g198399-d4597108-Reviews-Piccolo_Mondo_Hahnenklee-Goslar_Lower_Saxony.html" target="_blank" rel="noopener">Ristorante&nbsp;Piccolo&nbsp;Mondo (Hahnenklee)</a></li>
+              <li><a href="https://www.tripadvisor.de/Restaurant_Review-g1051808-d26351012-Reviews-Namaste_World-Hahnenklee_Bockswiese_Goslar_Lower_Saxony.html" target="_blank" rel="noopener">Namaste&nbsp;World (indisch)</a></li>
+              <li><a href="https://www.harzer-schnitzelkoenig.de/" target="_blank" rel="noopener">Harzer&nbsp;Schnitzelkönig (Lautenthal)</a></li>
             </ul>
           </article>
 
-          <!-- Wanderwege -->
+          <!-- Wanderwege (Liebesbankweg → ersetzt durch Auerhahn) -->
           <article class="tip-card">
-            <h3>🥾 Wanderwege</h3>
+            <h3><span class="chip chip-amber">🥾 Wanderwege</span></h3>
             <ul>
-              <li><a href="https://www.hahnenklee.de/natur/wandern-in-hahnenklee-im-harz/liebesbankweg" target="_blank" rel="noopener">Liebesbankweg (offiziell)</a></li> <!-- rn-in-hahnenklee-im-harz/liebesbankweg) -->
-              <li><a href="https://touren.harzinfo.de/de/tour/themenweg/liebesbankweg/6727172/" target="_blank" rel="noopener">Liebesbankweg (Harzinfo Tour)</a></li> <!-- emenweg/liebesbankweg/6727172/) -->
+              <li><a href="https://touren.harzinfo.de/de/tour/wanderung/auerhahn-rundwanderweg-auerhahn-um-hahnenklee/13100515/" target="_blank" rel="noopener">Auerhahn‑Rundwanderweg (offizielle Tour)</a></li>
+              <li><a href="https://harzlife.de/wandern/wasserwanderweg-auerhahn-teichkaskade.html" target="_blank" rel="noopener">Auerhahn‑Kaskade: Infos &amp; Geschichte</a></li>
             </ul>
           </article>
 
           <!-- Bocksberg -->
           <article class="tip-card">
-            <h3>⛰️ Bocksberg</h3>
+            <h3><span class="chip chip-lime">⛰️ Bocksberg</span></h3>
             <ul>
-              <li><a href="https://www.erlebnisbocksberg.de/" target="_blank" rel="noopener">ErlebnisBocksBerg – Seilbahn & Attraktionen</a></li> <!-- >
-              <li><a href="https://www.erlebnisbocksberg.de/sommersaison/sommerrodelbahn/" target="_blank" rel="noopener">Drachenblitz & BocksBergBob (Sommerrodelbahn)</a></li> <!-- [1](https://www.erlebnisbocksberg.de/sommersaison/sommerrodelbahn/) -->
+              <li><a href="https://www.erlebnisbocksberg.de/" target="_blank" rel="noopener">ErlebnisBocksBerg – Seilbahn & Attraktionen</a></li>
+              <li><a href="https://www.erlebnisbocksberg.de/sommersaison/sommerrodelbahn/" target="_blank" rel="noopener">Drachenblitz &amp; BocksBergBob</a></li>
             </ul>
           </article>
 
           <!-- Bike -->
           <article class="tip-card">
-            <h3>🚵 Bike & Downhill</h3>
+            <h3><span class="chip chip-cyan">🚵 Bike & Downhill</span></h3>
             <ul>
-              <li><a href="https://bikepark-hahnenklee.de/" target="_blank" rel="noopener">Bikepark Hahnenklee (offiziell)</a></li> <!-- ebnisbocksberg.de/sommersaison/bikepark-bikeshop/" target="_blank" rel="noopener">Bikepark-Info & Verleih</a></li> <!-- ersaison/bikepark-bikeshop/) -->
+              <li><a href="https://bikepark-hahnenklee.de/" target="_blank" rel="noopener">Bikepark Hahnenklee (offiziell)</a></li>
+              <li><a href="https://www.erlebnisbocksberg.de/sommersaison/bikepark-bikeshop/" target="_blank" rel="noopener">Bikepark‑Info & Verleih</a></li>
             </ul>
           </article>
 
           <!-- Wintersport -->
           <article class="tip-card">
-            <h3>❄️ Wintersport</h3>
+            <h3><span class="chip chip-blue">❄️ Wintersport</span></h3>
             <ul>
-              <li><a href="https://www.hahnenklee.de/natur/wintersport/abfahrt-rodeln" target="_blank" rel="noopener">Abfahrt & Rodeln</a></li> <!-- [2](https://www.hahnenklee.de/natur/wintersport/abfahrt-rodeln) -->
+              <li><a href="https://www.hahnenklee.de/natur/wintersport/abfahrt-rodeln" target="_blank" rel="noopener">Abfahrt &amp; Rodeln (Hahnenklee)</a></li>
             </ul>
           </article>
 
           <!-- Baden -->
           <article class="tip-card">
-            <h3>🏊 Baden</h3>
+            <h3><span class="chip chip-purple">🏊 Baden</span></h3>
             <ul>
-              <li><a href="https://touren.harzinfo.de/de/poi/badestelle/kuttelbacher-teich-in-hahnenklee/11735536/" target="_blank" rel="noopener">Kuttelbacher Teich (Badestelle, Bootsverleih)</a></li> <!-- [3](https://touren.harzinfo.de/de/poi/badestelle/kuttelbacher-teich-in-hahnenklee/11735536/) -->
-              <li><a href="https://www.ausflugsziele-harz.de/ausflugsziele-sehenswertes/seen-talsperren/kuttelbacher-teich-hahnenklee.htm" target="_blank" rel="noopener">Info & Öffnungszeiten (Saison)</a></li> <!-- [4](https://www.ausflugsziele-harz.de/ausflugsziele-sehenswertes/seen-talsperren/kuttelbacher-teich-hahnenklee.htm) -->
+              <li><a href="https://touren.harzinfo.de/de/poi/badestelle/kuttelbacher-teich-in-hahnenklee/11735536/" target="_blank" rel="noopener">Kuttelbacher&nbsp;Teich – Badestelle &amp; Boote</a></li>
+              <li><a href="https://www.ausflugsziele-harz.de/ausflugsziele-sehenswertes/seen-talsperren/kuttelbacher-teich-hahnenklee.htm" target="_blank" rel="noopener">Infos &amp; Saison</a></li>
             </ul>
           </article>
 
           <!-- Bäckereien -->
           <article class="tip-card">
-            <h3>🥐 Bäckereien</h3>
+            <h3><span class="chip chip-brown">🥐 Bäckereien</span></h3>
             <ul>
-              <li><a href="https://onlinestreet.de/poi/eWlQdzMyc3l1bFNUZ2FVNFBYN0ROdz09" target="_blank" rel="noopener">Bäckerei Moock (Hindenburgplatz 1)</a></li> <!-- [5](https://onlinestreet.de/poi/eWlQdzMyc3l1bFNUZ2FVNFBYN0ROdz09) -->
-              <li><a href="https://de.restaurantguru.com/Coffee-Corner-Hahnenklee-Goslar" target="_blank" rel="noopener">Coffee Corner (Kaffee & Kuchen)</a></li> <!-- [7](https://de.restaurantguru.com/Coffee-Corner-Hahnenklee-Goslar) -->
+              <li><a href="https://onlinestreet.de/poi/eWlQdzMyc3l1bFNUZ2FVNFBYN0ROdz09" target="_blank" rel="noopener">Bäckerei Moock (Hindenburgplatz&nbsp;1)</a></li>
+              <li><a href="https://de.restaurantguru.com/Coffee-Corner-Hahnenklee-Goslar" target="_blank" rel="noopener">Coffee&nbsp;Corner (Kaffee &amp; Kuchen)</a></li>
+            </ul>
+          </article>
+
+          <!-- Bringdienste -->
+          <article class="tip-card">
+            <h3><span class="chip chip-orange">🛵 Bringdienste</span></h3>
+            <ul>
+              <li><a href="https://www.lieferando.de/lieferservice/essen/braunschweig-goslar-38644" target="_blank" rel="noopener">Lieferando – Auswahl für 38644</a></li>
+              <li><a href="https://www.bringbutler.de/suchergebnis_poid_40242_plz_38644_city_Goslar%20Hahnenklee.php" target="_blank" rel="noopener">Bringbutler – Liste Hahnenklee</a></li>
             </ul>
           </article>
         </div>
@@ -146,7 +169,7 @@
     (function(){
       const cfg = window.TK_CONFIG || {};
       const airbnb = document.getElementById('airbnbLink');
-      if (cfg.airbnbUrl && cfg.airbnbUrl.startsWith('http')) airbnb.href = cfg.airbnbUrl;
+      if (airbnb && cfg.airbnbUrl && cfg.airbnbUrl.startsWith('http')) airbnb.href = cfg.airbnbUrl;
 
       function buildLinks(addr, latlng){
         let appleHref, googleHref;
@@ -163,8 +186,10 @@
           appleHref = `https://maps.apple.com/?q=${q}`;
           googleHref = `https://www.google.com/maps/search/?api=1&query=${q}`;
         }
-        document.getElementById('appleLink').href = appleHref;
-        document.getElementById('googleLink').href = googleHref;
+        const al = document.getElementById('appleLink');
+        const gl = document.getElementById('googleLink');
+        if (al) al.href = appleHref;
+        if (gl) gl.href = googleHref;
       }
       buildLinks(cfg.destinationAddress, cfg.latlng);
     })();
@@ -174,7 +199,9 @@
       const els = document.querySelectorAll('.reveal');
       if (!('IntersectionObserver' in window)) { els.forEach(el => el.classList.add('revealed')); return; }
       const io = new IntersectionObserver((entries)=>{
-        for (const e of entries){ if (e.isIntersecting){ e.target.classList.add('revealed'); io.unobserve(e.target); } }
+        for (const e of entries){
+          if (e.isIntersecting){ e.target.classList.add('revealed'); io.unobserve(e.target); }
+        }
       }, {threshold: 0.12});
       els.forEach(el => io.observe(el));
     })();
