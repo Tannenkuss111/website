@@ -102,7 +102,7 @@ html::before{
 
   /* „Eingeprägt“: vorsichtiges Multiplizieren + geringe Gesamtwirkung */
   mix-blend-mode:multiply;
-  opacity:.08;
+  opacity:.12;
 }
 
 /* Container */
@@ -224,3 +224,4 @@ html::before{
   .btn, .tip-card, .logo{transition:none !important}
 }
 ``
+
