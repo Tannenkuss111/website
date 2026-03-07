@@ -95,7 +95,7 @@ html::before{
     28% 78%, 68% 70%, 58% 88%, 82% 86%,
     0 0,   0 0;
 
-  opacity:.18; /* etwas dunkler/kräftiger; feiner einstellbar 0.14–0.22 */
+  opacity:.16; /* etwas dunkler/kräftiger; feiner einstellbar 0.14–0.22 */
   filter: saturate(0.95);
 }
 
@@ -146,7 +146,7 @@ html::before{
 }
 .btn-map:hover{
   transform:translateY(-1px); box-shadow:var(--shadow-md);
-  background: color-mix(in oklch, var(--green) 14%, #ffffff);
+  background: color-mix(in oklch, var(--green) 12%, #ffffff);
   border-color: color-mix(in oklch, var(--green) 52%, #ffffff);
 }
 .btn:focus-visible{outline:3px solid var(--ring)}
@@ -202,3 +202,4 @@ html::before{
   .btn, .tip-card, .logo{transition:none !important}
 }
 ``
+
