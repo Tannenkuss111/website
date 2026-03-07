@@ -1,158 +1,98 @@
-/* ==========================
-   Grundfarben / Variablen
-========================== */
+/* =======
+   Tannenkuss111 – Grunddesign
+   Farben: Gold & Grün, Hintergrund: samtiges Weiß‑Beige
+   Mobil‑freundlich (iPhone), zugänglich, modern
+======= */
+
 :root{
-  /* Tapeten-/Papierfarbtöne (warm, passend zum Logo) */
-  --paper-bg:   #f5f1e9;   /* Basis (cremig/warm) */
-  --paper-1:    #efe9de;   /* Wolkung 1 */
-  --paper-2:    #eae4d8;   /* Wolkung 2 */
-  --grain:      rgba(0,0,0,.035); /* feines Rauschen */
-
-  /* Abstände (Header -> Buttons) */
-  --cta-gap: 26px;
-
-  /* Tagline direkt unterm Logo – minimal Luft */
-  --tagline-under-logo-gap: 6px;
-  --tagline-extra-offset: 48px;    /* verschiebt NUR die Tagline nach unten */
-
-  /* Logo/Header (Logo bleibt an Ort & Stelle – kein Crop) */
-  --hero-image: url('assets/tkus111.jpg');
-  --hero-logo-width: clamp(408px, 48vw, 792px); /* ~40% kleiner als ganz am Anfang */
-  --hero-logo-height: 340px;                    /* reservierte Höhe für das Logo */
-  --hero-top-offset: 26px;                      /* Abstand Logo vom oberen Seitenrand */
-
-  /* Licht-/Weiß-Layer im Header für Lesbarkeit */
-  --hero-light: 0.78;
-
-  /* Farbe der Tagline im Header – Ton aus der Tapete */
-  --tapete-text: #cfc7b9; /* alternativ: var(--paper-2) */
-
-  /* Markenfarben (Buttons etc.) */
-  --brand-green: #234E3C;
-  --brand-green-dark: #1a3c2e;
-  --brand-gold: #C59B45;
-
-  --card: #ffffff;
-  --border: #e6e6e0;
-  --text: #1f2a24;
-  --muted: #6B7A6F;
-
-  --radius: 14px;
-  --shadow: 0 6px 24px rgba(0,0,0,.05);
+  --beige: #f6f2ea;      /* samtiges Weiß‑Beige */
+  --beige-ink: #2a2926;  /* gut lesbarer Text auf Beige */
+  --gold: #c6a34f;       /* warmes Gold */
+  --gold-600: #b8923c;
+  --green: #2e7d5f;      /* edles Grün */
+  --green-700: #23644c;
+  --shadow: 0 8px 24px rgba(0,0,0,.08);
+  --radius: 18px;
 }
 
-/* ==========================
-   Basis
-========================== */
-*{ box-sizing: border-box; }
-html, body{ height: 100%; }
+/* Grundlayout */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
-  margin:0; color: var(--text);
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", sans-serif;
-  line-height: 1.6;
-
-  /* Tapeten-/Papierstruktur (GANZE Seite) */
-  background:
-    radial-gradient(1px 1px at 20% 25%, var(--grain) 20%, transparent 21%) repeat,
-    radial-gradient(1px 1px at 70% 60%, var(--grain) 20%, transparent 21%) repeat,
-    repeating-linear-gradient(145deg, transparent 0 9px, var(--paper-2) 9px 10px),
-    radial-gradient(1200px 600px at 15% -10%, var(--paper-1) 0 35%, transparent 36%),
-    radial-gradient(1000px 500px at 110% 0%, var(--paper-2) 0 40%, transparent 41%),
-    var(--paper-bg);
-  background-size:
-    180px 180px,
-    220px 220px,
-    100% 100%,
-    100% 100%,
-    100% 100%,
-    auto;
+  margin:0;
+  font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--beige-ink);
+  background: radial-gradient(1200px 600px at 10% 0%, #faf7f0, transparent),
+              radial-gradient(1000px 800px at 100% 10%, #f3efe7, transparent),
+              var(--beige);
+  line-height:1.6;
 }
 
-.container{
-  width: min(100%, 1000px);
-  margin: 0 auto;
-  padding: clamp(1rem, 1.8vw, 1.6rem);
+.container{width:min(1100px, 92%); margin-inline:auto}
+
+/* Skip-Link für Screenreader & Tastatur */
+.skip-link{position:absolute; left:-9999px; top:auto}
+.skip-link:focus{left:16px; top:16px; z-index:1000; background:#fff; padding:.5rem 1rem; border-radius:.5rem; outline:2px solid var(--green)}
+
+/* Header minimal */
+.site-header{height:24px}
+
+/* Hero */
+.hero{padding: clamp(32px, 6vw, 64px) 0}
+.hero .logo{
+  display:block;
+  width:min(520px, 85vw);
+  max-height: 220px; /* Logo sehr präsent, aber flexibel */
+  object-fit: contain;
+  margin: clamp(8px, 2vw, 16px) auto clamp(18px, 3vw, 28px);
+  filter: drop-shadow(0 10px 24px rgba(0,0,0,.10));
 }
 
-.card{
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.0rem 1.0rem;
-  margin: 0.8rem 0;
-  box-shadow: var(--shadow);
-}
-
-h1,h2,h3,h4{ margin: 0 0 .6rem; line-height: 1.25; }
-h2{ font-size: clamp(1.25rem, 1.4vw + .9rem, 1.6rem); }
-
-/* ==========================
-   Header mit Logo-Hintergrund
-========================== */
-.site-header.hero{
-  position: relative;
-  min-height: calc(var(--hero-logo-height) + var(--hero-top-offset) + 140px + var(--tagline-extra-offset));
-  padding: 0 0 1.2rem;
-  isolation: isolate;
-  overflow: hidden;
-}
-.site-header.hero::before{
-  content:"";
-  position:absolute; inset:0;
-  background-image: var(--hero-image);
-  background-repeat: no-repeat;
-  background-size: var(--hero-logo-width) auto;    /* proportional – wie "contain" */
-  background-position: 50% var(--hero-top-offset); /* mittig + Abstand von oben */
-  filter: brightness(.96) contrast(.98);
-  z-index:-2;
-}
-.site-header.hero::after{
-  content:"";
-  position:absolute; inset:0;
-  background: linear-gradient(180deg,
-    rgba(255,255,255, calc(var(--hero-light) + .08)) 0%,
-    rgba(255,255,255, var(--hero-light)) 26%,
-    rgba(255,255,255, calc(var(--hero-light) - .26)) 54%,
-    rgba(255,255,255, 0) 100%);
-  z-index:-1;
-}
-.hero-inner{
-  width: min(100%, 1000px);
-  margin: 0 auto;
-  padding: 0 clamp(1rem, 1.8vw, 1.6rem);
-  padding-top: calc(var(--hero-top-offset) + var(--hero-logo-height) + var(--tagline-extra-offset)); /* setzt die Tagline unter das Logo */
-  text-align: center;
-}
-.tagline{
-  margin: var(--tagline-under-logo-gap) 0 0 0;
-  font-family: "Great Vibes", "Segoe Script", "Brush Script MT", cursive;
-  font-weight: 400;
-  line-height: 1.2;
-  letter-spacing: .2px;
-  font-size: clamp(2.0rem, 2.4vw + 1.1rem, 3.0rem);
-  color: var(--tapete-text);
-  text-shadow: 0 1px 0 rgba(255,255,255,.65);
-}
-
-/* ==========================
-   CTA-Bar + Buttons
-========================== */
-.cta-bar{
-  width: min(100%, 1000px);
-  margin: 0 auto var(--cta-gap) auto;
-  padding: 0 clamp(1rem, 1.8vw, 1.6rem);
-}
-.cta-bar .card{
-  display:flex; gap:.55rem; justify-content:center; align-items:center;
-  padding:.55rem .75rem; border-radius:14px;
-  background:#fff; border:1px solid var(--border);
-  box-shadow: var(--shadow);
-  flex-wrap: wrap; /* Umbruch erlauben */
-}
-
+.cta-buttons{display:flex; flex-wrap:wrap; gap:12px; justify-content:center}
 .btn{
-  display:inline-flex; align-items:center; gap:.30rem;
-  padding:.36rem .60rem;
-  border-radius:999px; text-decoration:none; font-weight:600;
-  font-size:.875rem;
-  border:1px solid transparent; box-shadow:0 2px 8px rgba(0,0,0,.12);
+  --btn-bg: #fff; --btn-fg: var(--green); --btn-bd: var(--green);
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:.9rem 1.1rem; border-radius:999px; border:2px solid var(--btn-bd);
+  font-weight:700; text-decoration:none; color:var(--btn-fg); background:var(--btn-bg);
+  box-shadow: var(--shadow);
+  transition: transform .12s ease, background .2s ease, color .2s ease, border-color .2s ease;
+}
+.btn:hover{transform: translateY(-1px)}
+.btn:active{transform: translateY(0)}
+.btn:focus-visible{outline:3px solid color-mix(in oklch, var(--green) 60%, white)}
+
+.btn-primary{--btn-bg: var(--gold); --btn-fg:#1d1a12; --btn-bd: var(--gold-600)}
+.btn-primary:hover{background: color-mix(in oklch, var(--gold) 88%, black)}
+
+.btn-outline{--btn-bg: #fff; --btn-fg: var(--green); --btn-bd: var(--green)}
+.btn-outline:hover{background: color-mix(in oklch, var(--green) 10%, white)}
+
+/* Tipps */
+.tips{padding: clamp(16px, 5vw, 48px) 0 72px}
+.tips h2{font-size: clamp(1.2rem, 2.2vw, 1.8rem); margin:0 0 1rem; letter-spacing:.2px}
+
+.tip-groups{
+  display:grid; gap:16px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.tip-card{
+  background:#fff; border:1px solid #ece7db; border-radius: var(--radius);
+  padding: 16px 18px; box-shadow: var(--shadow);
+}
+.tip-card h3{margin:4px 0 10px; font-size:1.05rem}
+.tip-card ul{list-style:none; padding:0; margin:0; display:grid; gap:.35rem}
+.tip-card a{color: var(--green); text-decoration: underline; text-underline-offset: 3px}
+.tip-card a:hover{color: var(--green-700)}
+
+/* Footer */
+.site-footer{border-top:1px solid #e9e3d6; background: #fff;}
+.footer-inner{display:flex; flex-direction:column; gap:6px; align-items:center; padding:20px 0}
+.site-footer a{color: var(--gold); font-weight:600; text-decoration:none}
+.site-footer a:hover{text-decoration:underline}
+.site-footer nav{display:flex; gap:.6rem; align-items:center}
+
+/* Kleinere iPhones optimieren */
+@media (max-width: 380px){
+  .btn{padding:.85rem .9rem}
+}
+``
