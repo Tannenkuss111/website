@@ -46,25 +46,32 @@ body{
 
 /* HERO */
 .hero{position:relative; padding: clamp(36px, 7vw, 88px) 0}
-.hero-inner{display:flex; flex-direction:column; align-items:center; gap:20px}
+.hero-inner{display:flex; flex-direction:column; align-items:center; gap:12px}
 .hero .logo{
   display:block;
   width:min(560px, 86vw);
   max-height:260px; object-fit:contain;
   filter: drop-shadow(0 16px 40px rgba(0,0,0,.12));
 }
+.hero-sub{
+  margin: 6px 0 10px;
+  font-size: clamp(1.05rem, 2.2vw, 1.5rem);
+  color: var(--muted);
+  letter-spacing:.2px;
+}
 
-/* Buttons */
-.cta-buttons{display:flex; flex-wrap:wrap; gap:14px; justify-content:center}
+/* Buttons (≈50% kompakter) */
+.cta-buttons{display:flex; flex-wrap:wrap; gap:10px; justify-content:center}
 .btn{
   --bg:#fff; --fg:var(--green); --bd:var(--green);
   display:inline-flex; align-items:center; justify-content:center;
-  padding: .95rem 1.15rem; border-radius:999px; border:2px solid var(--bd);
+  padding: .55rem .7rem; border-radius:999px; border:2px solid var(--bd);
   text-decoration:none; color:var(--fg); background:var(--bg);
-  font-weight:700; letter-spacing:.2px; box-shadow:var(--shadow-sm);
+  font-weight:700; letter-spacing:.2px; box-shadow: var(--shadow-sm);
   transition: transform .14s ease, background .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease;
+  font-size: .78rem;
 }
-.btn:hover{transform: translateY(-1px); box-shadow:var(--shadow-md)}
+.btn:hover{transform: translateY(-1px); box-shadow: var(--shadow-md)}
 .btn:active{transform: translateY(0)}
 .btn:focus-visible{outline:3px solid var(--ring)}
 
@@ -75,13 +82,13 @@ body{
 .btn-outline:hover{--bg: color-mix(in oklch, var(--green) 8%, white)}
 
 /* Sektionen */
-.section-pad{padding: clamp(18px, 5vw, 56px) 0 76px}
+.section-pad{padding: clamp(18px, 5vw, 42px) 0 56px}
 .section-title{font-size: clamp(1.3rem, 2.6vw, 2rem); margin:0 0 1rem; color: var(--muted)}
 
 /* Karten-Grid */
-.tip-groups{display:grid; gap:18px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))}
+.tip-groups{display:grid; gap:16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))}
 .tip-card{
-  position:relative; background: #fff; border:1px solid #eee6d7; border-radius: var(--radius-lg);
+  position:relative; background:#fff; border:1px solid #eee6d7; border-radius: var(--radius-lg);
   padding: 18px 20px; box-shadow: var(--shadow-sm);
 }
 .tip-card::after{content:""; position:absolute; inset:0; border-radius:inherit; box-shadow: inset 0 0 0 1px rgba(255,255,255,.6); pointer-events:none}
@@ -103,7 +110,7 @@ body{
 
 /* iPhone Klein */
 @media (max-width:380px){
-  .btn{padding:.9rem .95rem}
+  .btn{font-size:.76rem; padding:.5rem .65rem}
 }
 
 /* Reduced Motion */
@@ -112,4 +119,7 @@ body{
   .reveal{opacity:1 !important; transform:none !important}
   .btn, .tip-card, .logo{transition:none !important}
 }
+
+/* Adresse */
+.address-lines{color:var(--muted)}
 ``
