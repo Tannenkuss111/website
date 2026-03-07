@@ -1,64 +1,158 @@
-/* ===== Akkordeon-Boxen ===== */
-.info-box{
-  margin:.6rem 0;
-  border:1px solid #e6e6e0;
-  border-radius:14px;
-  background:#ffffffc8;
-  box-shadow:0 6px 20px rgba(0,0,0,.05);
-  overflow:hidden;
-}
-.info-box summary{
-  display:flex; align-items:center; gap:.5rem;
-  list-style:none; cursor:pointer;
-  padding:.75rem 1rem;
-  font-weight:700; color:#1f2a24;
-  user-select:none;
-}
-.info-box summary::-webkit-details-marker{ display:none; }
-.info-box[open] summary{ border-bottom:1px solid #e9e6de; }
-.info-box .ico{ flex:0 0 auto; }
+/* ==========================
+   Grundfarben / Variablen
+========================== */
+:root{
+  /* Tapeten-/Papierfarbtöne (warm, passend zum Logo) */
+  --paper-bg:   #f5f1e9;   /* Basis (cremig/warm) */
+  --paper-1:    #efe9de;   /* Wolkung 1 */
+  --paper-2:    #eae4d8;   /* Wolkung 2 */
+  --grain:      rgba(0,0,0,.035); /* feines Rauschen */
 
-/* ===== Grid: 1 Spalte mobil, 2 Tablet, 3 Desktop ===== */
-.info-grid{
-  display:grid; gap:.75rem;
-  grid-template-columns: 1fr;
-  padding:.75rem;
-}
-@media (min-width: 640px){
-  .info-grid{ grid-template-columns: repeat(2, 1fr); }
-}
-@media (min-width: 980px){
-  .info-grid{ grid-template-columns: repeat(3, 1fr); }
+  /* Abstände (Header -> Buttons) */
+  --cta-gap: 26px;
+
+  /* Tagline direkt unterm Logo – minimal Luft */
+  --tagline-under-logo-gap: 6px;
+  --tagline-extra-offset: 48px;    /* verschiebt NUR die Tagline nach unten */
+
+  /* Logo/Header (Logo bleibt an Ort & Stelle – kein Crop) */
+  --hero-image: url('assets/tkus111.jpg');
+  --hero-logo-width: clamp(408px, 48vw, 792px); /* ~40% kleiner als ganz am Anfang */
+  --hero-logo-height: 340px;                    /* reservierte Höhe für das Logo */
+  --hero-top-offset: 26px;                      /* Abstand Logo vom oberen Seitenrand */
+
+  /* Licht-/Weiß-Layer im Header für Lesbarkeit */
+  --hero-light: 0.78;
+
+  /* Farbe der Tagline im Header – Ton aus der Tapete */
+  --tapete-text: #cfc7b9; /* alternativ: var(--paper-2) */
+
+  /* Markenfarben (Buttons etc.) */
+  --brand-green: #234E3C;
+  --brand-green-dark: #1a3c2e;
+  --brand-gold: #C59B45;
+
+  --card: #ffffff;
+  --border: #e6e6e0;
+  --text: #1f2a24;
+  --muted: #6B7A6F;
+
+  --radius: 14px;
+  --shadow: 0 6px 24px rgba(0,0,0,.05);
 }
 
-/* ===== Karten (POIs) ===== */
-.poi{
-  display:flex; flex-direction:column;
-  background:#fff; border:1px solid #eceae4; border-radius:12px;
-  overflow:hidden; box-shadow:0 4px 16px rgba(0,0,0,.06);
-}
-.poi figure{ margin:0; height:160px; background:#f6f4ef; display:block; }
-.poi figure img{ width:100%; height:100%; object-fit:cover; display:block; }
-.poi.no-img figure{ height:14px; }        /* Fallback, wenn kein Bild vorhanden */
-.poi.compact figure{ display:none; }      /* kompakte Karten (z. B. Telefonnummern) */
-.poi.compact .poi-body{ padding-top:.9rem; }
+/* ==========================
+   Basis
+========================== */
+*{ box-sizing: border-box; }
+html, body{ height: 100%; }
+body{
+  margin:0; color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", sans-serif;
+  line-height: 1.6;
 
-.poi-body{ padding:.75rem .9rem 1rem; }
-.poi-body h4{ margin:.1rem 0 .25rem; font-size:1.05rem; color:#234E3C; }
-.poi-body p{ margin:0 0 .4rem; color:#37423b; }
-.poi-body .meta{ font-size:.92rem; color:#6B7A6F; margin-bottom:.35rem; }
-
-.actions{
-  display:flex; flex-wrap:wrap; gap:.4rem;
+  /* Tapeten-/Papierstruktur (GANZE Seite) */
+  background:
+    radial-gradient(1px 1px at 20% 25%, var(--grain) 20%, transparent 21%) repeat,
+    radial-gradient(1px 1px at 70% 60%, var(--grain) 20%, transparent 21%) repeat,
+    repeating-linear-gradient(145deg, transparent 0 9px, var(--paper-2) 9px 10px),
+    radial-gradient(1200px 600px at 15% -10%, var(--paper-1) 0 35%, transparent 36%),
+    radial-gradient(1000px 500px at 110% 0%, var(--paper-2) 0 40%, transparent 41%),
+    var(--paper-bg);
+  background-size:
+    180px 180px,
+    220px 220px,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    auto;
 }
-.actions a{
-  display:inline-flex; align-items:center; gap:.25rem;
-  padding:.38rem .62rem;
+
+.container{
+  width: min(100%, 1000px);
+  margin: 0 auto;
+  padding: clamp(1rem, 1.8vw, 1.6rem);
+}
+
+.card{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.0rem 1.0rem;
+  margin: 0.8rem 0;
+  box-shadow: var(--shadow);
+}
+
+h1,h2,h3,h4{ margin: 0 0 .6rem; line-height: 1.25; }
+h2{ font-size: clamp(1.25rem, 1.4vw + .9rem, 1.6rem); }
+
+/* ==========================
+   Header mit Logo-Hintergrund
+========================== */
+.site-header.hero{
+  position: relative;
+  min-height: calc(var(--hero-logo-height) + var(--hero-top-offset) + 140px + var(--tagline-extra-offset));
+  padding: 0 0 1.2rem;
+  isolation: isolate;
+  overflow: hidden;
+}
+.site-header.hero::before{
+  content:"";
+  position:absolute; inset:0;
+  background-image: var(--hero-image);
+  background-repeat: no-repeat;
+  background-size: var(--hero-logo-width) auto;    /* proportional – wie "contain" */
+  background-position: 50% var(--hero-top-offset); /* mittig + Abstand von oben */
+  filter: brightness(.96) contrast(.98);
+  z-index:-2;
+}
+.site-header.hero::after{
+  content:"";
+  position:absolute; inset:0;
+  background: linear-gradient(180deg,
+    rgba(255,255,255, calc(var(--hero-light) + .08)) 0%,
+    rgba(255,255,255, var(--hero-light)) 26%,
+    rgba(255,255,255, calc(var(--hero-light) - .26)) 54%,
+    rgba(255,255,255, 0) 100%);
+  z-index:-1;
+}
+.hero-inner{
+  width: min(100%, 1000px);
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 1.8vw, 1.6rem);
+  padding-top: calc(var(--hero-top-offset) + var(--hero-logo-height) + var(--tagline-extra-offset)); /* setzt die Tagline unter das Logo */
+  text-align: center;
+}
+.tagline{
+  margin: var(--tagline-under-logo-gap) 0 0 0;
+  font-family: "Great Vibes", "Segoe Script", "Brush Script MT", cursive;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: .2px;
+  font-size: clamp(2.0rem, 2.4vw + 1.1rem, 3.0rem);
+  color: var(--tapete-text);
+  text-shadow: 0 1px 0 rgba(255,255,255,.65);
+}
+
+/* ==========================
+   CTA-Bar + Buttons
+========================== */
+.cta-bar{
+  width: min(100%, 1000px);
+  margin: 0 auto var(--cta-gap) auto;
+  padding: 0 clamp(1rem, 1.8vw, 1.6rem);
+}
+.cta-bar .card{
+  display:flex; gap:.55rem; justify-content:center; align-items:center;
+  padding:.55rem .75rem; border-radius:14px;
+  background:#fff; border:1px solid var(--border);
+  box-shadow: var(--shadow);
+  flex-wrap: wrap; /* Umbruch erlauben */
+}
+
+.btn{
+  display:inline-flex; align-items:center; gap:.30rem;
+  padding:.36rem .60rem;
   border-radius:999px; text-decoration:none; font-weight:600;
-  font-size:.9rem; border:1px solid #e0ded8; box-shadow:0 2px 8px rgba(0,0,0,.06);
-}
-.actions a.maplink{ background:#f2efe8; color:#234E3C; border-color:#dcd7cc; }
-.actions a.maplink:hover{ background:#e9e4da; }
-.actions a.phonelink{ background:#eaf5ee; color:#1f402e; border-color:#d2e6d9; }
-.actions a.phonelink:hover{ background:#deefe5; }
-``
+  font-size:.875rem;
+  border:1px solid transparent; box-shadow:0 2px 8px rgba(0,0,0,.12);
