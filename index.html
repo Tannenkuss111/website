@@ -6,12 +6,12 @@
   <title>Tannenkuss111 – Ferienpark Hahnenklee</title>
   <meta name="description" content="Ferienwohnung Tannenkuss111 im Ferienpark Hahnenklee – Jetzt auf Airbnb ansehen, Anfahrt planen und Tipps entdecken." />
 
-  <!-- Favicons / Assets -->
-  assets/favicon.svg
-  assets/favicon.ico
-  assets/apple-touch-icon.png
-  assets/tkus111.jpg
-  styles.css
+  <!-- Favicons / Assets (BITTE Dateien in /assets/ ablegen) -->
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="alternate icon" href="assets/favicon.ico" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="preload" href="assets/tkus111.jpg" as="image" />
+  <link rel="stylesheet" href="styles.css" />
 
   <!-- Konfiguration: Airbnb-URL & Adresse (oder lat,lng) -->
   <script>
@@ -22,26 +22,32 @@
     };
   </script>
 </head>
+
+<!-- Optional echte Rindentextur aktivieren: class="has-bark" -->
 <body>
-  #contentZum Inhalt springen</a>
+  <a class="skip-link" href="#content">Zum Inhalt springen</a>
 
   <header class="topbar" aria-label="Kopfbereich">
-    <div class="container">
-      <div class="brand-dots" aria-hidden="true"></div>
-    </div>
+    <div class="container"><div class="brand-dots" aria-hidden="true"></div></div>
   </header>
 
   <main id="content">
     <!-- HERO -->
     <section class="hero reveal" aria-label="Tannenkuss111 Übersicht">
       <div class="container hero-inner">
-        assets/tkus111.jpg
+        <img class="logo" src="assets/tkus111.jpg" alt="Logo Tannenkuss111 – Ferienpark Hahnenklee" decoding="async" />
         <p class="hero-sub">Ankommen, wohlfühlen, durchatmen.</p>
 
         <div class="cta-buttons" role="group" aria-label="Schnellzugriff">
-          #Jetzt auf Airbnb ansehen</a>
-          #Anfahrt&nbsp;(Apple)</a>
-          #Anfahrt&nbsp;(Google)</a>
+          <a id="airbnbLink" class="btn btn-primary" href="#" target="_blank" rel="noopener">
+            Jetzt auf Airbnb ansehen
+          </a>
+          <a id="appleLink" class="btn btn-outline" href="#" target="_blank" rel="noopener">
+            Anfahrt&nbsp;(Apple)
+          </a>
+          <a id="googleLink" class="btn btn-outline" href="#" target="_blank" rel="noopener">
+            Anfahrt&nbsp;(Google)
+          </a>
         </div>
       </div>
     </section>
@@ -56,11 +62,8 @@
           <article class="tip-card">
             <h3>Restaurants</h3>
             <ul>
-              <li>https://www.1894bistrobar.de/1894&nbsp;Bistro&nbsp;&nbsp;Bar (modern, zentral in Hahnenklee)</a></li> <!-- 1894 wieder drin [1](https://namaste-indianfood.de/) -->
-              <li>http://ratsstuben-restaurant.de/Restaurant&nbsp;Ratsstuben</a></li> <!-- [2](https://de.wikipedia.org/wiki/Kuttelbacher_Teich) -->
-              <li>https://www.tripadvisor.de/Restaurant_Review-g198399-d4597108-Reviews-Piccolo_Mondo_Hahnenklee-Goslar_Lower_Saxony.htmlRistorante&nbsp;Piccolo&nbsp;Mondo (Hahnenklee)</a></li> <!-- [3](https://de.restaurantguru.com/Restaurant-Korfu-Goslar) -->
-              <li>https://www.tripadvisor.de/Restaurant_Review-g1051808-d26351012-Reviews-Namaste_World-Hahnenklee_Bockswiese_Goslar_Lower_Saxony.htmlNamaste&nbsp;World (indisch)</a></li> <!-- [4](https://developers.google.com/maps/documentation/routes/specify_location) -->
-              <li>https://www.harzer-schnitzelkoenig.de/Harzer&nbsp;Schnitzelkönig (Lautenthal)</a></li> <!-- [5](https://www.diebestenderstadt.de/goslar/blog/die-10-besten-restaurants-in-goslar) -->
+              <li><a href="https://www.1894bistrobar.de/" target="_blank" rel="noopener">1894&nbsp;Bistro&nbsp;&amp;&nbsp;Bar</a> (modern, zentral in Hahnenklee) er">Namaste World (indisch)</a> umentation/routes/specify_location)</li>
+              <li><a href="https://www.harzer-schnitzelkoenig.de/" target="_blank" rel="noopener">Harzer Schnitzelkönig (Lautenthal)</a> r/blog/die-10-besten-restaurants-in-goslar)</li>
             </ul>
           </article>
 
@@ -68,8 +71,8 @@
           <article class="tip-card">
             <h3>Wanderwege</h3>
             <ul>
-              <li>https://touren.harzinfo.de/de/tour/wanderung/auerhahn-rundwanderweg-auerhahn-um-hahnenklee/13100515/Auerhahn‑Rundwanderweg (offizielle Tour)</a></li> <!-- [6](https://www.harzinfo.de/erlebnisse/tour/rodelbahn-am-bocksberg-hahnenklee) -->
-              <li>https://harzlife.de/wandern/wasserwanderweg-auerhahn-teichkaskade.htmlAuerhahn‑Kaskade – Hintergrund & Infos</a></li> <!-- [7](https://www.tripadvisor.de/Restaurant_Review-g1051808-d5520811-Reviews-Restaurant_Zum_Kachelofen-Hahnenklee_Bockswiese_Goslar_Lower_Saxony.html) -->
+              <li><a href="https://touren.harzinfo.de/de/tour/wanderung/auerhahn-rundwanderweg-auerhahn-um-hahnenklee/13100515/" target="_blank" rel="noopener">Auerhahn‑Rundwanderweg (offizielle Tour)</a> r/rodelbahn-am-bocksberg-hahnenklee)</li>
+              <li><a href="https://harzlife.de/wandern/wasserwanderweg-auerhahn-teichkaskade.html" target="_blank" rel="noopener">Auerhahn‑Kaskade – Hintergrund & Infos</a> Review-g1051808-d5520811-Reviews-Restaurant_Zum_Kachelofen-Hahnenklee_Bockswiese_Goslar_Lower_Saxony.html)</li>
             </ul>
           </article>
 
@@ -77,8 +80,8 @@
           <article class="tip-card">
             <h3>Bocksberg</h3>
             <ul>
-              <li>https://www.erlebnisbocksberg.de/ErlebnisBocksBerg – Seilbahn & Attraktionen</a></li> <!-- [8](https://www.komoot.com/de-de/smarttour/32543871) -->
-              <li>https://www.erlebnisbocksberg.de/sommersaison/sommerrodelbahn/Drachenblitz &amp; BocksBergBob</a></li> <!-- [9](https://www.restaurantnet.de/rest/ristorante-piccolo-mondo-hahnenklee) -->
+              <li><a href="https://www.erlebnisbocksberg.de/" target="_blank" rel="noopener">ErlebnisBocksBerg – Seilbahn & Attraktionen</a> /32543871)</li>
+              <li><a href="https://www.erlebnisbocksberg.de/sommersaison/sommerrodelbahn/" target="_blank" rel="noopener">Drachenblitz & BocksBergBob</a> orante-piccolo-mondo-hahnenklee)</li>
             </ul>
           </article>
 
@@ -86,8 +89,7 @@
           <article class="tip-card">
             <h3>Bike & Downhill</h3>
             <ul>
-              <li>https://bikepark-hahnenklee.de/Bikepark Hahnenklee (offiziell)</a></li> <!-- [10](https://www.lieferando.de/) -->
-              <li>https://www.erlebnisbocksberg.de/sommersaison/bikepark-bikeshop/Bikepark‑Info & Verleih</a></li> <!-- [11](https://www.harzer-schnitzelkoenig.de/) -->
+              <li><a href="https://bikepark-hahnenklee.de/" target="_blank" rel="noopener">Bikepark Hahnenklee (offiziell)</a>           <li><a href="https://www.erlebnisbocksberg.de/sommersaison/bikepark-bikeshop/" target="_blank" rel="noopener">Bikepark‑Info & Verleih</a> /)</li>
             </ul>
           </article>
 
@@ -95,7 +97,7 @@
           <article class="tip-card">
             <h3>Wintersport</h3>
             <ul>
-              <li>https://www.hahnenklee.de/natur/wintersport/abfahrt-rodelnAbfahrt &amp; Rodeln</a></li> <!-- [12](http://piccolo-mondo-goslar.rgio.de/reservieren/) -->
+              <li><a href="https://www.hahnenklee.de/natur/wintersport/abfahrt-rodeln" target="_blank" rel="noopener">Abfahrt & Rodeln</a> eservieren/)</li>
             </ul>
           </article>
 
@@ -103,8 +105,8 @@
           <article class="tip-card">
             <h3>Baden</h3>
             <ul>
-              <li>https://touren.harzinfo.de/de/poi/badestelle/kuttelbacher-teich-in-hahnenklee/11735536/Kuttelbacher&nbsp;Teich – Badestelle &amp; Boote</a></li> <!-- [13](https://www.restaurantnet.de/rest/backerei-moock-filiale-hahnenklee) -->
-              <li>https://www.ausflugsziele-harz.de/ausflugsziele-sehenswertes/seen-talsperren/kuttelbacher-teich-hahnenklee.htmInfos &amp; Saison</a></li> <!-- [14](https://goslar.deutschbranchenbuch.com/cafe/backerei-moock-filiale-hahnenklee/) -->
+              <li><a href="https://touren.harzinfo.de/de/poi/badestelle/kuttelbacher-teich-in-hahnenklee/11735536/" target="_blank" rel="noopener">Kuttelbacher Teich – Badestelle & Boote</a> kerei-moock-filiale-hahnenklee)</li>
+              <li><a href="https://www.ausflugsziele-harz.de/ausflugsziele-sehenswertes/seen-talsperren/kuttelbacher-teich-hahnenklee.htm" target="_blank" rel="noopener">Infos & Saison</a> m/cafe/backerei-moock-filiale-hahnenklee/)</li>
             </ul>
           </article>
 
@@ -112,8 +114,8 @@
           <article class="tip-card">
             <h3>Bäckereien</h3>
             <ul>
-              <li>https://onlinestreet.de/poi/eWlQdzMyc3l1bFNUZ2FVNFBYN0ROdz09Bäckerei Moock (Hindenburgplatz&nbsp;1)</a></li> <!-- [15](https://www.alltrails.com/de/route/germany/lower-saxony/premiumwanderweg-liebesbankweg) -->
-              <li>https://de.restaurantguru.com/Coffee-Corner-Hahnenklee-GoslarCoffee&nbsp;Corner (Kaffee &amp; Kuchen)</a></li> <!-- [16](https://www.liebesbankweg.de/11-hahnenklee) -->
+              <li><a href="https://onlinestreet.de/poi/eWlQdzMyc3l1bFNUZ2FVNFBYN0ROdz09" target="_blank" rel="noopener">Bäckerei Moock (Hindenburgplatz&nbsp;1)</a> rmany/lower-saxony/premiumwanderweg-liebesbankweg)</li>
+              <li><a href="https://de.restaurantguru.com/Coffee-Corner-Hahnenklee-Goslar" target="_blank" rel="noopener">Coffee Corner (Kaffee & Kuchen)</a> nklee)</li>
             </ul>
           </article>
 
@@ -121,8 +123,8 @@
           <article class="tip-card">
             <h3>Bringdienste</h3>
             <ul>
-              <li>https://www.lieferando.de/lieferservice/essen/braunschweig-goslar-38644Lieferando – Auswahl 38644</a></li> <!-- [17](https://www.tripadvisor.de/Restaurant_Review-g1051808-d24123352-Reviews-1894_Bistro_Bar-Hahnenklee_Bockswiese_Goslar_Lower_Saxony.html) -->
-              <li>https://www.bringbutler.de/suchergebnis_poid_40242_plz_38644_city_Goslar%20Hahnenklee.phpBringbutler – Liste Hahnenklee</a></li> <!-- [18](https://www.tripadvisor.de/Restaurants-g1051808-Hahnenklee_Bockswiese_Goslar_Lower_Saxony.html) -->
+              <li><a href="https://www.lieferando.de/lieferservice/essen/braunschweig-goslar-38644" target="_blank" rel="noopener">Lieferando – Auswahl 38644</a> _Review-g1051808-d24123352-Reviews-1894_Bistro_Bar-Hahnenklee_Bockswiese_Goslar_Lower_Saxony.html)</li>
+              <li><a href="https://www.bringbutler.de/suchergebnis_poid_40242_plz_38644_city_Goslar%20Hahnenklee.php" target="_blank" rel="noopener">Bringbutler – Liste Hahnenklee</a> s-g1051808-Hahnenklee_Bockswiese_Goslar_Lower_Saxony.html)</li>
             </ul>
           </article>
         </div>
@@ -137,7 +139,9 @@
           Andre Neubauer · Am Hahnenkleer Berg 7 (Haus 111) · 38644 Goslar
         </p>
         <p class="wa">
-          WhatsApp&nbsp;https://wa.me/491784749439+49&nbsp;178&nbsp;4749439</a>
+          <a class="wa-link" href="https://wa.me/491784749439" target="_blank" rel="noopener">
+            WhatsApp&nbsp;+49&nbsp;178&nbsp;4749439
+          </a>
         </p>
       </div>
     </section>
@@ -146,9 +150,9 @@
   <footer class="site-footer reveal" aria-label="Fußbereich">
     <div class="container footer-inner">
       <nav aria-label="Rechtliches">
-        impressum.htmlImpressum</a>
+        <a href="impressum.html">Impressum</a>
         <span aria-hidden="true">·</span>
-        datenschutz.htmlDatenschutz</a>
+        <a href="datenschutz.html">Datenschutz</a>
       </nav>
       <p class="copyright">© <span id="year"></span> Tannenkuss111 – Alle Rechte vorbehalten.</p>
     </div>
