@@ -5,16 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tannenkuss111 – Ferienpark Hahnenklee</title>
   <meta name="description" content="Ferienwohnung Tannenkuss111 im Ferienpark Hahnenklee – Jetzt auf Airbnb ansehen, Anfahrt planen und Tipps entdecken." />
+  <!-- Favicons/Styles -->
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="alternate icon" href="assets/favicon.ico" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <link rel="preload" href="assets/tkus111.jpg" as="image" />
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- Einmal eintragen: Airbnb-URL + Adresse (oder lat,lng) -->
   <script>
     window.TK_CONFIG = {
       airbnbUrl: 'https://www.airbnb.de/rooms/DEINE-ZIMMER-ID',
       destinationAddress: 'Am Hahnenkleer Berg 7 (Haus 111), 38644 Goslar',
-      latlng: ''
+      latlng: '' // optional statt Adresse, z.B. "51.8579,10.3407"
     };
   </script>
 </head>
@@ -28,15 +31,15 @@
   </header>
 
   <main id="content">
-    <!-- HERO / LOGO + CTA -->
+    <!-- HERO -->
     <section class="hero reveal" aria-label="Tannenkuss111 Übersicht">
       <div class="container hero-inner">
         <img class="logo" src="assets/tkus111.jpg" alt="Logo Tannenkuss111 – Ferienpark Hahnenklee" decoding="async" />
         <p class="hero-sub">Ankommen, wohlfühlen, durchatmen.</p>
         <div class="cta-buttons" role="group" aria-label="Schnellzugriff">
-          <a id="airbnbLink" class="btn btn-primary" href="#" target="_blank" rel="noopener" aria-label="Tannenkuss111 auf Airbnb öffnen">Jetzt auf Airbnb ansehen</a>
-          <a id="appleLink" class="btn btn-outline" href="#" target="_blank" rel="noopener" aria-label="Anfahrt mit Apple Maps öffnen">Anfahrt&nbsp;(Apple)</a>
-          <a id="googleLink" class="btn btn-outline" href="#" target="_blank" rel="noopener" aria-label="Anfahrt mit Google Maps öffnen">Anfahrt&nbsp;(Google)</a>
+          <a id="airbnbLink" class="btn btn-primary" href="#" target="_blank" rel="noopener">Jetzt auf Airbnb ansehen</a>
+          <a id="appleLink" class="btn btn-outline" href="#" target="_blank" rel="noopener">Anfahrt (Apple)</a>
+          <a id="googleLink" class="btn btn-outline" href="#" target="_blank" rel="noopener">Anfahrt (Google)</a>
         </div>
       </div>
     </section>
@@ -45,45 +48,81 @@
     <section class="tips section-pad reveal" aria-labelledby="tips-heading">
       <div class="container">
         <h2 id="tips-heading" class="section-title">Tipps rund um Hahnenklee</h2>
+
         <div class="tip-groups">
+          <!-- Restaurants -->
           <article class="tip-card">
             <h3>🍽️ Restaurants</h3>
             <ul>
-              <li><a href="https://www.1894bistrobar.de/" target="_blank" rel="noopener">1894 Bistro & Bar</a></li>
-              <li><a href="http://ratsstuben-restaurant.de/" target="_blank" rel="noopener">Restaurant Ratsstuben</a></li>
-              <li><a href="https://restaurantzumkachelofen.de/" target="_blank" rel="noopener">Restaurant Zum Kachelofen</a></li>
-              <li><a href="https://www.tripadvisor.de/Restaurant_Review-g1051808-d26346999-Reviews-Restaurant_Korfu-Hahnenklee_Bockswiese_Goslar_Lower_Saxony.html" target="_blank" rel="noopener">Restaurant Korfu (griechisch)</a></li>
+              <li><a href="https://www.1894bistrobar.de/" target="_blank" rel="noopener">1894 Bistro & Bar</a></li> <!-- s-Restaurant_Korfu-Hahnenklee_Bockswiese_Goslar_Lower_Saxony.html) -->
             </ul>
           </article>
+
+          <!-- Wanderwege -->
           <article class="tip-card">
             <h3>🥾 Wanderwege</h3>
             <ul>
-              <li><a href="https://www.hahnenklee.de/natur/wandern-in-hahnenklee-im-harz/liebesbankweg" target="_blank" rel="noopener">Liebesbankweg (offiz. Info)</a></li>
-              <li><a href="https://touren.harzinfo.de/de/tour/themenweg/liebesbankweg/6727172/" target="_blank" rel="noopener">Liebesbankweg (Harzinfo Tour)</a></li>
+              <li><a href="https://www.hahnenklee.de/natur/wandern-in-hahnenklee-im-harz/liebesbankweg" target="_blank" rel="noopener">Liebesbankweg (offiziell)</a></li> <!-- rn-in-hahnenklee-im-harz/liebesbankweg) -->
+              <li><a href="https://touren.harzinfo.de/de/tour/themenweg/liebesbankweg/6727172/" target="_blank" rel="noopener">Liebesbankweg (Harzinfo Tour)</a></li> <!-- emenweg/liebesbankweg/6727172/) -->
             </ul>
           </article>
+
+          <!-- Bocksberg -->
           <article class="tip-card">
             <h3>⛰️ Bocksberg</h3>
             <ul>
-              <li><a href="https://www.erlebnisbocksberg.de/" target="_blank" rel="noopener">ErlebnisBocksBerg – Seilbahn & Attraktionen</a></li>
+              <li><a href="https://www.erlebnisbocksberg.de/" target="_blank" rel="noopener">ErlebnisBocksBerg – Seilbahn & Attraktionen</a></li> <!-- >
+              <li><a href="https://www.erlebnisbocksberg.de/sommersaison/sommerrodelbahn/" target="_blank" rel="noopener">Drachenblitz & BocksBergBob (Sommerrodelbahn)</a></li> <!-- [1](https://www.erlebnisbocksberg.de/sommersaison/sommerrodelbahn/) -->
             </ul>
           </article>
+
+          <!-- Bike -->
           <article class="tip-card">
             <h3>🚵 Bike & Downhill</h3>
             <ul>
-              <li><a href="https://bikepark-hahnenklee.de/" target="_blank" rel="noopener">Bikepark Hahnenklee (offiziell)</a></li>
-              <li><a href="https://www.erlebnisbocksberg.de/sommersaison/bikepark-bikeshop/" target="_blank" rel="noopener">Bikepark-Info & Verleih</a></li>
+              <li><a href="https://bikepark-hahnenklee.de/" target="_blank" rel="noopener">Bikepark Hahnenklee (offiziell)</a></li> <!-- ebnisbocksberg.de/sommersaison/bikepark-bikeshop/" target="_blank" rel="noopener">Bikepark-Info & Verleih</a></li> <!-- ersaison/bikepark-bikeshop/) -->
+            </ul>
+          </article>
+
+          <!-- Wintersport -->
+          <article class="tip-card">
+            <h3>❄️ Wintersport</h3>
+            <ul>
+              <li><a href="https://www.hahnenklee.de/natur/wintersport/abfahrt-rodeln" target="_blank" rel="noopener">Abfahrt & Rodeln</a></li> <!-- [2](https://www.hahnenklee.de/natur/wintersport/abfahrt-rodeln) -->
+            </ul>
+          </article>
+
+          <!-- Baden -->
+          <article class="tip-card">
+            <h3>🏊 Baden</h3>
+            <ul>
+              <li><a href="https://touren.harzinfo.de/de/poi/badestelle/kuttelbacher-teich-in-hahnenklee/11735536/" target="_blank" rel="noopener">Kuttelbacher Teich (Badestelle, Bootsverleih)</a></li> <!-- [3](https://touren.harzinfo.de/de/poi/badestelle/kuttelbacher-teich-in-hahnenklee/11735536/) -->
+              <li><a href="https://www.ausflugsziele-harz.de/ausflugsziele-sehenswertes/seen-talsperren/kuttelbacher-teich-hahnenklee.htm" target="_blank" rel="noopener">Info & Öffnungszeiten (Saison)</a></li> <!-- [4](https://www.ausflugsziele-harz.de/ausflugsziele-sehenswertes/seen-talsperren/kuttelbacher-teich-hahnenklee.htm) -->
+            </ul>
+          </article>
+
+          <!-- Bäckereien -->
+          <article class="tip-card">
+            <h3>🥐 Bäckereien</h3>
+            <ul>
+              <li><a href="https://onlinestreet.de/poi/eWlQdzMyc3l1bFNUZ2FVNFBYN0ROdz09" target="_blank" rel="noopener">Bäckerei Moock (Hindenburgplatz 1)</a></li> <!-- [5](https://onlinestreet.de/poi/eWlQdzMyc3l1bFNUZ2FVNFBYN0ROdz09) -->
+              <li><a href="https://de.restaurantguru.com/Coffee-Corner-Hahnenklee-Goslar" target="_blank" rel="noopener">Coffee Corner (Kaffee & Kuchen)</a></li> <!-- [7](https://de.restaurantguru.com/Coffee-Corner-Hahnenklee-Goslar) -->
             </ul>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Adresse -->
+    <!-- Adresse (klein) -->
     <section class="address section-pad reveal" aria-label="Adresse Tannenkuss111">
-      <div class="container">
-        <h2 class="section-title" style="margin-bottom:.25rem">Tannenkuss111 – Ferienpark Hahnenklee</h2>
-        <p class="address-lines">Andre Neubauer<br/>Am Hahnenkleer Berg 7 (Haus 111)<br/>38644 Goslar</p>
+      <div class="container address-inner">
+        <p class="address-title">Tannenkuss111 – Ferienpark Hahnenklee</p>
+        <p class="address-lines">
+          Andre Neubauer · Am Hahnenkleer Berg 7 (Haus 111) · 38644 Goslar
+        </p>
+        <p class="wa">
+          WhatsApp&nbsp;<a class="wa-link" href="https://wa.me/491784749439" target="_blank" rel="noopener">+49&nbsp;178&nbsp;4749439</a>
+        </p>
       </div>
     </section>
   </main>
@@ -100,11 +139,15 @@
   </footer>
 
   <script>
+    // Jahr im Footer
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Airbnb + Maps Links aus TK_CONFIG
     (function(){
       const cfg = window.TK_CONFIG || {};
       const airbnb = document.getElementById('airbnbLink');
       if (cfg.airbnbUrl && cfg.airbnbUrl.startsWith('http')) airbnb.href = cfg.airbnbUrl;
+
       function buildLinks(addr, latlng){
         let appleHref, googleHref;
         if (latlng && /-?\d+\.?\d*,\s*-?\d+\.?\d*/.test(latlng)){
@@ -126,6 +169,7 @@
       buildLinks(cfg.destinationAddress, cfg.latlng);
     })();
 
+    // Sanfte Reveal-Animationen
     (function(){
       const els = document.querySelectorAll('.reveal');
       if (!('IntersectionObserver' in window)) { els.forEach(el => el.classList.add('revealed')); return; }
