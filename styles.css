@@ -1,16 +1,24 @@
 /* =============================
-   Tannenkuss111 – 2026 Stil
-   Gold & Grün, samtig-beige Basis, sanfte Übergänge
-   Mobil-optimiert (iPhone), zugänglich & modern
+   Tannenkuss111 – Farbig & modern (2026)
+   Gold & Grün als Basis + frische Akzentfarben
+   Mobil-optimiert, zugänglich, performant
 ============================== */
 :root{
+  /* Basis */
   --bg-0:#f6f2ea; --bg-1:#faf6ee;
   --ink:#27261f; --muted:#5a584d;
+
+  /* Brand */
   --gold:#c9a54e; --gold-700:#b0892b;
   --green:#2e7d5f; --green-700:#23644c;
-  --ring: color-mix(in oklch, #2e7d5f 62%, white);
+
+  /* Akzente (neu, farbenfroher) */
+  --rose:#e54b7a; --amber:#f59e0b; --lime:#6cc24a; --cyan:#23b5d3;
+  --blue:#3d68ff; --purple:#8b5cf6; --orange:#ff7a45; --brown:#8d6e63;
+
+  --ring: color-mix(in oklch, var(--green) 62%, white);
   --shadow-sm:0 4px 14px rgba(0,0,0,.08);
-  --shadow-md:0 12px 34px rgba(0,0,0,.10);
+  --shadow-md:0 12px 34px rgba(0,0,0,.12);
   --radius-lg:22px;
 }
 
@@ -21,17 +29,19 @@ body{
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
   line-height:1.6;
   background:
-    radial-gradient(1000px 600px at 10% -10%, var(--bg-1), transparent),
-    radial-gradient(900px 600px at 110% 10%, #f2eee5, transparent),
+    radial-gradient(1200px 700px at 12% -10%, #fff6, transparent 55%),
+    radial-gradient(900px 580px at 110% 12%, #ffe9 0, transparent 60%),
     var(--bg-0);
 }
+
+/* Container */
 .container{width:min(1100px,92%); margin-inline:auto}
 
 /* Skip-Link */
 .skip-link{position:absolute; inset:auto auto auto -9999px; background:#fff; padding:.6rem 1rem; border-radius:.75rem; box-shadow:var(--shadow-sm)}
 .skip-link:focus{left:14px; top:14px; outline:3px solid var(--ring); z-index:1000}
 
-/* Top bar */
+/* Topbar / zarte Zierpunkte */
 .topbar{position:sticky; top:0; z-index:50; backdrop-filter:saturate(1.2) blur(6px)}
 .brand-dots{height:6px; width:100%;
   background:
@@ -47,6 +57,14 @@ body{
 .hero .logo{display:block; width:min(560px,86vw); max-height:260px; object-fit:contain; filter: drop-shadow(0 16px 40px rgba(0,0,0,.12))}
 .hero-sub{margin:6px 0 10px; font-size:clamp(1.05rem,2.2vw,1.5rem); color:var(--muted); letter-spacing:.2px}
 
+/* bunter Akzent unter dem Hero */
+.accent-swoosh{
+  height:10px;
+  background: linear-gradient(90deg, var(--rose), var(--gold), var(--lime), var(--cyan), var(--blue), var(--purple));
+  filter: saturate(1.1);
+  opacity:.85;
+}
+
 /* CTA Buttons (≈50% kompakter) */
 .cta-buttons{display:flex; flex-wrap:wrap; gap:10px; justify-content:center}
 .btn{
@@ -61,27 +79,53 @@ body{
 .btn:hover{transform:translateY(-1px); box-shadow:var(--shadow-md)}
 .btn:active{transform:translateY(0)}
 .btn:focus-visible{outline:3px solid var(--ring)}
-.btn-primary{--bg:linear-gradient(135deg, var(--gold), color-mix(in oklch, var(--gold) 84%, black)); --fg:#1d1a12; --bd:var(--gold-700)}
-.btn-primary:hover{--bg:linear-gradient(135deg, color-mix(in oklch, var(--gold) 88%, black), var(--gold-700))}
-.btn-outline{--bg:#fff; --fg:var(--green); --bd:var(--green)}
-.btn-outline:hover{--bg:color-mix(in oklch, var(--green) 8%, white)}
+.btn-primary{--bg: linear-gradient(135deg, var(--gold), color-mix(in oklch, var(--gold) 84%, black)); --fg:#1d1a12; --bd: var(--gold-700)}
+.btn-primary:hover{--bg: linear-gradient(135deg, color-mix(in oklch, var(--gold) 88%, black), var(--gold-700))}
+.btn-outline{--bg:#fff; --fg: var(--green); --bd: var(--green)}
+.btn-outline:hover{--bg: color-mix(in oklch, var(--green) 8%, white)}
 
-/* Sektionen */
+/* Sektionen & Titelchip */
 .section-pad{padding: clamp(18px, 5vw, 42px) 0 56px}
-.section-title{font-size:clamp(1.3rem, 2.6vw, 2rem); margin:0 0 1rem; color:var(--muted)}
+.section-title{margin:0 0 1rem}
+.title-chip{
+  display:inline-block; padding:.4rem .8rem; border-radius:999px;
+  background: linear-gradient(90deg, color-mix(in oklch, var(--gold) 88%, white), var(--gold-700));
+  color:#1d1a12; font-weight:800; letter-spacing:.2px;
+  box-shadow: var(--shadow-sm);
+}
 
-/* Grid */
-.tip-groups{display:grid; gap:16px; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr))}
-.tip-card{position:relative; background:#fff; border:1px solid #eee6d7; border-radius:var(--radius-lg); padding:18px 20px; box-shadow:var(--shadow-sm)}
+/* Karten-Grid */
+.tip-groups{display:grid; gap:18px; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr))}
+.tip-card{
+  position:relative; background:#fff; border:1px solid #eee6d7; border-radius: var(--radius-lg);
+  padding: 18px 20px; box-shadow: var(--shadow-sm);
+  overflow:hidden;
+}
+/* zarte Deko oben */
+.tip-card::before{
+  content:""; position:absolute; inset:0 0 auto 0; height:6px;
+  background: linear-gradient(90deg, #0000, color-mix(in oklch, var(--gold) 70%, white), #0000);
+}
 .tip-card::after{content:""; position:absolute; inset:0; border-radius:inherit; box-shadow: inset 0 0 0 1px rgba(255,255,255,.6); pointer-events:none}
 .tip-card h3{margin:4px 0 12px; font-size:1.08rem}
 .tip-card ul{list-style:none; padding:0; margin:0; display:grid; gap:.45rem}
-.tip-card a{color:var(--green); text-decoration:underline; text-underline-offset:3px}
-.tip-card a:hover{color:var(--green-700)}
+.tip-card a{color: var(--green); text-decoration: underline; text-underline-offset: 3px}
+.tip-card a:hover{color: var(--green-700)}
+
+/* farbige Chips */
+.chip{display:inline-block; padding:.25rem .55rem; border-radius:999px; color:#fff; font-weight:700; letter-spacing:.2px}
+.chip-rose{background: linear-gradient(135deg, var(--rose), #ff9db9)}
+.chip-amber{background: linear-gradient(135deg, var(--amber), #ffd38a)}
+.chip-lime{background: linear-gradient(135deg, var(--lime), #b9e88f); color:#123}
+.chip-cyan{background: linear-gradient(135deg, var(--cyan), #9be7f1); color:#033}
+.chip-blue{background: linear-gradient(135deg, var(--blue), #9bb2ff)}
+.chip-purple{background: linear-gradient(135deg, var(--purple), #c9b7ff)}
+.chip-orange{background: linear-gradient(135deg, var(--orange), #ffc3aa); color:#301}
+.chip-brown{background: linear-gradient(135deg, var(--brown), #c9a38f)}
 
 /* Adresse (klein & edel) */
 .address-inner{display:flex; flex-direction:column; align-items:center; text-align:center; gap:4px}
-.address-title{font-size:.95rem; font-weight:700; letter-spacing:.3px; color:var(--muted)}
+.address-title{font-size:.95rem; font-weight:800; letter-spacing:.3px; color:var(--muted)}
 .address-lines{font-size:.9rem; color:var(--muted)}
 .wa{font-size:.9rem}
 .wa-link{color:var(--green); font-weight:700; text-decoration:none; border-bottom:1px solid color-mix(in oklch, var(--green) 40%, transparent)}
@@ -90,7 +134,7 @@ body{
 /* Footer */
 .site-footer{border-top:1px solid #e9e3d6; background:#fff}
 .footer-inner{display:flex; flex-direction:column; gap:8px; align-items:center; padding:22px 0}
-.site-footer a{color:var(--gold); font-weight:600; text-decoration:none}
+.site-footer a{color: var(--gold); font-weight:600; text-decoration:none}
 .site-footer a:hover{text-decoration:underline}
 .site-footer nav{display:flex; gap:.6rem; align-items:center}
 
