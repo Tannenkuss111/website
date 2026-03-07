@@ -11,6 +11,7 @@
   <link rel="alternate icon" href="assets/favicon.ico" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
 
+  <!-- Preload Logo & Styles -->
   <link rel="preload" href="assets/tkus111.jpg" as="image" />
   <link rel="stylesheet" href="styles.css" />
 
@@ -19,7 +20,7 @@
     window.TK_CONFIG = {
       airbnbUrl: 'https://www.airbnb.de/rooms/DEINE-ZIMMER-ID',
       destinationAddress: 'Am Hahnenkleer Berg 7 (Haus 111), 38644 Goslar',
-      latlng: '' // optional statt Adresse, z.B. "51.8579,10.3407"
+      latlng: '' // alternativ: "51.8579,10.3407"
     };
   </script>
 </head>
@@ -38,10 +39,11 @@
         <img class="logo" src="assets/tkus111.jpg" alt="Logo Tannenkuss111 – Ferienpark Hahnenklee" decoding="async" />
         <p class="hero-sub">Ankommen, wohlfühlen, durchatmen.</p>
 
+        <!-- NEUE REIHENFOLGE: Google → Airbnb → Apple -->
         <div class="cta-buttons" role="group" aria-label="Schnellzugriff">
-          <a id="airbnbLink" class="btn btn-primary" href="#" target="_blank" rel="noopener">Jetzt auf Airbnb ansehen</a>
-          <a id="appleLink"  class="btn btn-outline" href="#" target="_blank" rel="noopener">Anfahrt&nbsp;(Apple)</a>
-          <a id="googleLink" class="btn btn-outline" href="#" target="_blank" rel="noopener">Anfahrt&nbsp;(Google)</a>
+          <a id="googleLink" class="btn btn-outline" href="#" target="_blank" rel="noopener" aria-label="Anfahrt mit Google Maps öffnen">Anfahrt (Google)</a>
+          <a id="airbnbLink" class="btn btn-primary" href="#" target="_blank" rel="noopener" aria-label="Tannenkuss111 auf Airbnb öffnen">Jetzt auf Airbnb ansehen</a>
+          <a id="appleLink" class="btn btn-outline" href="#" target="_blank" rel="noopener" aria-label="Anfahrt mit Apple Routenplaner öffnen">Anfahrt (Apple)</a>
         </div>
       </div>
     </section>
@@ -49,7 +51,7 @@
     <!-- TIPPS -->
     <section class="tips section-pad reveal" aria-labelledby="tips-heading">
       <div class="container">
-        <h2 id="tips-heading" class="section-title">Tipps &amp; To‑Dos</h2>
+        <h2 id="tips-heading" class="section-title section-title-center">Tipps &amp; To‑Dos</h2>
 
         <div class="tip-groups">
           <!-- Restaurants -->
@@ -64,13 +66,13 @@
             </ul>
           </article>
 
-          <!-- Wanderwege -->
+          <!-- Wanderwege (inkl. Liebesbankweg) -->
           <article class="tip-card">
             <h3>Wanderwege</h3>
             <ul class="linklist">
               <li><a href="https://www.hahnenklee.de/natur/wandern-in-hahnenklee-im-harz/liebesbankweg" target="_blank" rel="noopener">Liebesbankweg (offiziell)</a></li>
               <li><a href="https://touren.harzinfo.de/de/tour/wanderung/auerhahn-rundwanderweg-auerhahn-um-hahnenklee/13100515/" target="_blank" rel="noopener">Auerhahn‑Rundwanderweg (offizielle Tour)</a></li>
-              <li><a href="https://harzlife.de/wandern/wasserwanderweg-auerhahn-teichkaskade.html" target="_blank" rel="noopener">Auerhahn‑Kaskade – Hintergrund &amp; Infos</a></li>
+              <li><a href="https://harzlife.de/wandern/wasserwanderweg-auerhahn-teichkaskade.html" target="_blank" rel="noopener">Auerhahn‑Kaskade – Hintergrund & Infos</a></li>
             </ul>
           </article>
 
@@ -78,8 +80,8 @@
           <article class="tip-card">
             <h3>Bocksberg</h3>
             <ul class="linklist">
-              <li><a href="https://www.erlebnisbocksberg.de/" target="_blank" rel="noopener">ErlebnisBocksBerg – Seilbahn &amp; Attraktionen</a></li>
-              <li><a href="https://www.erlebnisbocksberg.de/sommersaison/sommerrodelbahn/" target="_blank" rel="noopener">Drachenblitz &amp; BocksBergBob</a></li>
+              <li><a href="https://www.erlebnisbocksberg.de/" target="_blank" rel="noopener">ErlebnisBocksBerg – Seilbahn & Attraktionen</a></li>
+              <li><a href="https://www.erlebnisbocksberg.de/sommersaison/sommerrodelbahn/" target="_blank" rel="noopener">Drachenblitz & BocksBergBob</a></li>
             </ul>
           </article>
 
@@ -88,7 +90,7 @@
             <h3>Bike &amp; Downhill</h3>
             <ul class="linklist">
               <li><a href="https://bikepark-hahnenklee.de/" target="_blank" rel="noopener">Bikepark Hahnenklee (offiziell)</a></li>
-              <li><a href="https://www.erlebnisbocksberg.de/sommersaison/bikepark-bikeshop/" target="_blank" rel="noopener">Bikepark‑Info &amp; Verleih</a></li>
+              <li><a href="https://www.erlebnisbocksberg.de/sommersaison/bikepark-bikeshop/" target="_blank" rel="noopener">Bikepark‑Info & Verleih</a></li>
             </ul>
           </article>
 
@@ -96,7 +98,7 @@
           <article class="tip-card">
             <h3>Wintersport</h3>
             <ul class="linklist">
-              <li><a href="https://www.hahnenklee.de/natur/wintersport/abfahrt-rodeln" target="_blank" rel="noopener">Abfahrt &amp; Rodeln</a></li>
+              <li><a href="https://www.hahnenklee.de/natur/wintersport/abfahrt-rodeln" target="_blank" rel="noopener">Abfahrt & Rodeln</a></li>
             </ul>
           </article>
 
@@ -104,8 +106,8 @@
           <article class="tip-card">
             <h3>Baden</h3>
             <ul class="linklist">
-              <li><a href="https://touren.harzinfo.de/de/poi/badestelle/kuttelbacher-teich-in-hahnenklee/11735536/" target="_blank" rel="noopener">Kuttelbacher Teich – Badestelle &amp; Boote</a></li>
-              <li><a href="https://www.ausflugsziele-harz.de/ausflugsziele-sehenswertes/seen-talsperren/kuttelbacher-teich-hahnenklee.htm" target="_blank" rel="noopener">Infos &amp; Saison</a></li>
+              <li><a href="https://touren.harzinfo.de/de/poi/badestelle/kuttelbacher-teich-in-hahnenklee/11735536/" target="_blank" rel="noopener">Kuttelbacher Teich – Badestelle & Boote</a></li>
+              <li><a href="https://www.ausflugsziele-harz.de/ausflugsziele-sehenswertes/seen-talsperren/kuttelbacher-teich-hahnenklee.htm" target="_blank" rel="noopener">Infos & Saison</a></li>
             </ul>
           </article>
 
@@ -113,8 +115,8 @@
           <article class="tip-card">
             <h3>Bäckereien</h3>
             <ul class="linklist">
-              <li><a href="https://onlinestreet.de/poi/eWlQdzMyc3l1bFNUZ2FVNFBYN0ROdz09" target="_blank" rel="noopener">Bäckerei Moock (Hindenburgplatz&nbsp;1)</a></li>
-              <li><a href="https://de.restaurantguru.com/Coffee-Corner-Hahnenklee-Goslar" target="_blank" rel="noopener">Coffee Corner (Kaffee &amp; Kuchen)</a></li>
+              <li><a href="https://onlinestreet.de/poi/eWlQdzMyc3l1bFNUZ2FVNFBYN0ROdz09" target="_blank" rel="noopener">Bäckerei Moock (Hindenburgplatz 1)</a></li>
+              <li><a href="https://de.restaurantguru.com/Coffee-Corner-Hahnenklee-Goslar" target="_blank" rel="noopener">Coffee Corner (Kaffee & Kuchen)</a></li>
             </ul>
           </article>
 
@@ -127,16 +129,16 @@
             </ul>
           </article>
 
-          <!-- NEU: Wichtige Telefonnummern -->
+          <!-- Wichtige Telefonnummern -->
           <article class="tip-card">
             <h3>Wichtige Telefonnummern</h3>
             <ul class="linklist">
-              <li><strong>Notruf (Feuerwehr &amp; Rettungsdienst):</strong> <a href="tel:112">112</a></li>
+              <li><strong>Notruf (Feuerwehr & Rettung):</strong> <a href="tel:112">112</a></li>
               <li><strong>Polizei:</strong> <a href="tel:110">110</a></li>
-              <li><strong>Ärztlicher Bereitschaftsdienst:</strong> <a href="tel:116117">116&nbsp;117</a></li>
-              <li><strong>Karten sperren (EC/Kreditkarte):</strong> <a href="tel:116116">116&nbsp;116</a></li>
-              <li><strong>Taxi (Hahnenklee/Goslar – Übersicht):</strong> 
-                <a href="https://www.google.com/maps/search/Taxi+Hahnenklee" target="_blank" rel="noopener">Hahnenklee</a> · 
+              <li><strong>Ärztlicher Bereitschaftsdienst:</strong> <a href="tel:116117">116 117</a></li>
+              <li><strong>Karten sperren (EC/Kreditkarte):</strong> <a href="tel:116116">116 116</a></li>
+              <li><strong>Taxi (Übersicht Hahnenklee/Goslar):</strong> 
+                <a href="https://www.google.com/maps/search/Taxi+Hahnenklee" target="_blank" rel="noopener">Hahnenklee</a> ·
                 <a href="https://www.google.com/maps/search/Taxi+Goslar" target="_blank" rel="noopener">Goslar</a>
               </li>
             </ul>
@@ -145,16 +147,12 @@
       </div>
     </section>
 
-    <!-- Adresse (klein) -->
+    <!-- Adresse -->
     <section class="address section-pad reveal" aria-label="Adresse Tannenkuss111">
       <div class="container address-inner">
         <p class="address-title">Tannenkuss111 – Ferienpark Hahnenklee</p>
-        <p class="address-lines">
-          Andre Neubauer · Am Hahnenkleer Berg 7 (Haus 111) · 38644 Goslar
-        </p>
-        <p class="wa">
-          <a class="wa-link" href="https://wa.me/491784749439" target="_blank" rel="noopener">WhatsApp&nbsp;+49&nbsp;178&nbsp;4749439</a>
-        </p>
+        <p class="address-lines">Andre Neubauer · Am Hahnenkleer Berg 7 (Haus 111) · 38644 Goslar</p>
+        <p class="wa"><a class="wa-link" href="https://wa.me/491784749439" target="_blank" rel="noopener">WhatsApp +49 178 4749439</a></p>
       </div>
     </section>
   </main>
@@ -174,36 +172,37 @@
     // Jahr im Footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Airbnb + Maps Links aus TK_CONFIG
+    // Links aus TK_CONFIG setzen (Directions-Links für Apple & Google)
     (function(){
       const cfg = window.TK_CONFIG || {};
+      // Airbnb
       const airbnb = document.getElementById('airbnbLink');
-      if (airbnb && cfg.airbnbUrl && cfg.airbnbUrl.startsWith('http')) airbnb.href = cfg.airbnbUrl;
-
-      function buildLinks(addr, latlng){
-        let appleHref, googleHref;
-        if (latlng && /-?\d+\.?\d*,\s*-?\d+\.?\d*/.test(latlng)){
-          const trimmed = latlng.replace(/\s+/g,'');
-          appleHref = `https://maps.apple.com/?q=${encodeURIComponent(trimmed)}`;
-          googleHref = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(trimmed)}`;
-        } else if (addr && addr.replace(/<|>|\u00ab|\u00bb/g,'').trim().length > 3) {
-          const enc = encodeURIComponent(addr.trim());
-          appleHref = `https://maps.apple.com/?address=${enc}`;
-          googleHref = `https://www.google.com/maps/dir/?api=1&destination=${enc}`;
-        } else {
-          const q = encodeURIComponent('Tannenkuss111 Ferienpark Hahnenklee');
-          appleHref = `https://maps.apple.com/?q=${q}`;
-          googleHref = `https://www.google.com/maps/search/?api=1&query=${q}`;
-        }
-        const al = document.getElementById('appleLink');
-        const gl = document.getElementById('googleLink');
-        if (al) al.href = appleHref;
-        if (gl) gl.href = googleHref;
+      if (airbnb && cfg.airbnbUrl && cfg.airbnbUrl.startsWith('http')) {
+        airbnb.href = cfg.airbnbUrl;
       }
-      buildLinks(cfg.destinationAddress, cfg.latlng);
+      // Ziel (Adresse oder Koordinaten) aufbereiten
+      const hasLatLng = cfg.latlng && /-?\d+\.?\d*,\s*-?\d+\.?\d*/.test(cfg.latlng);
+      const dest = hasLatLng ? cfg.latlng.replace(/\s+/g,'') : (cfg.destinationAddress || '').trim();
+
+      // Apple: DIREKT in den Routenplaner
+      //  - mit Koordinaten: https://maps.apple.com/?daddr=lat,lng
+      //  - mit Adresse:    https://maps.apple.com/?daddr=ENCODED_ADDRESS
+      const apple = document.getElementById('appleLink');
+      if (apple) {
+        const d = encodeURIComponent(dest || 'Tannenkuss111 Ferienpark Hahnenklee');
+        apple.href = `https://maps.apple.com/?daddr=${d}`;
+      }
+
+      // Google: DIRECTIONS API1 (ohne Key)
+      //  - https://www.google.com/maps/dir/?api=1&destination=...
+      const g = document.getElementById('googleLink');
+      if (g) {
+        const d = encodeURIComponent(dest || 'Tannenkuss111 Ferienpark Hahnenklee');
+        g.href = `https://www.google.com/maps/dir/?api=1&destination=${d}`;
+      }
     })();
 
-    // Sanfte Reveal-Animationen
+    // Reveal-Animation
     (function(){
       const els = document.querySelectorAll('.reveal');
       if (!('IntersectionObserver' in window)) { els.forEach(el => el.classList.add('revealed')); return; }
