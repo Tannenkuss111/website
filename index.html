@@ -4,102 +4,86 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tannenkuss111 – Ferienpark Hahnenklee</title>
-  <meta name="description" content="Ferienwohnung Tannenkuss111 im Ferienpark Hahnenklee – Jetzt ansehen, Anfahrt planen und Tipps entdecken." />
-  <link rel="icon" href="assets/favicon.ico" />
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <meta name="description" content="Ferienwohnung Tannenkuss111 im Ferienpark Hahnenklee – Jetzt auf Airbnb ansehen, Anfahrt planen und Tipps entdecken." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="alternate icon" href="assets/favicon.ico" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="preload" href="assets/tkus111.jpg" as="image" />
   <link rel="stylesheet" href="styles.css" />
   <!--
-    🔧 Hinweise zum Anpassen:
-    1) Logo-Datei: Ersetze Pfad/Name, falls dein Logo anders heißt (assets/tkus111.jpg).
-    2) Airbnb-Link: Trage deine echte Zimmer-URL ein (z. B. https://www.airbnb.de/rooms/12345678).
-    3) Anfahrt-Links: Optional kannst du statt des Such-Texts auch konkrete Adresse/Koordinaten nutzen.
-       - Apple Maps: https://maps.apple.com/?q=Breite,Länge  ODER  https://maps.apple.com/?address=... 
-       - Google Maps: https://www.google.com/maps/dir/?api=1&destination=Breite,Länge
-    4) Tipps: Ersetze die Platzhalter-Links (LINK-...) durch echte URLs.
+    🔧 KONFIG: Bitte nur diese drei Zeilen anpassen
+    1) Airbnb-URL
+    2) Zieladresse (genau wie im Impressum eintragen)
+    3) Optional: Koordinaten statt Adresse (siehe Kommentar unten)
   -->
+  <script>
+    window.TK_CONFIG = {
+      airbnbUrl: 'https://www.airbnb.de/rooms/DEINE-ZIMMER-ID',
+      // ► Adresse aus dem Impressum hier eintragen (z. B. "Parkstraße 1, 38644 Hahnenklee")
+      destinationAddress: '<<HIER-EXAKTE-ADRESSE-AUS-IMPRESSUM>>',
+      // Optional: Wenn du lieber Koordinaten nutzen willst, trage sie hier ein ("lat,lng"), z.B. "51.8579,10.3407".
+      latlng: ''
+    };
+  </script>
 </head>
 <body>
-  <header class="site-header" aria-label="Kopfbereich">
+  <a class="skip-link" href="#content">Zum Inhalt springen</a>
+
+  <header class="topbar" aria-label="Kopfbereich">
     <div class="container">
-      <a class="skip-link" href="#content">Zum Inhalt springen</a>
+      <div class="brand-dots" aria-hidden="true"></div>
     </div>
   </header>
 
   <main id="content">
     <!-- HERO / LOGO + CTA -->
-    <section class="hero" aria-label="Tannenkuss111 Übersicht">
-      <div class="container">
-        <img class="logo" src="assets/logo.png" alt="Logo Tannenkuss111 – Ferienpark Hahnenklee" />
-
+    <section class="hero reveal" aria-label="Tannenkuss111 Übersicht">
+      <div class="container hero-inner">
+        <img class="logo" src="assets/tkus111.jpg" alt="Logo Tannenkuss111 – Ferienpark Hahnenklee" decoding="async" />
         <div class="cta-buttons" role="group" aria-label="Schnellzugriff">
-          <a class="btn btn-primary" href="https://www.airbnb.de/rooms/DEINE-ID" target="_blank" rel="noopener" aria-label="Tannenkuss111 auf Airbnb öffnen">Jetzt auf Airbnb ansehen</a>
-          <a class="btn btn-outline" href="https://maps.apple.com/?q=Tannenkuss111%20Ferienpark%20Hahnenklee" target="_blank" rel="noopener" aria-label="Anfahrt mit Apple Maps öffnen">Anfahrt&nbsp;(Apple)</a>
-          <a class="btn btn-outline" href="https://www.google.com/maps/search/?api=1&query=Tannenkuss111%20Ferienpark%20Hahnenklee" target="_blank" rel="noopener" aria-label="Anfahrt mit Google Maps öffnen">Anfahrt&nbsp;(Google)</a>
+          <a id="airbnbLink" class="btn btn-primary" href="#" target="_blank" rel="noopener" aria-label="Tannenkuss111 auf Airbnb öffnen">Jetzt auf Airbnb ansehen</a>
+          <a id="appleLink" class="btn btn-outline" href="#" target="_blank" rel="noopener" aria-label="Anfahrt mit Apple Maps öffnen">Anfahrt&nbsp;(Apple)</a>
+          <a id="googleLink" class="btn btn-outline" href="#" target="_blank" rel="noopener" aria-label="Anfahrt mit Google Maps öffnen">Anfahrt&nbsp;(Google)</a>
         </div>
       </div>
     </section>
 
     <!-- TIPPS -->
-    <section class="tips" aria-labelledby="tips-heading">
+    <section class="tips section-pad reveal" aria-labelledby="tips-heading">
       <div class="container">
-        <h2 id="tips-heading">Tipps rund um Hahnenklee</h2>
+        <h2 id="tips-heading" class="section-title">Tipps rund um Hahnenklee</h2>
 
         <div class="tip-groups">
           <article class="tip-card">
-            <h3>🥐 Bäckereien</h3>
-            <ul>
-              <li><a href="LINK-ZUR-BÄCKEREI-1" target="_blank" rel="noopener">Bäckerei&nbsp;1</a></li>
-              <li><a href="LINK-ZUR-BÄCKEREI-2" target="_blank" rel="noopener">Bäckerei&nbsp;2</a></li>
-              <li><a href="LINK-ZUR-BÄCKEREI-3" target="_blank" rel="noopener">Bäckerei&nbsp;3</a></li>
-            </ul>
-          </article>
-
-          <article class="tip-card">
             <h3>🍽️ Restaurants</h3>
             <ul>
-              <li><a href="LINK-ZU-RESTAURANT-1894" target="_blank" rel="noopener">Restaurant&nbsp;1894</a></li>
-              <li><a href="LINK-ZU-RESTAURANT-2" target="_blank" rel="noopener">Restaurant&nbsp;2</a></li>
-              <li><a href="LINK-ZU-RESTAURANT-3" target="_blank" rel="noopener">Restaurant&nbsp;3</a></li>
-              <li><a href="LINK-ZU-RESTAURANT-4" target="_blank" rel="noopener">Restaurant&nbsp;4</a></li>
+              <li><a href="https://www.1894bistrobar.de/" target="_blank" rel="noopener">1894 Bistro & Bar</a></li>
+              <li><a href="http://ratsstuben-restaurant.de/" target="_blank" rel="noopener">Restaurant Ratsstuben</a></li>
+              <li><a href="https://restaurantzumkachelofen.de/" target="_blank" rel="noopener">Restaurant Zum Kachelofen</a></li>
+              <li><a href="https://www.tripadvisor.de/Restaurant_Review-g1051808-d26346999-Reviews-Restaurant_Korfu-Hahnenklee_Bockswiese_Goslar_Lower_Saxony.html" target="_blank" rel="noopener">Restaurant Korfu (griechisch)</a></li>
             </ul>
           </article>
 
           <article class="tip-card">
             <h3>🥾 Wanderwege</h3>
             <ul>
-              <li><a href="LINK-ZU-WANDERWEG-1" target="_blank" rel="noopener">Wanderweg&nbsp;1</a></li>
-              <li><a href="LINK-ZU-WANDERWEG-2" target="_blank" rel="noopener">Wanderweg&nbsp;2</a></li>
-              <li><a href="LINK-ZU-WANDERWEG-3" target="_blank" rel="noopener">Wanderweg&nbsp;3</a></li>
-            </ul>
-          </article>
-
-          <article class="tip-card">
-            <h3>🏊 Baden</h3>
-            <ul>
-              <li><a href="LINK-ZU-BADEN-1" target="_blank" rel="noopener">Badestelle&nbsp;1</a></li>
-              <li><a href="LINK-ZU-BADEN-2" target="_blank" rel="noopener">Badestelle&nbsp;2</a></li>
-            </ul>
-          </article>
-
-          <article class="tip-card">
-            <h3>🛷 Rodelbahn</h3>
-            <ul>
-              <li><a href="LINK-ZU-RODELN" target="_blank" rel="noopener">Rodelbahn</a></li>
-            </ul>
-          </article>
-
-          <article class="tip-card">
-            <h3>🚵 Mountainbike</h3>
-            <ul>
-              <li><a href="LINK-ZU-MTB-PARK" target="_blank" rel="noopener">MTB‑Park / Verleih</a></li>
+              <li><a href="https://www.hahnenklee.de/natur/wandern-in-hahnenklee-im-harz/liebesbankweg" target="_blank" rel="noopener">Liebesbankweg (offiz. Info)</a></li>
+              <li><a href="https://touren.harzinfo.de/de/tour/themenweg/liebesbankweg/6727172/" target="_blank" rel="noopener">Liebesbankweg (Harzinfo Tour)</a></li>
             </ul>
           </article>
 
           <article class="tip-card">
             <h3>⛰️ Bocksberg</h3>
             <ul>
-              <li><a href="LINK-ZU-BOCKSBERG-SEILBAHN" target="_blank" rel="noopener">Seilbahn & ErlebnisBocksBerg</a></li>
+              <li><a href="https://www.erlebnisbocksberg.de/" target="_blank" rel="noopener">ErlebnisBocksBerg – Seilbahn & Attraktionen</a></li>
+            </ul>
+          </article>
+
+          <article class="tip-card">
+            <h3>🚵 Bike & Downhill</h3>
+            <ul>
+              <li><a href="https://bikepark-hahnenklee.de/" target="_blank" rel="noopener">Bikepark Hahnenklee (offiziell)</a></li>
+              <li><a href="https://www.erlebnisbocksberg.de/sommersaison/bikepark-bikeshop/" target="_blank" rel="noopener">Bikepark-Info & Verleih</a></li>
             </ul>
           </article>
         </div>
@@ -107,7 +91,7 @@
     </section>
   </main>
 
-  <footer class="site-footer" aria-label="Fußbereich">
+  <footer class="site-footer reveal" aria-label="Fußbereich">
     <div class="container footer-inner">
       <nav aria-label="Rechtliches">
         <a href="impressum.html">Impressum</a>
@@ -119,11 +103,50 @@
   </footer>
 
   <script>
-    // Aktuelles Jahr im Footer
+    // Jahr im Footer
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Airbnb + Maps Links aus der TK_CONFIG setzen (einmal eintragen, überall korrekt)
+    (function(){
+      const cfg = window.TK_CONFIG || {};
+      const airbnb = document.getElementById('airbnbLink');
+      if (cfg.airbnbUrl && cfg.airbnbUrl.startsWith('http')) airbnb.href = cfg.airbnbUrl;
+
+      // Adresse priorisieren, sonst Koordinaten
+      function buildLinks(addr, latlng){
+        let appleHref, googleHref;
+        if (latlng && /-?\d+\.?\d*,\s*-?\d+\.?\d*/.test(latlng)){
+          const trimmed = latlng.replace(/\s+/g,'');
+          // Apple Maps akzeptiert q oder ll; wir nutzen q mit Koordinaten
+          appleHref = `https://maps.apple.com/?q=${encodeURIComponent(trimmed)}`;
+          // Google Maps: Directions-URL mit destination=lat,lng
+          googleHref = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(trimmed)}`;
+        } else if (addr && addr.replace(/<|>|\\u00ab|\\u00bb/g,'').trim().length > 3) {
+          const enc = encodeURIComponent(addr.trim());
+          appleHref = `https://maps.apple.com/?address=${enc}`;
+          googleHref = `https://www.google.com/maps/dir/?api=1&destination=${enc}`;
+        } else {
+          // Fallback: Ortschaftssuche, damit die Buttons nicht tot sind
+          const q = encodeURIComponent('Tannenkuss111 Ferienpark Hahnenklee');
+          appleHref = `https://maps.apple.com/?q=${q}`;
+          googleHref = `https://www.google.com/maps/search/?api=1&query=${q}`;
+        }
+        document.getElementById('appleLink').href = appleHref;
+        document.getElementById('googleLink').href = googleHref;
+      }
+      buildLinks(cfg.destinationAddress, cfg.latlng);
+    })();
+
+    // Sanfte Reveal-Animationen
+    (function(){
+      const els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) { els.forEach(el => el.classList.add('revealed')); return; }
+      const io = new IntersectionObserver((entries)=>{
+        for (const e of entries){ if (e.isIntersecting){ e.target.classList.add('revealed'); io.unobserve(e.target); } }
+      }, {threshold: 0.12});
+      els.forEach(el => io.observe(el));
+    })();
   </script>
 </body>
 </html>
 ``
-
-
