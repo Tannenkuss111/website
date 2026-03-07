@@ -6,12 +6,12 @@
   <title>Tannenkuss111 – Ferienpark Hahnenklee</title>
   <meta name="description" content="Ferienwohnung Tannenkuss111 im Ferienpark Hahnenklee – Jetzt auf Airbnb ansehen, Anfahrt planen und Tipps entdecken." />
 
-  <!-- Favicons / Assets -->
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-  <link rel="alternate icon" href="assets/favicon.ico" />
-  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
-  <link rel="preload" href="assets/tkus111.jpg" as="image" />
-  <link rel="stylesheet" href="styles.css" />
+  <!-- Favicons / Assets (lege die Dateien in /assets/ ab) -->
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preload" as="image" href="assets/tkus111.jpg">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Tipp: Wenn du ein externes Script-Font nutzen willst, können wir später Google Fonts o.ä. ergänzen. -->
 
   <!-- Konfiguration: Airbnb-URL & Adresse (oder lat,lng) -->
   <script>
@@ -36,14 +36,14 @@
     <!-- HERO -->
     <section class="hero reveal" aria-label="Tannenkuss111 Übersicht">
       <div class="container hero-inner">
-        <img class="logo" src="assets/tkus111.jpg" alt="Tannenkuss111 – Ferienpark Hahnenklee" decoding="async" />
+        <img class="logo" src="assets/tkus111.jpg" alt="Tannenkuss111 Logo">
         <p class="hero-sub">Ankommen, wohlfühlen, durchatmen.</p>
 
-        <!-- Reihenfolge: Google → Apple → Airbnb -->
+        <!-- Reihenfolge: Google → Airbnb → Apple (Apple mit Airbnb getauscht) -->
         <div class="cta-buttons" role="group" aria-label="Schnellzugriff">
-          <a id="googleLink" class="btn btn-map" href="#" target="_blank" rel="noopener" aria-label="Anfahrt mit Google Maps öffnen">Anfahrt&nbsp;(Google)</a>
-          <a id="appleLink" class="btn btn-map" href="#" target="_blank" rel="noopener" aria-label="Anfahrt mit Apple Maps öffnen">Anfahrt&nbsp;(Apple)</a>
-          <a id="airbnbLink" class="btn btn-primary" href="#" target="_blank" rel="noopener" aria-label="Tannenkuss111 auf Airbnb öffnen">Jetzt auf Airbnb ansehen</a>
+          <a id="googleLink" class="btn btn-map" href="#" target="_blank" rel="noopener">Anfahrt&nbsp;(Google)</a>
+          <a id="airbnbLink" class="btn btn-primary" href="#" target="_blank" rel="noopener">Jetzt auf Airbnb ansehen</a>
+          <a id="appleLink" class="btn btn-map" href="#" target="_blank" rel="noopener">Anfahrt&nbsp;(Apple)</a>
         </div>
       </div>
     </section>
@@ -137,8 +137,10 @@
               <li><strong>Polizei:</strong> <a href="tel:110">110</a></li>
               <li><strong>Ärztlicher Bereitschaftsdienst:</strong> <a href="tel:116117">116&nbsp;117</a></li>
               <li><strong>Karten sperren (EC/Kreditkarte):</strong> <a href="tel:116116">116&nbsp;116</a></li>
-              <li><strong>Taxi – Übersicht:</strong> <a href="https://www.google.com/maps/search/Taxi+Hahnenklee" target="_blank" rel="noopener">Hahnenklee</a> ·
-                <a href="https://www.google.com/maps/search/Taxi+Goslar" target="_blank" rel="noopener">Goslar</a></li>
+              <li><strong>Taxi – Übersicht:</strong>
+                <a href="https://www.google.com/maps/search/Taxi+Hahnenklee" target="_blank" rel="noopener">Hahnenklee</a> ·
+                <a href="https://www.google.com/maps/search/Taxi+Goslar" target="_blank" rel="noopener">Goslar</a>
+              </li>
             </ul>
           </article>
         </div>
