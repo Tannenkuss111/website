@@ -120,7 +120,7 @@ html::before{
   font-size:clamp(1.0rem,2.6vw,2.0rem);
   color:var(--muted);
   letter-spacing:.2px;
-  font-family: "Segoe Script", "Snell Roundhand", "Brush Script MT", "Apple Chancery", cursive;
+  font-family: "Segoe Script", "Snell Roundhand", "Brush Script MT", "Apple Chancery", ;
   font-weight: 500;
 }
 
