@@ -223,7 +223,7 @@ Ideal für eine kleine Auszeit oder einen spontanen Kurzurlaub.</p>
         for (const e of entries){
           if (e.isIntersecting){ e.target.classList.add('revealed'); io.unobserve(e.target); }
         }
-      }, {threshold: 0.12});
+      }, {threshold: 0.01});
       els.forEach(el => io.observe(el));
     })();
   </script>
