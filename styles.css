@@ -120,7 +120,7 @@ html::before{
   font-size:clamp(1.0rem,2.6vw,2.0rem);
   color:var(--muted);
   letter-spacing:.2px;
-  font-family: system-ui;justify;
+  font-family: 'Montserrat', Arial, sans-serif ;justify;
   font-weight: 500;
 }
 
