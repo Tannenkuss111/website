@@ -212,11 +212,7 @@ html::before{
   margin: 0 auto 30px;
   text-align: center;
 
-  font-family: "Segoe Script",
-               "Snell Roundhand",
-               "Brush Script MT",
-               "Apple Chancery",
-               cursive;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 
   font-size: clamp(1.1rem, 2.2vw, 1.6rem);
   line-height: 1.55;
@@ -224,8 +220,6 @@ html::before{
   color: #4c4a41;
   padding: 0 16px;
 }
-
-``
 
 
 
