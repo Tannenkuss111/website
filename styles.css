@@ -205,7 +205,28 @@ html::before{
   .reveal{opacity:1 !important; transform:none !important}
   .btn, .tip-card, .logo{transition:none !important}
 }
+
+/* --- Schön zentrierter Schreibschrift-Text unter dem Logo --- */
+.hero-text {
+  max-width: 800px;              /* damit der Text nicht zu breit wird */
+  margin: 0 auto 30px;           /* zentriert + Abstand unten */
+  text-align: center;            /* komplett zentriert */
+  
+  font-family: "Segoe Script",
+               "Snell Roundhand",
+               "Brush Script MT",
+               "Apple Chancery",
+               cursive;          /* schöne, leichte Schreibschrift */
+
+  font-size: clamp(1.1rem, 2.2vw, 1.6rem);  /* perfekt auf Handy + PC */
+  line-height: 1.55;              /* angenehmes Lesen */
+  letter-spacing: 0.4px;          /* eleganter Look */
+  color: #4c4a41;                 /* warmes, modernes Grau */
+
+  padding: 0 16px;                /* kleiner Seitenabstand auf iPhone */
+}
 ``
+
 
 
 
