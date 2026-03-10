@@ -110,7 +110,7 @@ html::before{
 }
 
 /* HERO – kompakter Abstand */
-.hero{position:relative; padding-top: clamp(28px, 6vw, 70px); padding-bottom: clamp(12px, 2.4vw, 18px)}
+.hero{position:relative; padding-top: clamp(18px, 6vw, 70px); padding-bottom: clamp(12px, 2.4vw, 18px)}
 .hero-inner{display:flex; flex-direction:column; align-items:center; gap:10px}
 .logo{display:block; width:min(540px,86vw); max-height:250px; object-fit:contain; filter: drop-shadow(0 12px 34px rgba(0,0,0,.10))}
 
@@ -226,6 +226,7 @@ html::before{
 }
 
 ``
+
 
 
 
