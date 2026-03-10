@@ -177,9 +177,9 @@ html::before{
 
 /* Adresse */
 .address-inner{display:flex; flex-direction:column; align-items:center; text-align:center; gap:4px}
-.address-title{font-size:.98rem; font-weight:820; letter-spacing:.3px; color:var(--muted)}
-.address-lines{font-size:.92rem; color:var(--muted)}
-.wa{font-size:.92rem}
+.address-title{font-size:.88rem; font-weight:820; letter-spacing:.3px; color:var(--muted)}
+.address-lines{font-size:.82rem; color:var(--muted)}
+.wa{font-size:.82rem}
 .wa-link{color:var(--green); font-weight:700; text-decoration:none; border-bottom:1px solid color-mix(in oklch, var(--green) 40%, transparent)}
 .wa-link:hover{color:var(--green-700); border-bottom-color: var(--green-700)}
 
@@ -226,6 +226,7 @@ html::before{
 }
 
 ``
+
 
 
 
