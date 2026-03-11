@@ -220,19 +220,13 @@ html::before{
   color: #4c4a41;
   padding: 0 16px;
 }
+.dist {
+  font-size: 0.8em;
+  color: #777;
+  margin-left: 6px;
+  text-decoration: none;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.dist:hover {
+  text-decoration: underline;
+}
